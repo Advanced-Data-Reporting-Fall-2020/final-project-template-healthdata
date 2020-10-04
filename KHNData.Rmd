@@ -1,0 +1,107 @@
+---
+title: "KHN Data"
+output:
+  html_document:
+    df_print: paged
+---
+
+Run packages
+```{r}
+#install.packages("tidyverse")
+library("tidyverse")
+#install.packages("rio")
+library("rio")
+#install.packages("pacman")
+library("pacman")
+#install.packages("rmarkdown")
+library("rmarkdown")
+library("dplyr")
+```
+
+Upload data and create a dataframe called khn
+```{r}
+download.file("https://raw.githubusercontent.com/khnews/2020-underfunded-under-threat-data/master/data/05-local-health-departments-detail.csv", "05-local-health-departments-detail.csv")
+khn <- rio::import("data/05-local-health-departments-detail.csv")
+
+```
+
+Create a new df called nc that filters just for nc
+```{r}
+nc <- khn %>%
+  filter(state_code == "NC")
+```
+
+Just take the categories I want and filter out counties without fte data
+```{r}
+summary_nc <- nc %>%
+  select(`year`, `lhd_name`, `lhd_area_type`, `population`, `fte`, `fte_per_100000`, `population`) %>%
+  filter(fte != "NA")
+```
+
+Just show me single counties
+```{r}
+single_counties_summary_nc <-
+  summary_nc %>%
+  filter(lhd_area_type == "single county") 
+
+single_counties_summary_nc
+```
+
+Which lhd_names are only listed once? This may indicate that they merged into a multi county hd
+```{r}
+single_counties_summary_nc %>%
+  group_by(lhd_name) %>%
+  summarize(n()) 
+
+#Bertie
+#Granville
+#McDowell
+#Mitchell
+#Polk
+#Rutherford
+#Vance
+#Yancey
+```
+
+Fte_per_100000 is fte per capita. Create a new df that just has the year, lhd name, and fte per capita
+```{r}
+fte_per_capita <- single_counties_summary_nc %>%
+  select(`year`, `lhd_name`, `fte_per_100000`)
+
+```
+
+Find the avg fte per capita 
+```{r}
+fte_per_capita %>%
+  group_by(lhd_name) %>%
+  mutate(Avg_fte_per_100000 = mean(fte_per_100000)) %>%
+  select(lhd_name, Avg_fte_per_100000) %>%
+  arrange(desc(Avg_fte_per_100000))
+
+#How do I show one avg_fte per lhd?
+```
+From 2003-2017, what is the % change in fte per capita for each single lhd? I chose 2003 because I don't think many lhds have data from 1999
+```{r}
+fte_per_capita %>%
+  filter(year %in% c('2003', '2017')) %>%
+  pivot_wider(names_from = year, values_from = fte_per_100000) %>%
+  group_by(lhd_name) %>%
+  mutate(pct_change = 100 * ((`2017` - `2003`)) / `2003`) %>%
+  arrange(desc(pct_change))
+ 
+```
+
+
+Jones County
+```{r}
+jones <- single_counties_summary_nc %>%
+  filter(lhd_name == "Jones County Health Department") %>%
+  select(`year`, `population`, `fte`, `fte_per_100000`)
+
+#What happened in 2005?
+```
+
+
+
+
+
