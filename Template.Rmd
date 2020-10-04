@@ -6,6 +6,6 @@ output: html_document
 ```{r}
 library(readr)
 
-compiledexpenditures <- read_csv("data/(10:1:20) Health Deparment Compiled Expenditures - Sheet1.csv")
+compiledexpenditures <- read_csv("data/(10:1:20) Health Department Compiled Expenditures - Sheet1.csv")
 ```
 
