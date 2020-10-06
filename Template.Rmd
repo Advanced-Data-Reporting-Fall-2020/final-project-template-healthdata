@@ -9,3 +9,11 @@ library(readr)
 compiledexpenditures <- read_csv("data/(10:1:20) Health Deparment Compiled Expenditures - Sheet1.csv")
 ```
 
+```{r}
+compiledexpenditures <- arrange(compiledexpenditures, lhd_name)
+```
+
+```{r}
+"2019expenditures" <- filter(compiledexpenditures, year == "2019")
+```
+
