@@ -1,0 +1,105 @@
+---
+title: "Charts of LHD expenditure data"
+author: "Rachel Crumpler"
+output: html_notebook
+---
+#Importing compiled expenditure data from R
+```{r}
+#install.packages("gsheet")
+library(gsheet)
+CompiledLHDExpenditures <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Zc10pam92Y1218F90eXn9ri7-a4GQI1vhzING33nNSI/edit#gid=0")
+```
+
+#Sorting from least expenditures to greatest
+```{r}
+CompiledLHDExpendituresSorted <- arrange(CompiledLHDExpenditures, desc(expenditures))
+```
+
+#Loading graph packages
+```{r}
+library("viridis")
+#install.packages("hrbrthemes")
+library(hrbrthemes)
+```
+
+#Making line graph of each individual LHD
+```{r}
+CompiledLHDExpenditures %>%
+  ggplot( aes(x=year, y=expenditures, group=lhd_name, fill=lhd_name)) +
+    geom_line() +
+    scale_fill_viridis(discrete = TRUE) +
+    theme(legend.position="none") +
+    ggtitle("Trends in LHD Expenditures") +
+    theme_ipsum() +
+    theme(
+      legend.position="none",
+      panel.spacing = unit(0.1, "lines"),
+      strip.text.x = element_text(size = 8),
+      plot.title = element_text(size=14)
+    ) +
+    facet_wrap(~lhd_name)
+```
+#Making area chart of each individual LHD
+```{r}
+CompiledLHDExpenditures %>%
+  ggplot( aes(x=year, y=expenditures, group=lhd_name, fill=lhd_name)) +
+    geom_area() +
+    scale_fill_viridis(discrete = TRUE) +
+    theme(legend.position="none") +
+    ggtitle("Trends in LHD Expenditures") +
+    theme_ipsum() +
+    theme(
+      legend.position="none",
+      panel.spacing = unit(0.1, "lines"),
+      strip.text.x = element_text(size = 8),
+      plot.title = element_text(size=14)
+    ) +
+    facet_wrap(~lhd_name)
+```
+
+#Isolating some of the LHDs for more specific line chart comparison
+```{r}
+linegraph <- CompiledLHDExpenditures %>% 
+  filter(county_name %in% c("Swain","Jones", "Catawba", "Hyde", "Madison", "Mecklenburg"))
+
+# Plot
+linegraph %>%
+  ggplot( aes(x=year, y=expenditures, group=lhd_name, color=lhd_name)) +
+    geom_line() +
+    scale_color_viridis(discrete = TRUE) +
+    theme(
+      legend.position="none",
+      plot.title = element_text(size=14)
+    ) +
+    ggtitle("Trends of LHD expenditures") +
+    theme_ipsum()
+
+```
+
+
+#This graph compares some of the LHD expenditures (can be adjusted for when we find counties we want to put next to each other for closer comparison)
+```{r}
+linegraph <- CompiledLHDExpenditures %>% 
+  filter(county_name %in% c("Swain","Jones", "Catawba", "Hyde", "Madison", "Mecklenburg"))
+
+# Plot
+linegraph %>%
+  ggplot(aes(x=year, y=expenditures, group=lhd_name, color=lhd_name)) +
+    geom_line() +
+    scale_color_viridis(discrete = TRUE) +
+    theme(
+      legend.position="none",
+      plot.title = element_text(size=14), 
+      axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
+    ggtitle("Comparing LHD Expenditures") +
+    theme_ipsum()+
+    facet_wrap(~lhd_name)
+```
+
+
+#--------THIS JOIN IS NOT CORRECT----------
+```{r}
+joined_data <- left_join(CompiledLHDExpenditures, NC,
+                          by=c("lhd_name" = "lhd_name"))
+```
+

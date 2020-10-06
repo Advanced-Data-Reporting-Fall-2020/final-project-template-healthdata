@@ -1,0 +1,27 @@
+---
+title: "MEJO 390 Project"
+author: "Rachel Crumpler"
+output: html_notebook
+---
+
+```{r}
+library("dplyr", "tidyverse")
+```
+
+#Downloading github KHN file-05
+```{r}
+download.file("https://raw.githubusercontent.com/khnews/2020-underfunded-under-threat-data/master/data/05-local-health-departments-detail.csv", "LocalHealthDepartments.csv") 
+
+```
+#Loading in KHN 05 data
+```{r}
+KHNdata <- rio::import("LocalHealthDepartments.csv") 
+```
+
+#Narrowing dataframe to only include NC
+```{r}
+NC <- filter(KHNdata, state_code == "NC")
+```
+
+
+
