@@ -5,7 +5,7 @@ output: html_notebook
 ---
 #Importing compiled expenditure data from R
 ```{r}
-#install.packages("gsheet")
+install.packages("gsheet")
 library(gsheet)
 CompiledLHDExpenditures <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Zc10pam92Y1218F90eXn9ri7-a4GQI1vhzING33nNSI/edit#gid=0")
 ```
