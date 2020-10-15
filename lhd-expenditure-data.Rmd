@@ -102,6 +102,8 @@ CompiledLHDExpenditures %>%
   summarise(
     Mean=mean(per_capita_spending, na.rm=TRUE),
     Median=median(per_capita_spending, na.rm=TRUE),
+    Min=min(per_capita_spending, na.rm = TRUE),
+    Max=max(per_capita_spending, na.rm= TRUE),
     Total= n()
   )
 ```
@@ -110,6 +112,17 @@ Per capita spending has stayed fairly stable over the past 10 years. Spending gr
 -2020 Median= $67
 -2019 Median= $69
 -2018 Median= $67
+
+
+#Looking only at 2019 data
+```{r}
+Data2019 <- CompiledLHDExpenditures %>%
+  filter(year == "2019") %>%
+  arrange(desc(per_capita_spending))
+```
+Franklin County highest= $254
+Yadkin County lowest= $34
+
 
 #Closer look at Granville-Vance Health District
 *This code can be used to look specifically at other counties of interest
