@@ -116,7 +116,7 @@ PopulationSorted <- arrange(CompiledLHDExpenditures, desc(population))
 
 Finding Average per capita spending
 ```{r}
-mean(CompiledLHDExpenditures, per_capita_spending)
+CompiledLHDExpenditures %>% summarize(mean(expenditures, na.rm=TRUE))
 ```
 
 ```{r}
@@ -124,9 +124,36 @@ median(CompiledLHDExpenditures, na.rm = FALSE)
 ```
 Trying to convert per capita column from char type to numeric
 ```{r}
-as.numeric(CompiledLHDExpenditures$per_capita_spending)
+CompiledLHDEXpenditures<- as.numeric(CompiledLHDExpenditures$per_capita_spending)
 ```
 ```{r}
+str(CompiledLHDExpenditures)
+```
+
+```{r}
+as.numeric(CompiledLHDExpenditures$per_capita_spending)
+```
+
+
+```{r}
 as.numeric(CompiledLHDExpenditures$expenditures)
+```
+```{r}
+head(CompiledLHDExpenditures)
+```
+
+
+```{r}
+CompiledLHDExpenditures %>% mean(expenditures)
+```
+
+```{r}
+CompiledLHDExpenditures %>% 
+  group_by(county_name) %>% 
+  mean(expenditures)
+```
+
+```{r}
+
 ```
 
