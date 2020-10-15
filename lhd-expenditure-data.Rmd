@@ -93,6 +93,8 @@ Total= Number of counties we have data for
 
 -Median annual expenditures have stayed in the 5,300,000-6,000,000 range from 2007-2020
 
+***Deceiving to look at sum total going up when it is because we have more counties in later years
+
 #Analyzing per capita spending by year
 ```{r}
 CompiledLHDExpenditures %>%
