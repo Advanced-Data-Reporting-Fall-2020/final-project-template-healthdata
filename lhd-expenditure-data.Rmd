@@ -1,32 +1,142 @@
 ---
-title: "Charts of LHD expenditure data"
+title: "Analysis and Charts of LHD expenditure data"
 author: "Rachel Crumpler"
 output: html_notebook
 ---
-#Importing compiled expenditure data from R
+
+```{r}
+#Install packages
+library(dplyr)
+library(tidyverse)
+```
+
+#Importing compiled expenditure data from Google Sheets
 ```{r}
 #install.packages("gsheet")
 library(gsheet)
 CompiledLHDExpenditures <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Zc10pam92Y1218F90eXn9ri7-a4GQI1vhzING33nNSI/edit#gid=0")
 ```
 
-#Install packages
-```{r}
-library(dplyr)
-library(tidyverse)
-```
 
+#Quick look at column types
+```{r}
+str(CompiledLHDExpenditures)
+```
 
 #Sorting from least expenditures to greatest
 ```{r}
 CompiledLHDExpendituresSorted <- arrange(CompiledLHDExpenditures, desc(expenditures))
 ```
+Mecklenburg and Guilford have highest expenditures
+Jones, Madison and Green have lowest expenditures
+
+#Min, median, mean, and max expenditure values across counties
+```{r}
+CompiledLHDExpenditures %>% 
+  summarise(
+  LowestExpenditure= min(expenditures, na.rm=TRUE),
+  Median=median(expenditures, na.rm=TRUE),
+  Mean=mean(expenditures, na.rm=TRUE),
+  HighestExpenditure=max(expenditures, na.rm=TRUE)
+  )
+```
+Highest= Mecklenburg 2019
+Lowest= Jones 2007
+
+#Finding how many counties are greater than mean expenditure value
+```{r}
+CompiledLHDExpenditures %>%
+  filter(expenditures>mean(expenditures, na.rm=TRUE))
+```
+189 counties greater than mean expenditures
+
+#Min, median, mean, and max per capita spending values across counties
+```{r}
+CompiledLHDExpenditures %>% 
+  summarise(
+  LowestCapita= min(per_capita_spending, na.rm=TRUE),
+  Median=median(per_capita_spending, na.rm=TRUE),
+  Mean=mean(per_capita_spending, na.rm=TRUE),
+  HighestCapita=max(per_capita_spending, na.rm=TRUE)
+  )
+```
+Lowest= Rowan County 1999
+Highest= Franklin County 2007
+
+#Sorting from greatest to least of per capita spending
+```{r}
+PerCapitaSpendingSorted <- arrange(CompiledLHDExpenditures, desc(per_capita_spending))
+```
+-Franklin County consistently ranks at top in per captia spending with >$250
+-Hyde and Dare counties also ranked at top in per capita spending
+-Rowan and Yadkin counties rank at bottom in per capita spending <$37
+
+#Finding how many counties are greater than mean per capita spending value
+```{r}
+CompiledLHDExpenditures %>%
+  filter(per_capita_spending>mean(per_capita_spending, na.rm=TRUE))
+```
+
+#Analyzing expenditure data by year
+```{r}
+CompiledLHDExpenditures %>%
+  group_by(year)%>%
+  summarise(
+    Mean=mean(expenditures, na.rm=TRUE),
+    Median=median(expenditures, na.rm=TRUE),
+    SumTotal= sum(expenditures, na.rm=TRUE),
+    Total= n()
+  )
+```
+SumTotal= Total expenditures of all counties for that year
+Total= Number of counties we have data for
+
+-Median annual expenditures have stayed in the 5,300,000-6,000,000 range from 2007-2020
+
+#Analyzing per capita spending by year
+```{r}
+CompiledLHDExpenditures %>%
+  group_by(year)%>%
+  summarise(
+    Mean=mean(per_capita_spending, na.rm=TRUE),
+    Median=median(per_capita_spending, na.rm=TRUE),
+    Total= n()
+  )
+```
+Per capita spending has stayed fairly stable over the past 10 years. Spending grew about $20 from 2000 to 2006. Spending has hovered around $68 since 2006
+
+-2020 Median= $67
+-2019 Median= $69
+-2018 Median= $67
+
+#Closer look at Granville-Vance Health District
+*This code can be used to look specifically at other counties of interest
+```{r}
+CompiledLHDExpenditures %>%
+  filter(county_name == "Granville & Vance") %>%
+  select(year, expenditures, per_capita_spending) %>%
+  mutate(
+    Median=median(expenditures),
+    Mean=mean(expenditures),
+    MedianCapita=median(per_capita_spending),
+    MeanCapita=mean(per_capita_spending)
+  )
+```
+*4 mutated columns are not done by year, they represent the value for the county over the years
+
+-Granville-Vance expenditures and per capita spending has gone up gradually over the years
+
+
+---------------------------------------------------
+CHARTS
+*They need work, formatting got messed up
 
 #Loading graph packages
 ```{r}
 library("viridis")
 #install.packages("hrbrthemes")
-library(hrbrthemes)
+library("hrbrthemes")
+library("ggplot2")
 ```
 
 #Making line graph of each individual LHD
@@ -104,56 +214,4 @@ linegraph %>%
 ```
 
 
-DATA ANALYSIS
-
-```{r}
-head(CompiledLHDExpenditures)
-```
-```{r}
-PopulationSorted <- arrange(CompiledLHDExpenditures, desc(population))
-```
-
-
-Finding Average per capita spending
-```{r}
-CompiledLHDExpenditures %>% summarize(mean(expenditures, na.rm=TRUE))
-```
-
-```{r}
-median(CompiledLHDExpenditures, na.rm = FALSE)
-```
-Trying to convert per capita column from char type to numeric
-```{r}
-CompiledLHDEXpenditures<- as.numeric(CompiledLHDExpenditures$per_capita_spending)
-```
-```{r}
-str(CompiledLHDExpenditures)
-```
-
-```{r}
-as.numeric(CompiledLHDExpenditures$per_capita_spending)
-```
-
-
-```{r}
-as.numeric(CompiledLHDExpenditures$expenditures)
-```
-```{r}
-head(CompiledLHDExpenditures)
-```
-
-
-```{r}
-CompiledLHDExpenditures %>% mean(expenditures)
-```
-
-```{r}
-CompiledLHDExpenditures %>% 
-  group_by(county_name) %>% 
-  mean(expenditures)
-```
-
-```{r}
-
-```
 
