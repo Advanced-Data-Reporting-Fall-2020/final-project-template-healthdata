@@ -142,6 +142,22 @@ CompiledLHDExpenditures %>%
 -Granville-Vance expenditures and per capita spending has gone up gradually over the years
 
 
+
+#Closer look at Catawba
+```{r}
+CompiledLHDExpenditures %>%
+  filter(county_name == "Catawba") %>%
+  select(year, expenditures, per_capita_spending) %>%
+  mutate(
+    Median=median(expenditures),
+    Mean=mean(expenditures),
+    MedianCapita=median(per_capita_spending),
+    MeanCapita=mean(per_capita_spending)
+  )
+```
+Catawba County has seen their per capita spending decline since 2011. It has decreased about $20 over that period.
+2019 value of $53.84 lower than Median for 2019 of $69.
+
 ---------------------------------------------------
 CHARTS
 *They need work, formatting got messed up
