@@ -48,7 +48,7 @@ Lowest= Jones 2007
 CompiledLHDExpenditures %>%
   filter(expenditures>mean(expenditures, na.rm=TRUE))
 ```
-189 counties greater than mean expenditures
+211 counties greater than mean expenditures
 
 #Min, median, mean, and max per capita spending values across counties
 ```{r}
@@ -76,6 +76,7 @@ PerCapitaSpendingSorted <- arrange(CompiledLHDExpenditures, desc(per_capita_spen
 CompiledLHDExpenditures %>%
   filter(per_capita_spending>mean(per_capita_spending, na.rm=TRUE))
 ```
+264 counties greater than mean per capita spending
 
 #Analyzing expenditure data by year
 ```{r}
@@ -91,7 +92,7 @@ CompiledLHDExpenditures %>%
 SumTotal= Total expenditures of all counties for that year
 Total= Number of counties we have data for
 
--Median annual expenditures have stayed in the 5,300,000-6,000,000 range from 2007-2020
+-Median annual expenditures have stayed in the 5,168,918-6,000,000 range from 2007-2020
 
 ***Deceiving to look at sum total going up when it is because we have more counties in later years
 
@@ -107,11 +108,11 @@ CompiledLHDExpenditures %>%
     Total= n()
   )
 ```
-Per capita spending has stayed fairly stable over the past 10 years. Spending grew about $20 from 2000 to 2006. Spending has hovered around $68 since 2006
+Per capita spending grew about $20 from 2000 to 2006. Spending has stayed above at or above $60 since 2006.
 
--2020 Median= $67
--2019 Median= $69
--2018 Median= $67
+-2020 Median= $63
+-2019 Median= $68
+-2018 Median= $66
 
 
 #Looking only at 2019 data
@@ -122,6 +123,14 @@ Data2019 <- CompiledLHDExpenditures %>%
 ```
 Franklin County highest= $254
 Yadkin County lowest= $34
+
+```{r}
+Data2019Expenditures <- CompiledLHDExpenditures %>%
+  filter(year == "2019") %>%
+  arrange(desc(expenditures))
+```
+Mecklengburg County highest
+Jones County lowest
 
 
 #Closer look at Granville-Vance Health District
@@ -142,7 +151,6 @@ CompiledLHDExpenditures %>%
 -Granville-Vance expenditures and per capita spending has gone up gradually over the years
 
 
-
 #Closer look at Catawba
 ```{r}
 CompiledLHDExpenditures %>%
@@ -158,6 +166,19 @@ CompiledLHDExpenditures %>%
 Catawba County has seen their per capita spending decline since 2011. It has decreased about $20 over that period.
 2019 value of $53.84 lower than Median for 2019 of $69.
 
+#Closer look at Jones County
+```{r}
+CompiledLHDExpenditures %>%
+  filter(county_name == "Jones") %>%
+  select(year, expenditures, per_capita_spending) %>%
+  mutate(
+    Median=median(expenditures),
+    Mean=mean(expenditures),
+    MedianCapita=median(per_capita_spending),
+    MeanCapita=mean(per_capita_spending)
+  )
+```
+
 ---------------------------------------------------
 CHARTS
 *They need work, formatting got messed up
@@ -168,6 +189,7 @@ library("viridis")
 #install.packages("hrbrthemes")
 library("hrbrthemes")
 library("ggplot2")
+library("scales")
 ```
 
 #Making line graph of each individual LHD
@@ -187,6 +209,27 @@ CompiledLHDExpenditures %>%
     ) +
     facet_wrap(~lhd_name)
 ```
+One line chart showing all counties and how they compare
+```{r}
+CompiledLHDExpenditures %>%
+  ggplot( aes(x=year, y=expenditures, group=lhd_name, fill=lhd_name)) +
+    geom_line() +
+    scale_fill_viridis(discrete = TRUE) +
+    theme(legend.position="none") +
+    ggtitle("Trends in LHD Expenditures") +
+    theme_ipsum() +
+    theme(
+      legend.position="none",
+      panel.spacing = unit(0.1, "lines"),
+      strip.text.x = element_text(size = 8),
+      plot.title = element_text(size=14)
+    )
+```
+```{r}
+linegraph <- ggplot(CompiledLHDExpenditures) +
+  geom_line(aes(x=year, y=expenditures, group=lhd_name, color=lhd_name))
+```
+
 #Making area chart of each individual LHD
 ```{r}
 CompiledLHDExpenditures %>%
@@ -208,7 +251,7 @@ CompiledLHDExpenditures %>%
 #Isolating some of the LHDs for more specific line chart comparison
 ```{r}
 linegraph <- CompiledLHDExpenditures %>% 
-  filter(county_name %in% c("Swain","Jones", "Catawba", "Hyde", "Madison", "Mecklenburg"))
+  filter(county_name %in% c("Jones", "Catawba", "Granville & Vance", "Madison", "Mecklenburg"))
 
 # Plot
 linegraph %>%
