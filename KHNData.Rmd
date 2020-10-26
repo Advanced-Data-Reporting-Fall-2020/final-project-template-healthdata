@@ -4,6 +4,7 @@ output:
   html_document:
     df_print: paged
 ---
+Final project copy!
 
 Run packages
 ```{r}
@@ -16,13 +17,19 @@ library("pacman")
 #install.packages("rmarkdown")
 library("rmarkdown")
 library("dplyr")
+install.packages("gghighlight")
+library(gghighlight)
 ```
+
+```{r}
+getwd()
+```
+
 
 Upload data and create a dataframe called khn
 ```{r}
 download.file("https://raw.githubusercontent.com/khnews/2020-underfunded-under-threat-data/master/data/05-local-health-departments-detail.csv", "05-local-health-departments-detail.csv")
-khn <- rio::import("data/05-local-health-departments-detail.csv")
-
+khn <- rio::import("05-local-health-departments-detail.csv")
 ```
 
 Create a new df called nc that filters just for nc
@@ -66,7 +73,7 @@ single_counties_summary_nc %>%
 Fte_per_100000 is fte per capita. Create a new df that just has the year, lhd name, and fte per capita
 ```{r}
 fte_per_capita <- single_counties_summary_nc %>%
-  select(`year`, `lhd_name`, `fte_per_100000`)
+  select(`year`, `lhd_name`, `fte_per_100000`, `fte`, `population`)
 
 ```
 
@@ -74,23 +81,51 @@ Find the avg fte per capita
 ```{r}
 fte_per_capita %>%
   group_by(lhd_name) %>%
-  mutate(Avg_fte_per_100000 = mean(fte_per_100000)) %>%
+  summarise(Avg_fte_per_100000 = mean(fte_per_100000)) %>%
   select(lhd_name, Avg_fte_per_100000) %>%
   arrange(desc(Avg_fte_per_100000))
 
-#How do I show one avg_fte per lhd?
 ```
+Find the avg fte
+```{r}
+single_counties_summary_nc %>%
+  group_by(lhd_name) %>%
+  summarise(Avg_fte = mean(fte)) %>%
+  select(lhd_name, Avg_fte) %>%
+  arrange(desc(Avg_fte))
+```
+
 From 2003-2017, what is the % change in fte per capita for each single lhd? I chose 2003 because I don't think many lhds have data from 1999
 ```{r}
 fte_per_capita %>%
   filter(year %in% c('2003', '2017')) %>%
-  pivot_wider(names_from = year, values_from = fte_per_100000) %>%
-  group_by(lhd_name) %>%
+  # USE THE id_cols argument and set the value to "evertyhing but the set of columns that contains fte and population". This allows each row to be unique to the lhd_name rather than lhd_name + fte + population.
+  pivot_wider(id_cols = -c(fte,population), names_from = year, values_from = fte_per_100000) %>%
+  # DONT NEED NEXT LINE - RT
+ # group_by(lhd_name) %>%
   mutate(pct_change = 100 * ((`2017` - `2003`)) / `2003`) %>%
   arrange(desc(pct_change))
  
 ```
 
+% change in fte from 2003-2017 
+```{r}
+fte_per_capita %>%
+  filter(year %in% c('2003', '2017')) %>%
+  # USE THE id_cols argument and set the value to "evertyhing but the set of columns that contains fte and population". This allows each row to be unique to the lhd_name rather than lhd_name + fte + population.
+  pivot_wider(id_cols = -c(fte_per_100000,population), names_from = year, values_from = fte) %>%
+  # DONT NEED NEXT LINE - RT
+ # group_by(lhd_name) %>%
+  mutate(pct_change = 100 * ((`2017` - `2003`)) / `2003`) %>%
+  arrange(desc(pct_change))
+```
+
+Highest and lowest fte per capita in 2017
+```{r}
+fte_per_capita %>%
+  filter(year == "2017") %>%
+  arrange(desc(fte_per_100000))
+```
 
 Jones County
 ```{r}
@@ -101,7 +136,34 @@ jones <- single_counties_summary_nc %>%
 #What happened in 2005?
 ```
 
+Scatterplot (x: population, y: employees per capita)
+```{r}
+ggplot(fte_per_capita, aes(x=population, y=fte_per_100000)) + 
+  geom_point(size= 1) +
+  gghighlight(fte_per_100000 > 500)
+```
 
+line chart #1: fte change over time (X: year, y: fte)
+```{r}
+ggplot(fte_per_capita, aes(x=population, y=fte)) + 
+  geom_line() +
+  facet_wrap(~year, ncol=4) +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+```
 
+line chart #2: X: year, y: fte per capita change over time
+```{r}
+ggplot(fte_per_capita, aes(x=population, y=fte_per_100000)) + 
+  geom_line() +
+  facet_wrap(~year, ncol=4) +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+```
 
+Jones County fte per capita change over time
+```{r}
+ggplot(jones, aes(x=year, y=fte_per_100000)) + 
+  geom_line() 
+```
+
+*From 2011 to reflect policy shift after Republican win
 
