@@ -1,0 +1,135 @@
+---
+title: "graphs"
+author: "Rachel Crumpler"
+date: "10/25/2020"
+output: html_document
+---
+Loading data
+```{r}
+library(gsheet)
+CompiledLHDExpenditures <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Zc10pam92Y1218F90eXn9ri7-a4GQI1vhzING33nNSI/edit#gid=0")
+```
+
+Loading packages
+```{r}
+library("dplyr")
+library("tidyverse")
+library("ggplot2")
+library("hrbrthemes")
+library("plotly")
+```
+
+
+```{r}
+pacman::p_load('dplyr', 'tidyr', 'gapminder',
+               'ggplot2',  'ggalt',
+               'forcats', 'R.utils', 'png', 
+               'grid', 'ggpubr', 'scales')
+```
+
+
+Filtering Jones data
+```{r}
+Jones <- CompiledLHDExpenditures  %>%
+  filter(county_name =="Jones")
+```
+
+Jones County Line Chart
+```{r}
+Jones %>%
+  ggplot(aes(x=year, y=expenditures)) +
+    geom_line(color="#69b3a2") +
+    ggtitle("Trend of Jones County Health Department") +
+    ylab("annual expenditures ($)") +
+    theme_ipsum()
+```
+
+Interactive Jones line chart
+```{r}
+Jones_graph <- plot_ly(Jones, x = ~year, y = ~expenditures, type = 'scatter', mode = 'lines')
+
+Jones_graph
+```
+
+
+Jones County area chart
+```{r}
+Jones %>%
+  ggplot(aes(x=year, y=expenditures)) +
+    geom_area(fill="#69b3a2", alpha=0.5) +
+    ggtitle("Trend of Jones County Health Department") +
+    ylab("annual expenditures ($)") +
+    theme_ipsum()
+```
+
+Interactive area chart
+*******Need to refine this to get plotly working
+```{r}
+Jones %>%
+  ggplot(aes(x=year, y=expenditures)) +
+    geom_area(fill="#69b3a2", alpha=0.5) +
+    ggtitle("Trend of Jones County Health Department") +
+    ylab("annual expenditures ($)") +
+    theme_ipsum()
+plot_ly(Jones)
+```
+
+
+Filtering Mecklenburg data
+```{r}
+Mecklengburg <- CompiledLHDExpenditures  %>%
+  filter(county_name =="Mecklenburg")
+```
+
+
+```{r}
+Mecklengburg %>%
+  ggplot(aes(x=year, y=expenditures)) +
+    geom_line(color="#69b3a2") +
+    ggtitle("Trend of Mecklenberg County Health Department") +
+    ylab("annual expenditures ($)") +
+    theme_ipsum()
+```
+
+
+Graphs shows trends of all health departments
+Legend blocks the graph
+```{r}
+CompiledLHDExpenditures %>%
+  ggplot( aes(x=year, y=expenditures, group=lhd_name, color=lhd_name)) +
+    geom_line() +
+    scale_fill_viridis(discrete = TRUE) +
+    theme(legend.position="none") +
+    ggtitle("Trends in LHD Expenditures") +
+    theme_ipsum() +
+    theme(
+      legend.position="right",
+      panel.spacing = unit(0.1, "lines"),
+      strip.text.x = element_text(size = 8),
+      plot.title = element_text(size=14)
+    )
+```
+
+Interactive graph of all health deparments showing trends in expenditures
+***What should I do about lines being on top of each other? Adjust scale?
+
+```{r}
+ggplotly(
+  ggplot(CompiledLHDExpenditures, aes(
+    x=year, 
+    y=expenditures, 
+    color=lhd_name)) +
+    geom_line() +
+    scale_fill_viridis(discrete = TRUE) +
+    theme(legend.position="none") +
+    ggtitle("Trends in LHD Expenditures") +
+    theme_ipsum() +
+    theme(
+      legend.position="none",
+      panel.spacing = unit(0.1, "lines"),
+      strip.text.x = element_text(size = 8),
+      plot.title = element_text(size=14)
+    )
+)
+```
+

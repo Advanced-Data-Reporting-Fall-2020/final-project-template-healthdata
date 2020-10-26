@@ -212,7 +212,7 @@ CompiledLHDExpenditures %>%
 One line chart showing all counties and how they compare
 ```{r}
 CompiledLHDExpenditures %>%
-  ggplot( aes(x=year, y=expenditures, group=lhd_name, fill=lhd_name)) +
+  ggplot( aes(x=year, y=expenditures, group=lhd_name, color=lhd_name)) +
     geom_line() +
     scale_fill_viridis(discrete = TRUE) +
     theme(legend.position="none") +
