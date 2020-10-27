@@ -103,7 +103,7 @@ CompiledLHDExpenditures %>%
     ggtitle("Trends in LHD Expenditures") +
     theme_ipsum() +
     theme(
-      legend.position="right",
+      legend.position="none",
       panel.spacing = unit(0.1, "lines"),
       strip.text.x = element_text(size = 8),
       plot.title = element_text(size=14)
@@ -113,15 +113,15 @@ CompiledLHDExpenditures %>%
 Interactive graph of all health deparments showing trends in expenditures
 ***What should I do about lines being on top of each other? Adjust scale?
 
-```{r}
+```{r opts_chunk$set(out.height='7500px', dpi=200)}
 ggplotly(
   ggplot(CompiledLHDExpenditures, aes(
     x=year, 
     y=expenditures, 
     color=lhd_name)) +
     geom_line() +
+    scale_y_continuous(labels= scales::comma, limits= c(0, 20000000))+
     scale_fill_viridis(discrete = TRUE) +
-    theme(legend.position="none") +
     ggtitle("Trends in LHD Expenditures") +
     theme_ipsum() +
     theme(
