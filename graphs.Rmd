@@ -110,8 +110,7 @@ CompiledLHDExpenditures %>%
     )
 ```
 
-Interactive graph of all health deparments showing trends in expenditures
-***What should I do about lines being on top of each other? Adjust scale?
+Interactive graph of health departments under 2 million
 
 ```{r opts_chunk$set(out.height='7500px', dpi=200)}
 ggplotly(
@@ -132,4 +131,24 @@ ggplotly(
     )
 )
 ```
+Interactive line graph showing all counties
+```{r}
+ggplotly(
+  ggplot(CompiledLHDExpenditures, aes(
+    x=year, 
+    y=expenditures, 
+    color=lhd_name)) +
+    geom_line(size=.1) +
+    scale_fill_viridis(discrete = TRUE) +
+    scale_y_continuous(labels= comma) +
+    ggtitle("Trends in LHD Expenditures") +
 
+    theme(
+      legend.position="none",
+      panel.spacing = unit(0.1, "lines"),
+      strip.text.x = element_text(size = 8),
+      plot.title = element_text(size=14)
+    )
+)
+```
+To view graph better, click on first button in top right corner with chart of window with error
