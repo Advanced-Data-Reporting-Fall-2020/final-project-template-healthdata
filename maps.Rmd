@@ -1,0 +1,53 @@
+---
+title: "maps"
+author: "Rachel Crumpler"
+date: "10/27/2020"
+output: html_document
+---
+Loading packages
+```{r}
+pacman::p_load(leaflet, glue, dplyr, sf, tmap, tmaptools, tidycensus, ggmap, htmltools,  htmlwidgets)  
+
+pacman::p_load_gh(c("walkerke/tigris", "bhaskarvk/leaflet.extras")) 
+```
+
+Downloading shapefile of NC counties
+```{r}
+options(tigris_use_cache = TRUE)
+nc_counties <- counties("NC")
+```
+
+
+Loading our health department data
+```{r}
+library(gsheet)
+CompiledLHDExpenditures <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Zc10pam92Y1218F90eXn9ri7-a4GQI1vhzING33nNSI/edit#gid=0")
+```
+
+Renaming column so name is consistent with health data column name so data frames can be joined
+```{r}
+nc_counties<- dplyr::rename(nc_counties, county_name = County) 
+```
+
+
+```{r}
+nc_joined <- tmaptools::append_data(nc_counties, CompiledLHDExpenditures,  key.shp = "county_name", key.data = "county_name") 
+
+```
+
+
+
+
+
+```{r}
+
+```
+
+
+```{r}
+```
+
+
+```{r}
+```
+
