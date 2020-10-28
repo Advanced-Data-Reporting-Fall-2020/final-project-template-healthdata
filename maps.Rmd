@@ -26,28 +26,68 @@ CompiledLHDExpenditures <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Z
 
 Renaming column so name is consistent with health data column name so data frames can be joined
 ```{r}
-nc_counties<- dplyr::rename(nc_counties, county_name = County) 
+nc_counties<- dplyr::rename(nc_counties, county_name = NAME) 
 ```
 
 
+Joining NC counties shapefile with our health department data
 ```{r}
-nc_joined <- tmaptools::append_data(nc_counties, CompiledLHDExpenditures,  key.shp = "county_name", key.data = "county_name") 
+library(raster)
 
+# merge on common variable, here called 'key'
+county_map <- merge(nc_counties, CompiledLHDExpenditures, by="county_name")
+
+```
+
+Map filled by expenditure data
+***Need to fix the missing county outlines
+```{r}
+tm_shape(county_map) +
+  tm_polygons(col= "expenditures", id="county_name", pallette="Greens") + 
+  labs (title= "Expenditure Spending Across State") 
+   
+```
+
+Map filled in with per capita data
+***Need to fix the missing county outlines
+```{r}
+tm_shape(county_map) +
+  tm_polygons(col= "per_capita_spending", id="county_name", pallette="Greens")
 ```
 
 
 
-
-
+Joining NC counties shapefile with our 2019 health department data
 ```{r}
+library(raster)
+
+# merge on common variable, here called 'key'
+county_map2019 <- merge(nc_counties, Data2019, by="county_name")
 
 ```
 
-
+Map showing range of 2019 expenditures for county data we have
 ```{r}
+tm_shape(county_map2019) +
+  tm_polygons(col= "expenditures", id="county_name")
 ```
 
-
+Map showing range of 2019 per capita spending for counties we have
 ```{r}
+tm_shape(county_map2019) +
+  tm_polygons(col= "per_capita_spending", id="county_name")
+```
+
+MAKE A MAP SHOWING PERCENT CHANGE
+
+
+Joining NC counties shapefile with our unpivoted data frame that has per capita change of counties
+***Need to change a column name so I can have a column to join by
+```{r}
+library(raster)
+
+# merge on common variable, here called 'key'
+percent_change_per_capita_map <- merge(nc_counties, unpivoted, by="county_name")
+
 ```
 
