@@ -114,6 +114,57 @@ Per capita spending grew about $20 from 2000 to 2006. Spending has stayed above 
 -2019 Median= $68
 -2018 Median= $66
 
+*******Look at this percent stuff again, something is messed up
+
+#Looking at percent change per county
+
+
+Pivoting data and adding percent change per capita column 
+```{r}
+CompiledLHDExpenditures %>% group_by(year) %>% count()
+
+
+#for each lhd, what is the oldest and newest data we have
+
+max_min_years2<- CompiledLHDExpenditures %>% group_by(county_name) %>% summarize(oldest= paste0("year_",min(year)), newest=paste0("year_",max(year)))
+
+
+# we’re going to need to create a column that calculates change over time
+
+pivoted_CompiledLHDExpenditures2 <- CompiledLHDExpenditures %>%
+
+arrange(year) %>%
+
+  pivot_wider(id_cols = county_name, names_from = year, names_prefix="year_", values_from=per_capita_spending)
+
+ 
+
+PercentChange <- left_join(max_min_years2, pivoted_CompiledLHDExpenditures2) %>% as.data.frame()
+
+```
+
+
+Pivoting data and adding percent change for expenditures per county column 
+```{r}
+
+# we’re going to need to create a column that calculates change over time
+
+pivoted_CompiledLHDExpenditures3 <- CompiledLHDExpenditures %>%
+
+arrange(year) %>%
+
+  pivot_wider(id_cols = county_name, names_from = year, names_prefix="year_", values_from=expenditures)
+
+PercentChangeforExpenditures <- left_join(max_min_years2, pivoted_CompiledLHDExpenditures3) %>% as.data.frame()
+
+```
+
+
+```{r}
+PercentChangeforExpenditures <- PercentChangeforExpenditures %>%
+  arrange(desc(expenditures))
+```
+
 
 #Looking only at 2019 data
 ```{r}
