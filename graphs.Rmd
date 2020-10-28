@@ -17,6 +17,7 @@ library("tidyverse")
 library("ggplot2")
 library("hrbrthemes")
 library("plotly")
+library("viridis")
 ```
 
 
@@ -152,3 +153,202 @@ ggplotly(
 )
 ```
 To view graph better, click on first button in top right corner with chart of window with error
+
+
+--------------------GGHIGHLIGHT-----------------------
+
+```{r}
+
+# This helps us see what years we have the most data.
+
+CompiledLHDExpenditures %>% group_by(year) %>% count()
+
+ 
+
+#for each lhd, what is the oldest and newest data we have
+
+max_min_years<- CompiledLHDExpenditures %>% group_by(lhd_name) %>% summarize(oldest= paste0("year_",min(year)), newest=paste0("year_",max(year)))
+
+ 
+
+# we’re going to need to create a column that calculates change over time
+
+pivoted_CompiledLHDExpenditures <- CompiledLHDExpenditures %>%
+
+arrange(year) %>%
+
+  pivot_wider(id_cols = lhd_name, names_from = year, names_prefix="year_", values_from=per_capita_spending)
+
+ 
+
+joined <- left_join(max_min_years, pivoted_CompiledLHDExpenditures) %>% as.data.frame()
+
+```
+
+
+
+```{r}
+
+# here we calculate change over time (tried to do dynamic calculation based on max and min years for each lhd, but no luck…) and also create a column that just says whether the county was up or down. I decided to look just at per-capita spending to account for different sizes of counties.
+
+
+pivoted_CompiledLHDExpenditures <- pivoted_CompiledLHDExpenditures %>% mutate(change=year_2019 - year_2009) %>%
+
+  filter(!is.na(change)) %>%
+
+  mutate(trend = case_when(change >0 ~ "up",
+
+                           change < 0 ~ "down",
+
+                           TRUE ~ "no change"
+
+      ))
+
+```
+
+```{r}
+#22 counties down, 17 up. Hmmm…. Might be interesting to map these…
+
+pivoted_CompiledLHDExpenditures %>% group_by(trend) %>% count()
+```
+
+ 
+```{r}
+
+#we had to pivot wider to calculate across the rows of years, but now we have to pivot longer so we can do the line charts the way we want….
+
+ 
+
+unpivoted <- pivoted_CompiledLHDExpenditures %>% pivot_longer(cols = starts_with("year_"), names_prefix="year_", names_to="year", values_to="per_capita_spending")
+
+```
+
+ 
+
+
+```{r}
+
+# here we use gghighlight to show only the 17 up counties.
+
+#install.packages("gghighlight")
+
+library(gghighlight)
+
+ggplotly(
+
+  ggplot(unpivoted, aes(
+
+    x=year,
+
+    y=per_capita_spending,
+
+    color=lhd_name,
+
+    group=lhd_name)) +
+
+    geom_line() +
+
+    scale_fill_viridis(discrete = TRUE) +
+
+scale_y_continuous(labels = comma) +
+
+    ggtitle("Trends in LHD Expenditures") +
+
+gghighlight(trend =="up") +
+
+    theme(
+
+      legend.position="none",
+
+      panel.spacing = unit(0.1, "lines"),
+
+      strip.text.x = element_text(size = 8),
+
+      plot.title = element_text(size=14)
+
+    )
+
+)
+
+
+```
+
+ 
+
+```{r}
+
+#22 is too many to look at, so let’s just focus on the counties that had, say, a decrease in per-capita spending of more than $25 per person…. And we also just show years 2009-2019…
+
+ 
+
+plot<- unpivoted %>% 
+  filter(year>2008 & year < 2020 & per_capita_spending >0) %>%
+
+  ggplot(aes(
+
+    x=year,
+
+    y=per_capita_spending,
+
+   color=lhd_name,
+
+    group=lhd_name)) +
+
+    geom_line() +
+
+    scale_fill_viridis(discrete = TRUE) +
+
+scale_y_continuous(labels = comma) +
+
+ 
+
+    ggtitle("Biggest Declines in Per Capita Spending, 2009-2019") +
+
+gghighlight(change < -25)
+
+ 
+
+ggplotly(plot)
+
+
+```
+
+ 
+
+```{r}
+#here are the counties that increased the most…
+
+plot<- unpivoted %>% 
+  filter(year>2008 & year < 2020 & per_capita_spending > 0) %>%
+
+ 
+
+  ggplot(aes(
+
+    x=year,
+
+    y=per_capita_spending,
+
+    color=lhd_name,
+
+    group=lhd_name)) +
+
+    geom_line() +
+
+    scale_fill_viridis(discrete = TRUE) +
+
+scale_y_continuous(labels = comma) +
+
+ 
+
+    ggtitle("Biggest Increases in Per Capita Spending, 2009-2019") +
+
+gghighlight(change > 25)
+
+ 
+
+ggplotly(plot)
+
+ 
+```
+ 
