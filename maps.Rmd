@@ -21,7 +21,7 @@ nc_counties <- counties("NC")
 Loading our health department data
 ```{r}
 library(gsheet)
-CompiledLHDExpenditures <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Zc10pam92Y1218F90eXn9ri7-a4GQI1vhzING33nNSI/edit#gid=0")
+AllHealthDepartments <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Tp6E7I3lguVumOMuFyoJJQ5naTroHmkeXqnXXqvq1cI/edit#gid=0")
 ```
 
 Renaming column so name is consistent with health data column name so data frames can be joined
@@ -35,15 +35,32 @@ Joining NC counties shapefile with our health department data
 library(raster)
 
 # merge on common variable, here called 'key'
-county_map <- merge(nc_counties, CompiledLHDExpenditures, by="county_name")
+county_map <- merge(nc_counties, AllHealthDepartments, by="county_name")
 
 ```
+
+
+
+******NEED TO NARROW DOWN WHAT DATA SHOULD BE USED HERE
+
+SHOULD IT BE THE AVERAGE OF ALL YEARS WE HAVE PER COUNTY
+AVERAGE FROM 2009-2019
+OR SHOULD I DO A FACETED GRAPH SHOWING 2009 LEVEL OF EXPENDITURES VS 2019 EXPENDITURES
+```{r}
+tmap_mode("view")
+tm_shape(county_map) +
+  tm_fill("expenditures",title="Average Expenditures from 2009-2019 per county",breaks=c(0,5000000,10000000,15000000,20000000,25000000,30000000, 80000000),palette="YlOrBr")  +
+  tm_borders() +
+  tm_layout(title = "Custom Breaks Map", title.position = c("right","bottom"))
+```
+
+
 
 Map filled by expenditure data
 ***Need to fix the missing county outlines
 ```{r}
 tm_shape(county_map) +
-  tm_polygons(col= "expenditures", id="county_name", pallette="Greens") + 
+  tm_polygons(col= "expenditures", id="county_name", palette="Greens") + 
   labs (title= "Expenditure Spending Across State") 
    
 ```
@@ -52,7 +69,7 @@ Map filled in with per capita data
 ***Need to fix the missing county outlines
 ```{r}
 tm_shape(county_map) +
-  tm_polygons(col= "per_capita_spending", id="county_name", pallette="Greens")
+  tm_polygons(col= "per_capita_spending", id="county_name", palette="Greens")
 ```
 
 
@@ -69,7 +86,7 @@ county_map2019 <- merge(nc_counties, Data2019, by="county_name")
 Map showing range of 2019 expenditures for county data we have
 ```{r}
 tm_shape(county_map2019) +
-  tm_polygons(col= "expenditures", id="county_name")
+  tm_polygons(col= "expenditures", id="county_name", palette="Greens")
 ```
 
 Map showing range of 2019 per capita spending for counties we have
@@ -80,14 +97,28 @@ tm_shape(county_map2019) +
 
 MAKE A MAP SHOWING PERCENT CHANGE
 
-
-Joining NC counties shapefile with our unpivoted data frame that has per capita change of counties
-***Need to change a column name so I can have a column to join by
+Loading in the code of data frame with percent change column
 ```{r}
-library(raster)
-
-# merge on common variable, here called 'key'
-percent_change_per_capita_map <- merge(nc_counties, unpivoted, by="county_name")
-
+ExpenditurePctChange <- CompiledLHDExpenditures %>%
+  filter(year %in% c('2009', '2019')) %>%
+  pivot_wider(id_cols = -c(per_capita_spending,population), names_from = year, values_from = expenditures) %>%
+  mutate(expenditure_change= (`2019` - `2009`),
+    pct_change = 100 * ((`2019` - `2009`)) / `2009`) %>%
+  arrange(desc(pct_change))
 ```
+
+Merging shapefile and data
+```{r}
+# merge on common variable, here called 'key'
+pct_map <- merge(nc_counties, ExpenditurePctChange, by="county_name")
+```
+
+Creating map showing percent change
+```{r}
+tm_shape(pct_map) +
+  tm_fill("pct_change",title="Percent Change in Health Department Expenditures from 2009-2019",palette="YlOrBr")  +
+  tm_borders() +
+  tm_layout(title = "Custom Breaks Map", title.position = c("right","bottom"))
+```
+
 

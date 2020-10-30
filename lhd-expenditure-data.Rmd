@@ -123,9 +123,6 @@ CompiledLHDExpenditures %>%
   arrange(desc(population))
 ```
 
-
-*******Look at this percent stuff again, something is messed up
-
 #Looking at expediture percent change per county from 2009 to 2019
 ```{r}
 ExpenditurePctChange <- CompiledLHDExpenditures %>%
