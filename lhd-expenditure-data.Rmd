@@ -123,6 +123,8 @@ CompiledLHDExpenditures %>%
   arrange(desc(population))
 ```
 
+----------------PERCENT CHANGE ANALYSIS-------------------
+
 #Looking at expediture percent change per county from 2009 to 2019
 ```{r}
 ExpenditurePctChange <- CompiledLHDExpenditures %>%
@@ -133,6 +135,40 @@ ExpenditurePctChange <- CompiledLHDExpenditures %>%
   arrange(desc(pct_change))
 ```
 
+
+#Finding average expenditure percent change from 2009 to 2019, min and max
+```{r}
+ExpenditurePctChange %>%
+  summarize(
+    AveragePctChange= mean(pct_change, na.rm=TRUE),
+    Lowest= min(pct_change, na.rm=TRUE),
+    Highest= max(pct_change, na.rm=TRUE)
+  )
+```
+Average percent change from 2009-2019 went up almost 8%
+Yadkin and Wake had biggest decrease percent change
+Mecklenburg had greatest percent change
+
+#Adding a trend column
+```{r}
+ExpenditurePctChange <- ExpenditurePctChange %>%
+
+  mutate(trend = case_when(pct_change >0 ~ "up",
+
+                           pct_change < 0 ~ "down",
+
+                           TRUE ~ "no change"
+
+      ))
+```
+
+#Seeing how many went up vs. down
+```{r}
+ExpenditurePctChange %>%
+  count(trend)
+```
+
+
 #Looking at per capita percent change per county from 2009 to 2019
 ```{r}
 CapitaPctChange <- CompiledLHDExpenditures %>%
@@ -142,6 +178,37 @@ CapitaPctChange <- CompiledLHDExpenditures %>%
     pct_change = 100 * ((`2019` - `2009`)) / `2009`) %>%
   arrange(desc(pct_change))
 ```
+
+#Finding per capita percent change from 2009 to 2019, min and max
+```{r}
+CapitaPctChange %>%
+  summarize(
+    AveragePctChange= mean(pct_change, na.rm=TRUE),
+    Lowest= min(pct_change, na.rm=TRUE),
+    Highest= max(pct_change, na.rm=TRUE)
+  )
+```
+
+#Adding trend column
+```{r}
+CapitaPctChange <- CapitaPctChange %>%
+
+  mutate(trend = case_when(pct_change >0 ~ "up",
+
+                           pct_change < 0 ~ "down",
+
+                           TRUE ~ "no change"
+
+      ))
+```
+
+#Seeing how many went up vs. down
+```{r}
+CapitaPctChange %>%
+count(trend)
+```
+
+
 
 #Looking only at 2019 data
 ```{r}
