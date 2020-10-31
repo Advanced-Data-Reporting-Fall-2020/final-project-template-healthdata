@@ -27,7 +27,7 @@ str(CompiledLHDExpenditures)
 ```{r}
 CompiledLHDExpendituresSorted <- arrange(CompiledLHDExpenditures, desc(expenditures))
 ```
-Mecklenburg and Guilford have highest expenditures
+Mecklenburg, Wake, Guilford have highest expenditures
 Jones, Madison and Green have lowest expenditures
 
 #Min, median, mean, and max expenditure values across counties
@@ -40,7 +40,8 @@ CompiledLHDExpenditures %>%
   HighestExpenditure=max(expenditures, na.rm=TRUE)
   )
 ```
-Highest= Mecklenburg 2019
+Highest= Wake 2011
+Most recent highest= Mecklenburg 2019 (76,803,875)
 Lowest= Jones 2007
 
 #Finding how many counties are greater than mean expenditure value
@@ -48,7 +49,7 @@ Lowest= Jones 2007
 CompiledLHDExpenditures %>%
   filter(expenditures>mean(expenditures, na.rm=TRUE))
 ```
-211 counties greater than mean expenditures
+206 counties greater than mean expenditures
 
 #Min, median, mean, and max per capita spending values across counties
 ```{r}
@@ -60,7 +61,7 @@ CompiledLHDExpenditures %>%
   HighestCapita=max(per_capita_spending, na.rm=TRUE)
   )
 ```
-Lowest= Rowan County 1999
+Lowest= Stanly County 2001 21.41
 Highest= Franklin County 2007
 
 #Sorting from greatest to least of per capita spending
@@ -69,14 +70,14 @@ PerCapitaSpendingSorted <- arrange(CompiledLHDExpenditures, desc(per_capita_spen
 ```
 -Franklin County consistently ranks at top in per captia spending with >$250
 -Hyde and Dare counties also ranked at top in per capita spending
--Rowan and Yadkin counties rank at bottom in per capita spending <$37
+-Rowan and Stanly counties rank at bottom in per capita spending <$30
 
 #Finding how many counties are greater than mean per capita spending value
 ```{r}
 CompiledLHDExpenditures %>%
   filter(per_capita_spending>mean(per_capita_spending, na.rm=TRUE))
 ```
-264 counties greater than mean per capita spending
+275 counties greater than mean per capita spending
 
 #Analyzing expenditure data by year
 ```{r}
@@ -110,12 +111,12 @@ CompiledLHDExpenditures %>%
 ```
 Per capita spending grew about $20 from 2000 to 2006. Spending has stayed above at or above $60 since 2006.
 
--2020 Median= $63
+-2020 Median= $67
 -2019 Median= $68
--2018 Median= $66
+-2018 Median= $67
 
 Looking at county population sizes
-Mecklengburg= largest population
+Mecklenburg= largest population
 Jones= next to lowest
 Hyde= lowest
 ```{r}
@@ -167,7 +168,41 @@ ExpenditurePctChange <- ExpenditurePctChange %>%
 ExpenditurePctChange %>%
   count(trend)
 ```
+#Filtering counties that only went up 
+```{r}
+ExpenditurePctChange %>%
+  filter(trend== "up")
+```
+5 counties increased by less than 5%
 
+#Calculation to see when expenditure spending went up, was it by a lot or not?
+```{r}
+ExpenditurePctChange %>%
+  filter(trend== "up") %>%
+  summarize(Mean= mean(pct_change),
+            Median= median(pct_change),
+            Max= max(pct_change),
+            Min= min(pct_change)
+  )
+```
+
+#Filtering counties that went down
+```{r}
+ExpenditurePctChange %>%
+  filter(trend== "down")
+```
+
+#Calculation to see when per captia spending went down, was it by a lot or not?
+```{r}
+ExpenditurePctChange %>%
+  filter(trend== "down") %>%
+  summarize(Mean= mean(pct_change),
+            Median= median(pct_change),
+            Max= max(pct_change),
+            Min= min(pct_change)
+  )
+```
+Went down at a pretty high rate
 
 #Looking at per capita percent change per county from 2009 to 2019
 ```{r}
@@ -189,6 +224,16 @@ CapitaPctChange %>%
   )
 ```
 
+Average Change
+```{r}
+CapitaPctChange %>%
+  summarize(
+    AverageChange= mean(capita_spending_change, na.rm=TRUE))
+```
+Should probably adjust the number for inflation: (inflation rate of 19.2% from 2009-2019) 
+
+Per capita spending on average decreased by $1.64
+
 #Adding trend column
 ```{r}
 CapitaPctChange <- CapitaPctChange %>%
@@ -207,9 +252,43 @@ CapitaPctChange <- CapitaPctChange %>%
 CapitaPctChange %>%
 count(trend)
 ```
+#Filtering counties that only went up 
+```{r}
+CapitaPctChange %>%
+  filter(trend== "up")
+```
+7 counties per capita spending increased by less than 10%
+
+#Calculation to see when per captia spending went up, was it by a lot or not?
+```{r}
+CapitaPctChange %>%
+  filter(trend== "up") %>%
+  summarize(Mean= mean(pct_change),
+            Median= median(pct_change),
+            Max= max(pct_change),
+            Min= min(pct_change)
+  )
+```
+
+#Filtering counties that went down
+```{r}
+CapitaPctChange %>%
+  filter(trend== "down")
+```
+
+#Calculation to see when per captia spending went down, was it by a lot or not?
+```{r}
+CapitaPctChange %>%
+  filter(trend== "down") %>%
+  summarize(Mean= mean(pct_change),
+            Median= median(pct_change),
+            Max= max(pct_change),
+            Min= min(pct_change)
+  )
+```
 
 
-
+-------------------- SPECIFIC YEAR ANALYIS ------------------
 #Looking only at 2019 data
 ```{r}
 Data2019 <- CompiledLHDExpenditures %>%
