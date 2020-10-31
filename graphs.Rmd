@@ -35,21 +35,45 @@ Jones <- CompiledLHDExpenditures  %>%
   filter(county_name =="Jones")
 ```
 
-Jones County Line Chart
+Interactive Jones County Line Chart
+
+**Need to refine them by decreasing title font size and centering it
 ```{r}
-Jones %>%
-  ggplot(aes(x=year, y=expenditures)) +
+ggplotly(
+  ggplot(Jones,
+    aes(x=year, 
+        y=expenditures)) +
     geom_line(color="#69b3a2") +
-    ggtitle("Trend of Jones County Health Department") +
-    ylab("annual expenditures ($)") +
+    scale_y_continuous(labels= comma) +
+    labs(title="Trend of Jones County Health Department Spending",
+         caption= "Data Source: Jones County Annual Expenditure Records") +
+    ylab("Annual Expenditures ($)") +
+    xlab("Year") +
     theme_ipsum()
+)
 ```
 
+
+
+```{r}
+ggsave("Jones-line-chart.png")
+```
+
+
+
+****THIS WONT SAVE FOR SOME REASON --I think it has something to do with graph coming from an object
 Interactive Jones line chart
 ```{r}
 Jones_graph <- plot_ly(Jones, x = ~year, y = ~expenditures, type = 'scatter', mode = 'lines')
 
-Jones_graph
+layout(Jones_graph , title= "Trend of Jones County Health Department Spending" , xaxis = list(title= "Year"), yaxis = list(title= "Expenditures ($)"), caption="Data Source: Jones County Annual Expenditure Records")
+
+```
+
+
+
+```{r}
+ggsave("Jones-graph2.png")
 ```
 
 
