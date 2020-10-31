@@ -39,63 +39,65 @@ county_map <- merge(nc_counties, AllHealthDepartments, by="county_name")
 
 ```
 
+#Making a 2009 expenditure map
+```{r}
+AllHealthDepartments2009 <- AllHealthDepartments %>%
+  filter(year== "2009")
+```
 
+```{r}
+county_map2009 <- merge(nc_counties, AllHealthDepartments2009, by="county_name")
+```
 
-******NEED TO NARROW DOWN WHAT DATA SHOULD BE USED HERE
-
-SHOULD IT BE THE AVERAGE OF ALL YEARS WE HAVE PER COUNTY
-AVERAGE FROM 2009-2019
-OR SHOULD I DO A FACETED GRAPH SHOWING 2009 LEVEL OF EXPENDITURES VS 2019 EXPENDITURES
+#2009 Expenditure Map
+*Title isnt displaying
+*Need outlines of other counties
 ```{r}
 tmap_mode("view")
-tm_shape(county_map) +
-  tm_fill("expenditures",title="Average Expenditures from 2009-2019 per county",breaks=c(0,5000000,10000000,15000000,20000000,25000000,30000000, 80000000),palette="YlOrBr")  +
+tm_shape(county_map2009) +
+  tm_polygons("expenditures",
+              breaks= c(0, 5000000, 10000000, 15000000, 20000000, 25000000, 30000000,80000000),palette="YlGnBu", title="Fiscal Year 2009 Expenditures")  +
   tm_borders() +
-  tm_layout(title = "Custom Breaks Map", title.position = c("right","bottom"))
+  tm_layout(title = "Health Department Fiscal Year 2009 Spending") +
+  tm_legend(legend.position = c("left", "bottom"))
 ```
 
 
-
-Map filled by expenditure data
-***Need to fix the missing county outlines
+#Making a 2019 expenditure map
 ```{r}
-tm_shape(county_map) +
-  tm_polygons(col= "expenditures", id="county_name", palette="Greens") + 
-  labs (title= "Expenditure Spending Across State") 
-   
+AllHealthDepartments2019 <- AllHealthDepartments %>%
+  filter(year== "2019")
 ```
 
-Map filled in with per capita data
-***Need to fix the missing county outlines
 ```{r}
-tm_shape(county_map) +
-  tm_polygons(col= "per_capita_spending", id="county_name", palette="Greens")
+county_map2019 <- merge(nc_counties, AllHealthDepartments2019, by="county_name")
 ```
 
-
-
-Joining NC counties shapefile with our 2019 health department data
 ```{r}
-library(raster)
-
-# merge on common variable, here called 'key'
-county_map2019 <- merge(nc_counties, Data2019, by="county_name")
-
-```
-
-Map showing range of 2019 expenditures for county data we have
-```{r}
+tmap_mode("view")
 tm_shape(county_map2019) +
-  tm_polygons(col= "expenditures", id="county_name", palette="Greens")
+  tm_polygons("expenditures",
+              breaks= c(0, 5000000, 10000000, 15000000, 20000000, 25000000, 30000000,80000000),palette="YlGnBu", title="Fiscal Year 2019 Expenditures")  +
+  tm_borders() +
+  tm_layout(title = "Health Department Fiscal Year 2019 Spending") +
+  tm_legend(legend.position = c("left", "bottom"))
 ```
 
-Map showing range of 2019 per capita spending for counties we have
+
+#Making 2019 Per Capita Spending Map
+*Legend needs to have dollar signs added
+*Hover pop ups need more detail
 ```{r}
+tmap_mode("view")
 tm_shape(county_map2019) +
-  tm_polygons(col= "per_capita_spending", id="county_name")
+  tm_polygons("per_capita_spending", palette="YlGnBu", title="Fiscal Year 2019 Per Capita Spending")  +
+  tm_borders() +
+  tm_layout(title = "Health Department Fiscal Year 2019 Per Capita Spending") +
+  tm_legend(legend.position = c("left", "bottom"))
 ```
 
-MAKE A MAP SHOWING PERCENT CHANGE
+
+MAKE A MAP SHOWING EXPENDITURE PERCENT CHANGE
 
 Loading in the code of data frame with percent change column
 ```{r}
@@ -114,11 +116,49 @@ pct_map <- merge(nc_counties, ExpenditurePctChange, by="county_name")
 ```
 
 Creating map showing percent change
+**Need help refining legend position and legend labeling--want them to be percents
 ```{r}
 tm_shape(pct_map) +
-  tm_fill("pct_change",title="Percent Change in Health Department Expenditures from 2009-2019",palette="YlOrBr")  +
+  tm_fill("pct_change",title="Percent Change in Health Department Expenditures from 2009-2019",palette="YlGnBu")  +
   tm_borders() +
   tm_layout(title = "Custom Breaks Map", title.position = c("right","bottom"))
 ```
 
+MAKING A MAP SHOWING PER CAPITA SPENDING PERCENT CHANGE
+
+Loading in the code of data frame with percent change column
+```{r}
+CapitaPctChange <- CompiledLHDExpenditures %>%
+  filter(year %in% c('2009', '2019')) %>%
+  pivot_wider(id_cols = -c(expenditures,population), names_from = year, values_from = per_capita_spending) %>%
+  mutate(capita_spending_change= (`2019` - `2009`),
+    pct_change = 100 * ((`2019` - `2009`)) / `2009`) %>%
+  arrange(desc(pct_change))
+```
+
+Merging shapefile and data
+```{r}
+# merge on common variable, here called 'key'
+pct_capita_map <- merge(nc_counties, CapitaPctChange, by="county_name")
+```
+
+Creating map showing per capita percent change
+**Need help refining legend position and legend labeling--want them to be percents
+**Need help refining pop ups ---on hover I want that county's percent change to be displayed
+```{r}
+tm_shape(pct_capita_map) +
+  tm_fill("pct_change",title="Percent Change in Health Department Per Capita Spending from 2009-2019",palette="YlGnBu")  +
+  tm_borders() +
+  tm_layout(title = "Custom Breaks Map", title.position = c("right","bottom"))
+```
+
+
+MAP SHOWING DOLLAR AMOUNT CHANGE IN PER CAPITA SPENDING FROM 2009-2019
+**Need to fix display of consolidated Health Departments
+**Need to get hovers showing the dollar change (May show both 2009 and 2019 value as well as the change)
+```{r}
+tm_shape(pct_capita_map) +
+  tm_fill("capita_spending_change",title="Change in Health Department Per Capita Spending from 2009-2019",palette="YlGnBu")  +
+  tm_borders()
+```
 
