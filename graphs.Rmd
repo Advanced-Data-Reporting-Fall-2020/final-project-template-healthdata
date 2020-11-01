@@ -378,7 +378,7 @@ ggplotly(plot)
 ggsave("biggest-declines-per-capita-spending.png")
 ```
 
- 
+
 #Biggest Increase in Per Capita Spending
 ```{r}
 #here are the counties that increased the most…
@@ -421,3 +421,78 @@ ggplotly(plot)
 ggsave("biggest-increases-per-capita-spending.png")
 ```
  
+-----------------FACETED GRAPHS--------------------
+
+#Making line graph of each individual LHD
+```{r}
+CompiledLHDExpenditures %>%
+  ggplot(
+    aes(x=year, 
+        y=expenditures, 
+        group=county_name, 
+        fill=county_name)) +
+    geom_line(color="#69b3a2") +
+    scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6))+
+    scale_x_discrete(breaks=c(2004, 2008, 2012, 2016))+
+    scale_fill_viridis(discrete = TRUE) +
+    labs(title="Trends in Health Department Expenditures", 
+         y="Annual Expenditures",
+         x="Year", 
+         caption="Data Source: County Finance Records") +
+    theme_ipsum() +
+    theme(
+      legend.position="none",
+      panel.spacing = unit(0.1, "lines"),
+      strip.text.x = element_text(size = 8),
+      plot.title = element_text(size=14)
+    ) +
+    facet_wrap(~lhd_name)
+```
+```{r}
+ggsave("faceted-expenditure-graph.png")
+```
+
+#Isolating some of the LHDs for more specific line chart comparison (these are the counties we interviewed a health director)
+**Need to fix legend title
+```{r}
+linegraph <- CompiledLHDExpenditures %>% 
+  filter(county_name %in% c("Jones", "Granville & Vance", "Madison", "Mecklenburg"))
+
+# Plot
+linegraph %>%
+  ggplot( aes(x=year, 
+              y=expenditures, 
+              group=lhd_name, 
+              color=lhd_name)) +
+    geom_line() +
+    scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6))+
+    scale_color_viridis(discrete = TRUE) +
+    theme(legend.position="bottom"
+    ) +
+    labs(title="Comparing Expenditures of Health Departments We Interviewed", y="Annual Expenditures") +
+    theme_ipsum()
+
+```
+```{r}
+ggsave("expenditures-interviewed-counties.png")
+```
+
+#This graph compares some of the LHD expenditures (can be adjusted for when we find counties we want to put next to each other for closer comparison)
+```{r}
+linegraph <- CompiledLHDExpenditures %>% 
+  filter(county_name %in% c("Swain","Jones", "Catawba", "Hyde", "Madison", "Mecklenburg"))
+
+# Plot
+linegraph %>%
+  ggplot(aes(x=year, y=expenditures, group=lhd_name, color=lhd_name)) +
+    geom_line() +
+    scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6))+
+    scale_color_viridis(discrete = TRUE) +
+    theme(
+      legend.position="none",
+      plot.title = element_text(size=14), 
+      axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
+    ggtitle("Comparing LHD Expenditures") +
+    theme_ipsum()+
+    facet_wrap(~lhd_name)
+```
