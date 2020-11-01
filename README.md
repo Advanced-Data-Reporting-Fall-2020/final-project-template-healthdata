@@ -18,10 +18,6 @@ Dominick Ferrara: dferrara@live.unc.edu
 
 Jamie Krantz: jakrantz@live.unc.edu
 
-[Responsibility matrix](url-to-responsibility matrix)
-
-[HIRUFF Q&A](url-to-hiruff)
-
 ### Data sources
 
 To collect data, we sent out public records requests to every local health department in North Carolina, requesting expenditure data. We heard back from more than 50 of them. Population data was retrieved from the U.S. Census Bureau and the North Carolina Office of State Budget and Management. Our collected data is available in a compiled Google Sheet.
