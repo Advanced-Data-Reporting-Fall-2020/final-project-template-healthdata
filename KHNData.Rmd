@@ -17,8 +17,9 @@ library("pacman")
 #install.packages("rmarkdown")
 library("rmarkdown")
 library("dplyr")
-install.packages("gghighlight")
+#install.packages("gghighlight")
 library(gghighlight)
+library(plotly)
 ```
 
 ```{r}
@@ -140,7 +141,10 @@ Scatterplot (x: population, y: employees per capita)
 ```{r}
 ggplot(fte_per_capita, aes(x=population, y=fte_per_100000)) + 
   geom_point(size= 1) +
-  gghighlight(fte_per_100000 > 500)
+   facet_wrap(~year, ncol=4) +
+  theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  gghighlight(fte_per_100000 > 500) +
+  labs(title = "FTE Per Capita and Population Over Time", x = "Population", y = "Employees Per Capita")
 ```
 
 line chart #1: fte change over time (X: year, y: fte)
@@ -148,7 +152,8 @@ line chart #1: fte change over time (X: year, y: fte)
 ggplot(fte_per_capita, aes(x=population, y=fte)) + 
   geom_line() +
   facet_wrap(~year, ncol=4) +
-  theme(axis.text.x = element_text(angle = 45, hjust=1))
+  theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  labs(title = "FTE Change Over Time", y ="Number of Employees", x = "Population")
 ```
 
 line chart #2: X: year, y: fte per capita change over time
@@ -156,16 +161,30 @@ line chart #2: X: year, y: fte per capita change over time
 ggplot(fte_per_capita, aes(x=population, y=fte_per_100000)) + 
   geom_line() +
   facet_wrap(~year, ncol=4) +
-  theme(axis.text.x = element_text(angle = 45, hjust=1))
+  theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+   labs(title = "FTE Per Capita Change Over Time", y ="Number of Employees", x = "Population")
 ```
 
-Jones County fte per capita change over time
+Jones County fte per capita and fte change over time
 ```{r}
-ggplot(jones, aes(x=year, y=fte_per_100000)) + 
-  geom_line() 
+#ggplot(jones, aes(x=year, y=fte_per_100000)) + 
+ # geom_line() +
+  # labs(title = "Jones County: FTE Per Capita Change Over Time", y ="Employees Per Capita", x = "Population")
+
+Jones_graph_fte_pc <- plot_ly(jones, x = ~year, y = ~fte_per_100000, type = 'scatter', mode = 'lines')
+
+Jones_graph_fte_pc <- Jones_graph_fte_pc %>%
+  layout(title = "Title placeholder", xaxis = list(title = "Year"), yaxis = list(title = "FTE Per Capita"))
+
+Jones_graph_fte_pc
 ```
 
 *From 2011 to reflect policy shift after Republican win
 
-Creating a change to see if it will push
+
+2009-2017 fte per capita change over time
+```{r}
+
+```
+
 
