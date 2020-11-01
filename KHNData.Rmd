@@ -87,12 +87,15 @@ fte_per_capita %>%
   arrange(desc(Avg_fte_per_100000))
 
 ```
-Find the avg fte
+Find the avg fte from 2009-2017
 ```{r}
-single_counties_summary_nc %>%
+years <- c("2009", "2011", "2013", "2015", "2017")
+nine_seventeen_single_counties_summary_nc <- single_counties_summary_nc %>% filter(year == years)
+
+nc_avg_fte <- nine_seventeen_single_counties_summary_nc %>%
+  filter(year == c("2009", "2011", "2013", "2015", "2017")) %>%
   group_by(lhd_name) %>%
-  summarise(Avg_fte = mean(fte)) %>%
-  select(lhd_name, Avg_fte) %>%
+  mutate(Avg_fte = mean(fte)) %>%
   arrange(desc(Avg_fte))
 ```
 
@@ -121,11 +124,15 @@ fte_per_capita %>%
   arrange(desc(pct_change))
 ```
 
-Highest and lowest fte per capita in 2017
+Highest and lowest fte per capita and fte in 2017
 ```{r}
 fte_per_capita %>%
   filter(year == "2017") %>%
   arrange(desc(fte_per_100000))
+
+fte_per_capita %>%
+  filter(year == "2017") %>%
+  arrange(fte)
 ```
 
 Jones County
@@ -147,13 +154,18 @@ ggplot(fte_per_capita, aes(x=population, y=fte_per_100000)) +
   labs(title = "FTE Per Capita and Population Over Time", x = "Population", y = "Employees Per Capita")
 ```
 
+vector of average fte from 2003-
+```{r}
+
+```
+
+
 line chart #1: fte change over time (X: year, y: fte)
 ```{r}
-ggplot(fte_per_capita, aes(x=population, y=fte)) + 
+ggplot(nc_avg_fte, aes(x=year, y=fte)) + #VECTOR IN PLACE OF FTE
   geom_line() +
-  facet_wrap(~year, ncol=4) +
   theme(axis.text.x = element_text(angle = 45, hjust=1)) +
-  labs(title = "FTE Change Over Time", y ="Number of Employees", x = "Population")
+  labs(title = "Average FTE Change Over Time", y ="Number of Employees", x = "Population")
 ```
 
 line chart #2: X: year, y: fte per capita change over time
