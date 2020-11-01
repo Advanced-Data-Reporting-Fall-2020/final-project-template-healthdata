@@ -1,0 +1,498 @@
+---
+title: "graphs"
+author: "Rachel Crumpler"
+date: "10/25/2020"
+output: html_document
+---
+Loading data
+```{r}
+library(gsheet)
+CompiledLHDExpenditures <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Zc10pam92Y1218F90eXn9ri7-a4GQI1vhzING33nNSI/edit#gid=0")
+```
+
+Loading packages
+```{r}
+library("dplyr")
+library("tidyverse")
+library("ggplot2")
+library("hrbrthemes")
+library("plotly")
+library("viridis")
+```
+
+
+```{r}
+pacman::p_load('dplyr', 'tidyr', 'gapminder',
+               'ggplot2',  'ggalt',
+               'forcats', 'R.utils', 'png', 
+               'grid', 'ggpubr', 'scales')
+```
+
+
+Filtering Jones data
+```{r}
+Jones <- CompiledLHDExpenditures  %>%
+  filter(county_name =="Jones")
+```
+
+#Interactive Jones County Line Chart
+
+**Need to refine them by decreasing title font size and centering it
+```{r}
+ggplotly(
+  ggplot(Jones,
+    aes(x=year, 
+        y=expenditures)) +
+    geom_line(color="#69b3a2") +
+    scale_y_continuous(labels= scales::dollar_format()) +
+    labs(title="Trend of Jones County Health Department Spending",
+         caption= "Data Source: Jones County Annual Expenditure Records") +
+    ylab("Annual Expenditures") +
+    xlab("Year") +
+    theme_ipsum()
+)
+```
+
+
+
+```{r}
+ggsave("Jones-line-chart.png")
+```
+
+
+
+****THIS WONT SAVE FOR SOME REASON --I think it has something to do with graph coming from an object
+Interactive Jones line chart
+```{r}
+Jones_graph <- plot_ly(Jones, x = ~year, y = ~expenditures, type = 'scatter', mode = 'lines')
+
+layout(Jones_graph , title= "Trend of Jones County Health Department Spending" , xaxis = list(title= "Year"), yaxis = list(title= "Expenditures ($)"), caption="Data Source: Jones County Annual Expenditure Records")
+
+```
+
+
+
+```{r}
+ggsave("Jones-graph2.png")
+```
+
+
+#Interactive Jones County area chart
+```{r}
+  ggplotly(
+  ggplot(Jones,
+         aes(x=year, 
+             y=expenditures)) +
+    geom_area(fill="#69b3a2", alpha=0.5) +
+    scale_y_continuous(labels= scales::dollar_format())+
+    labs(title="Trend of Jones County Health Department Spending", caption= "Data Source: Jones County Annual Expenditure Records", y="Annual Expenditures", x="Year") +
+    theme_ipsum()
+  )
+```
+
+```{r}
+ggsave("Jones-area-chart.png")
+```
+
+
+Filtering Mecklenburg data
+```{r}
+Mecklengburg <- CompiledLHDExpenditures  %>%
+  filter(county_name =="Mecklenburg")
+```
+
+#Mecklenburg County Line Graph
+```{r}
+ggplotly(
+  ggplot(Mecklengburg,
+    aes(x=year, y=expenditures)) +
+    geom_line(color="#69b3a2") +
+    scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6))+
+    labs(title="Trend of Mecklenburg County Health Department Spending", caption= "Data Source: Jones County Annual Expenditure Records", y="Annual Expenditures", x="Year") +
+    theme_ipsum()
+)
+```
+
+```{r}
+ggsave("Mecklenburg-line-graph.png")
+```
+
+
+Graphs shows trends of all health departments
+
+```{r}
+ggplotly(
+  ggplot(CompiledLHDExpenditures,
+         aes(x=year, 
+             y=expenditures, 
+             group=lhd_name, 
+             color=lhd_name)) +
+    geom_line() +
+    scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6))+
+    scale_fill_viridis(discrete = TRUE) +
+    theme(legend.position="none") +
+    ggtitle("Trends in Health Department Expenditures") +
+    theme_ipsum() +
+    theme(
+      legend.position="none",
+      panel.spacing = unit(0.1, "lines"),
+      strip.text.x = element_text(size = 8),
+      plot.title = element_text(size=14)
+    )
+)
+```
+
+Legend blocks the graph
+```{r}
+CompiledLHDExpenditures %>%
+  ggplot( aes(x=year, y=expenditures, group=lhd_name, color=lhd_name)) +
+    geom_line() +
+    scale_fill_viridis(discrete = TRUE) +
+    theme(legend.position="none") +
+    ggtitle("Trends in LHD Expenditures") +
+    theme_ipsum() +
+    theme(
+      legend.position="none",
+      panel.spacing = unit(0.1, "lines"),
+      strip.text.x = element_text(size = 8),
+      plot.title = element_text(size=14)
+    )
+```
+
+Interactive graph of health departments under 2 million
+
+```{r opts_chunk$set(out.height='7500px', dpi=200)}
+ggplotly(
+  ggplot(CompiledLHDExpenditures, aes(
+    x=year, 
+    y=expenditures, 
+    color=lhd_name)) +
+    geom_line() +
+    scale_y_continuous(labels= scales::comma, limits= c(0, 20000000))+
+    scale_fill_viridis(discrete = TRUE) +
+    ggtitle("Trends in LHD Expenditures") +
+    theme_ipsum() +
+    theme(
+      legend.position="none",
+      panel.spacing = unit(0.1, "lines"),
+      strip.text.x = element_text(size = 8),
+      plot.title = element_text(size=14)
+    )
+)
+```
+--------USE THIS GRAPH
+
+Interactive line graph showing all counties
+*Need to fix what shows up in pop up on hover
+```{r}
+ggplotly(
+  ggplot(CompiledLHDExpenditures, aes(
+    x=year, 
+    y=expenditures, 
+    color=lhd_name)) +
+    geom_line(size=.1) +
+    scale_fill_viridis(discrete = TRUE) +
+    scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6))+
+    labs(title="Trends in Local Health Department Expenditures", y= "Annual Expenditures", x= "Year", caption="Data Source: County Health Department Finance Records") +
+    theme_ipsum()+
+    theme(
+      legend.position="none",
+      panel.spacing = unit(0.1, "lines"),
+      strip.text.x = element_text(size = 8),
+      plot.title = element_text(size=14)
+    )
+)
+```
+To view graph better, click on first button in top right corner with chart of window with error
+
+```{r}
+ggsave("LHD-expenditure-line-chart.png")
+```
+
+
+--------------------GGHIGHLIGHT-----------------------
+
+```{r}
+
+# This helps us see what years we have the most data.
+
+CompiledLHDExpenditures %>% group_by(year) %>% count()
+
+ 
+
+#for each lhd, what is the oldest and newest data we have
+
+max_min_years<- CompiledLHDExpenditures %>% group_by(lhd_name) %>% summarize(oldest= paste0("year_",min(year)), newest=paste0("year_",max(year)))
+
+ 
+
+# we’re going to need to create a column that calculates change over time
+
+pivoted_CompiledLHDExpenditures <- CompiledLHDExpenditures %>%
+
+arrange(year) %>%
+
+  pivot_wider(id_cols = lhd_name, names_from = year, names_prefix="year_", values_from=per_capita_spending)
+
+ 
+
+joined <- left_join(max_min_years, pivoted_CompiledLHDExpenditures) %>% as.data.frame()
+
+```
+
+
+
+```{r}
+
+# here we calculate change over time (tried to do dynamic calculation based on max and min years for each lhd, but no luck…) and also create a column that just says whether the county was up or down. I decided to look just at per-capita spending to account for different sizes of counties.
+
+
+pivoted_CompiledLHDExpenditures <- pivoted_CompiledLHDExpenditures %>% mutate(change=year_2019 - year_2009) %>%
+
+  filter(!is.na(change)) %>%
+
+  mutate(trend = case_when(change >0 ~ "up",
+
+                           change < 0 ~ "down",
+
+                           TRUE ~ "no change"
+
+      ))
+
+```
+
+```{r}
+#24 counties down, 18 up. Hmmm…. Might be interesting to map these…
+
+pivoted_CompiledLHDExpenditures %>% group_by(trend) %>% count()
+```
+
+ 
+```{r}
+
+#we had to pivot wider to calculate across the rows of years, but now we have to pivot longer so we can do the line charts the way we want….
+
+ 
+
+unpivoted <- pivoted_CompiledLHDExpenditures %>% pivot_longer(cols = starts_with("year_"), names_prefix="year_", names_to="year", values_to="per_capita_spending")
+
+```
+
+ 
+
+#Per Capita Spending Line Graph of all Health Departments
+```{r}
+
+# here we use gghighlight to show only the up counties.
+
+#install.packages("gghighlight")
+
+library(gghighlight)
+
+ggplotly(
+
+  ggplot(unpivoted, aes(
+
+    x=year,
+
+    y=per_capita_spending,
+
+    color=lhd_name,
+
+    group=lhd_name)) +
+
+    geom_line() +
+
+    scale_fill_viridis(discrete = TRUE) +
+
+scale_y_continuous(labels = dollar) +
+  
+  scale_x_discrete(breaks=c(2000, 2005, 2010, 2015, 2020))+
+
+    labs(title="Local Health Departments with Increases in Per Capita Spending", y= "Per Capita Spending", x= "Year", caption="Data Source: County Health Department Finance Records") +
+    theme_ipsum()+
+
+gghighlight(trend =="up") +
+
+    theme(
+
+      legend.position="none",
+
+      panel.spacing = unit(0.1, "lines"),
+
+      strip.text.x = element_text(size = 8),
+
+      plot.title = element_text(size=14)
+
+    )
+
+)
+
+
+```
+
+```{r}
+ggsave("increases-per-capita-spending.png")
+```
+
+ 
+#Biggest decrease in per capita spending
+```{r}
+
+#22 is too many to look at, so let’s just focus on the counties that had, say, a decrease in per-capita spending of more than $25 per person…. And we also just show years 2009-2019…
+
+ 
+
+plot<- unpivoted %>% 
+  filter(year>2008 & year < 2020 & per_capita_spending >0) %>%
+
+  ggplot(aes(
+
+    x=year,
+
+    y=per_capita_spending,
+
+   color=lhd_name,
+
+    group=lhd_name)) +
+
+    geom_line() +
+
+    scale_fill_viridis(discrete = TRUE) +
+
+scale_y_continuous(labels = dollar) +
+
+ labs(title="Biggest Declines in Per Capita Spending, 2009-2019", subtitle = "Counties decreased by more than $25", y="Per Capita Spending", x= "Year", caption="Data Source: County Health Department Finance Records") +
+
+gghighlight(change < -25)+
+
+theme_ipsum() 
+
+ 
+ggplotly(plot)
+
+
+```
+
+```{r}
+ggsave("biggest-declines-per-capita-spending.png")
+```
+
+
+#Biggest Increase in Per Capita Spending
+```{r}
+#here are the counties that increased the most…
+
+plot<- unpivoted %>% 
+  filter(year>2008 & year < 2020 & per_capita_spending > 0) %>%
+
+ 
+
+  ggplot(aes(
+
+    x=year,
+
+    y=per_capita_spending,
+
+    color=lhd_name,
+
+    group=lhd_name)) +
+
+    geom_line() +
+
+    scale_fill_viridis(discrete = TRUE) +
+
+scale_y_continuous(labels = dollar) +
+
+  labs(title="Biggest Increases in Per Capita Spending, 2009-2019", subtitle = "Counties increased by more than $25", y="Per Capita Spending", x= "Year", caption="Data Source: County Health Department Finance Records") +
+
+gghighlight(change > 25) +
+  
+theme_ipsum()
+
+ 
+
+ggplotly(plot)
+
+ 
+```
+ 
+```{r}
+ggsave("biggest-increases-per-capita-spending.png")
+```
+ 
+-----------------FACETED GRAPHS--------------------
+
+#Making line graph of each individual LHD
+```{r}
+CompiledLHDExpenditures %>%
+  ggplot(
+    aes(x=year, 
+        y=expenditures, 
+        group=county_name, 
+        fill=county_name)) +
+    geom_line(color="#69b3a2") +
+    scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6))+
+    scale_x_discrete(breaks=c(2004, 2008, 2012, 2016))+
+    scale_fill_viridis(discrete = TRUE) +
+    labs(title="Trends in Health Department Expenditures", 
+         y="Annual Expenditures",
+         x="Year", 
+         caption="Data Source: County Finance Records") +
+    theme_ipsum() +
+    theme(
+      legend.position="none",
+      panel.spacing = unit(0.1, "lines"),
+      strip.text.x = element_text(size = 8),
+      plot.title = element_text(size=14)
+    ) +
+    facet_wrap(~lhd_name)
+```
+```{r}
+ggsave("faceted-expenditure-graph.png")
+```
+
+#Isolating some of the LHDs for more specific line chart comparison (these are the counties we interviewed a health director)
+**Need to fix legend title
+```{r}
+linegraph <- CompiledLHDExpenditures %>% 
+  filter(county_name %in% c("Jones", "Granville & Vance", "Madison", "Mecklenburg"))
+
+# Plot
+linegraph %>%
+  ggplot( aes(x=year, 
+              y=expenditures, 
+              group=lhd_name, 
+              color=lhd_name)) +
+    geom_line() +
+    scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6))+
+    scale_color_viridis(discrete = TRUE) +
+    theme(legend.position="bottom"
+    ) +
+    labs(title="Comparing Expenditures of Health Departments We Interviewed", y="Annual Expenditures") +
+    theme_ipsum()
+
+```
+```{r}
+ggsave("expenditures-interviewed-counties.png")
+```
+
+#This graph compares some of the LHD expenditures (can be adjusted for when we find counties we want to put next to each other for closer comparison)
+```{r}
+linegraph <- CompiledLHDExpenditures %>% 
+  filter(county_name %in% c("Swain","Jones", "Catawba", "Hyde", "Madison", "Mecklenburg"))
+
+# Plot
+linegraph %>%
+  ggplot(aes(x=year, y=expenditures, group=lhd_name, color=lhd_name)) +
+    geom_line() +
+    scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6))+
+    scale_color_viridis(discrete = TRUE) +
+    theme(
+      legend.position="none",
+      plot.title = element_text(size=14), 
+      axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
+    ggtitle("Comparing LHD Expenditures") +
+    theme_ipsum()+
+    facet_wrap(~lhd_name)
+```
