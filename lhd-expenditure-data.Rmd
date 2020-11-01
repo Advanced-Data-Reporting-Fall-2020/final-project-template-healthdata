@@ -192,7 +192,7 @@ ExpenditurePctChange %>%
   filter(trend== "down")
 ```
 
-#Calculation to see when per captia spending went down, was it by a lot or not?
+#Calculation to see when expenditures went down, was it by a lot or not?
 ```{r}
 ExpenditurePctChange %>%
   filter(trend== "down") %>%
