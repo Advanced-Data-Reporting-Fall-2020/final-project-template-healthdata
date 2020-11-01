@@ -1,20 +1,22 @@
-# New Project
+# North Carolina Local Health Department Expenditures
 
-TK: short project description
-
-*Created by Firstname Lastname (<>)*
-
-*Reporter: Firstname Lastname (<>)*
+Created by Christian Avy, Rachel Crumpler, Dominick Ferrara and Jamie Krantz
 
 ## Project goal
 
-*TK: Briefly describe this project*
+In this project, we are tracking expenditures for local health departments in North Carolina and discussing what they can tell us about each county's preparedness for COVID-19 and other epidemic or pandemic level threats.
 
 ## Project notes
 
 ### Staff involved
 
-*TK: List people & contact info for people involved in the project*
+Chrstian Avy: cavy@live.unc.edu
+
+Rachel Crumpler: rachel22@live.unc.edu
+
+Dominick Ferrara: dferrara@live.unc.edu
+
+Jamie Krantz: jakrantz@live.unc.edu
 
 [Responsibility matrix](url-to-responsibility matrix)
 
@@ -22,11 +24,9 @@ TK: short project description
 
 ### Data sources
 
-*TK: List access info & contact info for data sources used in the project*
+To collect data, we sent out public records requests to every local health department in North Carolina, requesting expenditure data. We heard back from more than 50 of them. Population data was retrieved from the U.S. Census Bureau and the North Carolina Office of State Budget and Management. Our collected data is available in a compiled Google Sheet.
 
 ## Technical
-
-*TK: Instructions on how to bootstrap project, run ETL processes, etc.*
 
 An outline of the basic project structure is available at https://github.com/associatedpress/cookiecutter-r-project
 
@@ -38,8 +38,8 @@ After cloning the git repo:
 
 Open `new-project.Rproj` in RStudio.
 
-*TK: For more complex or unusual projects additional directions follow*
-
 ## Data notes
 
-*Add important caveats, limitations, and source contact info here.*
+Our data set does not include revenues for each local health department. This data can be found in counties' annual audits, which can often be found on the counties' websites.
+
+A limitation to the story is that the state does not track each county's expenditures. Instead, they only track spending on specific state-backed programs. Additionally, the state does not list how much money goes to each county. The state budget includes a line item for how much total money is headed towards counties, but not divided by county.
