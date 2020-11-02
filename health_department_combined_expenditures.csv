@@ -1,0 +1,830 @@
+year,lhd_name,lhd_area_type,county_name,expenditures,population,per_capita_spending
+2003,Alexander County Health Department,Single,Alexander,"1,781,515.38","34,998.00",50.90
+2004,Alexander County Health Department,Single,Alexander,"1,995,524.86","34,959.00",57.08
+2005,Alexander County Health Department,Single,Alexander,"2,091,490.77","35,786.00",58.44
+2006,Alexander County Health Department,Single,Alexander,"2,247,851.61","36,042.00",62.37
+2007,Alexander County Health Department,Single,Alexander,"2,513,023.16","36,609.00",68.64
+2008,Alexander County Health Department,Single,Alexander,"2,638,066.45","36,743.00",71.80
+2009,Alexander County Health Department,Single,Alexander,"2,687,628.82","37,053.00",72.53
+2010,Alexander County Health Department,Single,Alexander,"2,763,317.61","37,198.00",74.29
+2011,Alexander County Health Department,Single,Alexander,"2,784,167.67","37,026.00",75.19
+2012,Alexander County Health Department,Single,Alexander,"2,911,935.13","37,323.00",78.02
+2013,Alexander County Health Department,Single,Alexander,"2,833,210.35","37,012.00",76.55
+2014,Alexander County Health Department,Single,Alexander,"2,807,105.01","37,597.00",74.66
+2015,Alexander County Health Department,Single,Alexander,"2,876,189.00","37,550.00",76.60
+2016,Alexander County Health Department,Single,Alexander,"2,574,226.35","37,908.00",67.91
+2017,Alexander County Health Department,Single,Alexander,"2,191,004.95","37,143.00",58.99
+2018,Alexander County Health Department,Single,Alexander,"2,376,515.17","37,119.00",64.02
+2019,Alexander County Health Department,Single,Alexander,"2,637,631.08","38,530.00",68.46
+2020,Alexander County Health Department,Single,Alexander,"2,603,067.32","38,755.00",67.17
+2014,Anson County Health Department,Single,Anson,"1,315,510.00","26,304.00",50.01
+2015,Anson County Health Department,Single,Anson,"1,702,442.00","26,035.00",65.39
+2016,Anson County Health Department,Single,Anson,"1,822,380.00","25,644.00",71.06
+2017,Anson County Health Department,Single,Anson,"1,688,691.00","24,829.00",68.01
+2018,Anson County Health Department,Single,Anson,"1,830,782.00","25,306.00",72.35
+2019,Anson County Health Department,Single,Anson,"1,806,511.00","25,290.00",71.43
+2020,Anson County Health Department,Single,Anson,"1,617,610.00","25,289.00",63.96
+2002,Cabarrus County Health Department,Single,Cabarrus,"11,909,867.00","139,839.00",85.17
+2003,Cabarrus County Health Department,Single,Cabarrus,"11,821,377.00","143,336.00",82.47
+2004,Cabarrus County Health Department,Single,Cabarrus,"13,504,496.00","146,053.00",92.46
+2005,Cabarrus County Health Department,Single,Cabarrus,"13,996,385.00","150,797.00",92.82
+2006,Cabarrus County Health Department,Single,Cabarrus,"15,570,641.00","157,025.00",99.16
+2007,Cabarrus County Health Department,Single,Cabarrus,"16,451,712.00","165,717.00",99.28
+2008,Cabarrus County Health Department,Single,Cabarrus,"17,973,741.00","170,901.00",105.17
+2009,Cabarrus County Health Department,Single,Cabarrus,"19,771,535.00","175,993.00",112.34
+2010,Cabarrus County Health Department,Single,Cabarrus,"17,523,630.00","178,011.00",98.44
+2011,Cabarrus County Health Department,Single,Cabarrus,"18,765,286.00","181,175.00",103.58
+2012,Cabarrus County Health Department,Single,Cabarrus,"23,110,516.00","183,253.00",126.11
+2013,Cabarrus County Health Department,Single,Cabarrus,"17,764,524.00","187,240.00",94.88
+2014,Cabarrus County Health Department,Single,Cabarrus,"17,570,282.00","190,218.00",92.37
+2015,Cabarrus County Health Department,Single,Cabarrus,"18,723,536.00","194,982.00",96.03
+2016,Cabarrus County Health Department,Single,Cabarrus,"19,997,570.00","200,230.00",99.87
+2017,Cabarrus County Health Department,Single,Cabarrus,"22,705,092.00","206,988.00",109.69
+2018,Cabarrus County Health Department,Single,Cabarrus,"23,687,208.00","201,448.00",117.58
+2019,Cabarrus County Health Department,Single,Cabarrus,"23,889,921.00","212,917.00",112.20
+2020,Cabarrus County Health Department,Single,Cabarrus,"22,556,709.00","216,608.00",104.14
+2008,Carteret County Health Department,Single,Carteret,"4,342,724.00","64,736.00",67.08
+2009,Carteret County Health Department,Single,Carteret,"4,075,011.00","65,670.00",62.05
+2010,Carteret County Health Department,Single,Carteret,"4,036,435.00","66,469.00",60.73
+2011,Carteret County Health Department,Single,Carteret,"4,098,918.00","67,418.00",60.80
+2012,Carteret County Health Department,Single,Carteret,"3,908,984.00","68,434.00",57.12
+2013,Carteret County Health Department,Single,Carteret,"3,903,723.00","68,388.00",57.08
+2014,Carteret County Health Department,Single,Carteret,"3,791,361.00","69,497.00",54.55
+2015,Carteret County Health Department,Single,Carteret,"4,217,568.00","69,742.00",60.47
+2016,Carteret County Health Department,Single,Carteret,"4,171,422.00","69,871.00",59.70
+2017,Carteret County Health Department,Single,Carteret,"4,426,639.00","68,921.00",64.23
+2018,Carteret County Health Department,Single,Carteret,"4,574,248.00","68,920.00",66.37
+2019,Carteret County Health Department,Single,Carteret,"4,772,600.00","71,163.00",67.07
+2020,Carteret County Health Department,Single,Carteret,"5,559,884.00","71,640.00",77.61
+2000,Catawba County Health Department,Single,Catawba,"8,447,178.34","142,443.00",59.30
+2001,Catawba County Health Department,Single,Catawba,"8,344,982.12","145,000.00",57.55
+2002,Catawba County Health Department,Single,Catawba,"8,228,326.77","145,395.00",56.59
+2003,Catawba County Health Department,Single,Catawba,"8,667,763.67","145,601.00",59.53
+2004,Catawba County Health Department,Single,Catawba,"9,529,712.54","145,783.00",65.37
+2005,Catawba County Health Department,Single,Catawba,"9,876,423.41","148,629.00",66.45
+2006,Catawba County Health Department,Single,Catawba,"10,101,579.82","148,386.00",68.08
+2007,Catawba County Health Department,Single,Catawba,"10,693,790.86","152,448.00",70.15
+2008,Catawba County Health Department,Single,Catawba,"11,485,844.97","152,354.00",75.39
+2009,Catawba County Health Department,Single,Catawba,"11,733,288.42","154,610.00",75.89
+2010,Catawba County Health Department,Single,Catawba,"11,986,881.90","154,358.00",77.66
+2011,Catawba County Health Department,Single,Catawba,"12,135,389.81","154,459.00",78.57
+2012,Catawba County Health Department,Single,Catawba,"11,656,649.76","155,692.00",74.87
+2013,Catawba County Health Department,Single,Catawba,"11,285,374.96","154,965.00",72.83
+2014,Catawba County Health Department,Single,Catawba,"10,566,019.54","155,977.00",67.74
+2015,Catawba County Health Department,Single,Catawba,"10,277,227.42","156,197.00",65.80
+2016,Catawba County Health Department,Single,Catawba,"9,087,885.76","156,774.00",57.97
+2017,Catawba County Health Department,Single,Catawba,"8,031,711.24","157,852.00",50.88
+2018,Catawba County Health Department,Single,Catawba,"8,294,862.33","156,729.00",52.92
+2019,Catawba County Health Department,Single,Catawba,"8,586,966.55","159,494.00",53.84
+2020,Catawba County Health Department,Single,Catawba,"8,841,400.21","160,504.00",55.09
+1999,Cleveland County Health Department,Single,Cleveland,"6,557,638.00","95,293.00",68.82
+2000,Cleveland County Health Department,Single,Cleveland,"7,840,915.00","96,394.00",81.34
+2001,Cleveland County Health Department,Single,Cleveland,"7,762,713.00","96,554.00",80.40
+2002,Cleveland County Health Department,Single,Cleveland,"7,274,927.00","96,660.00",75.26
+2003,Cleveland County Health Department,Single,Cleveland,"7,319,696.00","97,241.00",75.27
+2004,Cleveland County Health Department,Single,Cleveland,"7,308,482.00","96,435.00",75.79
+2005,Cleveland County Health Department,Single,Cleveland,"8,090,304.00","96,844.00",83.54
+2006,Cleveland County Health Department,Single,Cleveland,"8,504,757.00","95,607.00",88.96
+2007,Cleveland County Health Department,Single,Cleveland,"9,150,789.00","97,524.00",93.83
+2008,Cleveland County Health Department,Single,Cleveland,"10,172,097.00","96,967.00",104.90
+2009,Cleveland County Health Department,Single,Cleveland,"11,556,679.00","98,211.00",117.67
+2010,Cleveland County Health Department,Single,Cleveland,"11,072,680.00","98,078.00",112.90
+2011,Cleveland County Health Department,Single,Cleveland,"10,521,718.00","97,442.00",107.98
+2012,Cleveland County Health Department,Single,Cleveland,"11,535,948.00","97,523.00",118.29
+2013,Cleveland County Health Department,Single,Cleveland,"9,077,198.00","96,873.00",93.70
+2014,Cleveland County Health Department,Single,Cleveland,"11,538,680.00","97,646.00",118.17
+2015,Cleveland County Health Department,Single,Cleveland,"12,571,783.00","97,755.00",128.61
+2016,Cleveland County Health Department,Single,Cleveland,"13,138,090.00","98,069.00",133.97
+2017,Cleveland County Health Department,Single,Cleveland,"12,515,588.00","97,134.00",128.85
+2018,Cleveland County Health Department,Single,Cleveland,"13,504,062.00","97,159.00",138.99
+2019,Cleveland County Health Department,Single,Cleveland,"13,915,952.00","99,776.00",139.47
+1999,Dare County Health Department,Single,Dare,"2,574,499.00","29,366.00",87.67
+2000,Dare County Health Department,Single,Dare,"2,634,308.00","30,170.00",87.32
+2001,Dare County Health Department,Single,Dare,"2,886,561.00","31,069.00",92.91
+2002,Dare County Health Department,Single,Dare,"3,190,525.00","32,083.00",99.45
+2003,Dare County Health Department,Single,Dare,"3,817,593.00","32,697.00",116.76
+2004,Dare County Health Department,Single,Dare,"4,009,107.00","33,974.00",118.01
+2005,Dare County Health Department,Single,Dare,"4,292,679.00","33,354.00",128.70
+2006,Dare County Health Department,Single,Dare,"4,816,212.00","34,421.00",139.92
+2007,Dare County Health Department,Single,Dare,"5,213,994.00","33,541.00",155.45
+2008,Dare County Health Department,Single,Dare,"5,827,643.00","34,142.00",170.69
+2009,Dare County Health Department,Single,Dare,"6,811,119.00","33,679.00",202.24
+2010,Dare County Health Department,Single,Dare,"6,453,184.00","33,920.00",190.25
+2011,Dare County Health Department,Single,Dare,"6,373,311.00","34,156.00",186.59
+2012,Dare County Health Department,Single,Dare,"6,489,834.00","34,759.00",186.71
+2013,Dare County Health Department,Single,Dare,"6,406,513.00","34,810.00",184.04
+2014,Dare County Health Department,Single,Dare,"7,023,583.00","35,377.00",198.54
+2015,Dare County Health Department,Single,Dare,"6,957,162.00","35,756.00",194.57
+2016,Dare County Health Department,Single,Dare,"7,014,680.00","36,167.00",193.95
+2017,Dare County Health Department,Single,Dare,"7,481,726.00","36,199.00",206.68
+2018,Dare County Health Department,Single,Dare,"7,623,594.00","35,741.00",213.30
+2019,Dare County Health Department,Single,Dare,"7,917,300.00","37,290.00",212.32
+2006,Swain County Health Department,Single,Swain,"1,871,853.17","13,934.00",134.34
+2007,Swain County Health Department,Single,Swain,"1,680,830.36","13,819.00",121.63
+2008,Swain County Health Department,Single,Swain,"1,923,205.39","13,868.00",138.68
+2009,Swain County Health Department,Single,Swain,"1,817,113.55","13,933.00",130.42
+2010,Swain County Health Department,Single,Swain,"1,845,786.29","13,981.00",132.02
+2011,Swain County Health Department,Single,Swain,"1,955,888.44","14,007.00",139.64
+2012,Swain County Health Department,Single,Swain,"1,882,044.82","14,423.00",130.49
+2013,Swain County Health Department,Single,Swain,"1,855,333.87","13,977.00",132.74
+2014,Swain County Health Department,Single,Swain,"1,734,318.43","14,785.00",117.30
+2015,Swain County Health Department,Single,Swain,"1,619,503.10","14,867.00",108.93
+2016,Swain County Health Department,Single,Swain,"1,699,887.77","14,729.00",115.41
+2017,Swain County Health Department,Single,Swain,"1,642,487.53","14,263.00",115.16
+2018,Swain County Health Department,Single,Swain,"1,604,353.88","14,254.00",112.55
+2019,Swain County Health Department,Single,Swain,"1,631,436.50","14,275.00",114.29
+2020,Swain County Health Department,Single,Swain,"1,598,719.39","14,108.00",113.32
+1999,Yadkin County Health Department,Single,Yadkin,"1,264,242.00","35,805.00",35.31
+2000,Yadkin County Health Department,Single,Yadkin,"1,438,763.00","36,468.00",39.45
+2001,Yadkin County Health Department,Single,Yadkin,"1,566,970.00","36,605.00",42.81
+2002,Yadkin County Health Department,Single,Yadkin,"1,605,051.00","36,914.00",43.48
+2003,Yadkin County Health Department,Single,Yadkin,"1,618,746.00","37,301.00",43.40
+2004,Yadkin County Health Department,Single,Yadkin,"1,588,706.00","36,976.00",42.97
+2005,Yadkin County Health Department,Single,Yadkin,"1,739,445.00","37,591.00",46.27
+2006,Yadkin County Health Department,Single,Yadkin,"1,762,133.00","37,614.00",46.85
+2007,Yadkin County Health Department,Single,Yadkin,"1,868,367.00","37,965.00",49.21
+2008,Yadkin County Health Department,Single,Yadkin,"2,110,173.00","38,126.00",55.35
+2009,Yadkin County Health Department,Single,Yadkin,"2,595,523.64","38,293.00",67.78
+2010,Yadkin County Health Department,Single,Yadkin,"2,716,611.21","38,406.00",70.73
+2011,Yadkin County Health Department,Single,Yadkin,"2,614,934.35","38,342.00",68.20
+2012,Yadkin County Health Department,Single,Yadkin,"2,219,118.02","38,269.00",57.99
+2013,Yadkin County Health Department,Single,Yadkin,"1,782,521.95","38,063.00",46.83
+2014,Yadkin County Health Department,Single,Yadkin,"1,329,810.29","37,850.00",35.13
+2015,Yadkin County Health Department,Single,Yadkin,"1,359,909.53","37,730.00",36.04
+2016,Yadkin County Health Department,Single,Yadkin,"1,408,674.77","37,828.00",37.24
+2017,Yadkin County Health Department,Single,Yadkin,"1,702,505.00","37,588.00",45.29
+2018,Yadkin County Health Department,Single,Yadkin,"1,467,770.50","37,665.00",38.97
+2019,Yadkin County Health Department,Single,Yadkin,"1,305,296.58","38,196.00",34.17
+2020,Yadkin County Health Department,Single,Yadkin,"1,407,855.73","38,236.00",36.82
+2000,Wayne County Health Department,Single,Wayne ,"4,958,586.80","113,656.00",43.63
+2001,Wayne County Health Department,Single,Wayne ,"5,887,619.29","114,127.00",51.59
+2002,Wayne County Health Department,Single,Wayne ,"5,980,424.57","114,786.00",52.10
+2003,Wayne County Health Department,Single,Wayne ,"6,008,438.04","114,595.00",52.43
+2004,Wayne County Health Department,Single,Wayne ,"6,262,271.67","116,698.00",53.66
+2005,Wayne County Health Department,Single,Wayne ,"6,443,977.97","117,009.00",55.07
+2006,Wayne County Health Department,Single,Wayne ,"6,454,414.31","117,898.00",54.75
+2007,Wayne County Health Department,Single,Wayne ,"6,784,564.63","118,942.00",57.04
+2008,Wayne County Health Department,Single,Wayne ,"6,886,665.09","120,000.00",57.39
+2009,Wayne County Health Department,Single,Wayne ,"7,169,592.05","121,217.00",59.15
+2010,Wayne County Health Department,Single,Wayne ,"7,299,846.99","122,623.00",59.53
+2011,Wayne County Health Department,Single,Wayne ,"7,520,977.52","124,038.00",60.63
+2012,Wayne County Health Department,Single,Wayne ,"7,654,409.92","125,169.00",61.15
+2013,Wayne County Health Department,Single,Wayne ,"7,638,654.78","124,587.00",61.31
+2014,Wayne County Health Department,Single,Wayne ,"7,545,670.09","125,646.00",60.05
+2015,Wayne County Health Department,Single,Wayne ,"7,381,571.60","125,217.00",58.95
+2016,Wayne County Health Department,Single,Wayne ,"7,180,526.86","125,120.00",57.39
+2017,Wayne County Health Department,Single,Wayne ,"6,867,042.66","123,034.00",55.81
+2018,Wayne County Health Department,Single,Wayne ,"7,437,700.24","124,002.00",59.98
+2019,Wayne County Health Department,Single,Wayne ,"7,531,200.31","125,825.00",59.85
+2020,Wayne County Health Department,Single,Wayne ,"7,357,447.33","126,606.00",58.11
+2000,Granville-Vance District Health Department,Multi-county,Granville & Vance,"4,149,703.00","92,063.00",45.07
+2001,Granville-Vance District Health Department,Multi-county,Granville & Vance,"4,287,499.00","93,963.00",45.63
+2002,Granville-Vance District Health Department,Multi-county,Granville & Vance,"4,400,298.00","96,286.00",45.70
+2003,Granville-Vance District Health Department,Multi-county,Granville & Vance,"4,399,918.00","96,866.00",45.42
+2004,Granville-Vance District Health Department,Multi-county,Granville & Vance,"4,714,279.00","97,756.00",48.22
+2005,Granville-Vance District Health Department,Multi-county,Granville & Vance,"4,952,997.00","98,251.00",50.41
+2006,Granville-Vance District Health Department,Multi-county,Granville & Vance,"4,758,035.00","99,905.00",47.63
+2007,Granville-Vance District Health Department,Multi-county,Granville & Vance,"5,002,770.00","102,032.00",49.03
+2008,Granville-Vance District Health Department,Multi-county,Granville & Vance,"5,380,923.00","103,602.00",51.94
+2009,Granville-Vance District Health Department,Multi-county,Granville & Vance,"5,396,026.00","104,634.00",51.57
+2010,Granville-Vance District Health Department,Multi-county,Granville & Vance,"5,572,060.00","102,951.00",54.12
+2011,Granville-Vance District Health Department,Multi-county,Granville & Vance,"5,466,449.00","102,791.00",53.18
+2012,Granville-Vance District Health Department,Multi-county,Granville & Vance,"5,474,729.00","103,164.00",53.07
+2013,Granville-Vance District Health Department,Multi-county,Granville & Vance,"5,704,252.00","102,253.00",55.79
+2014,Granville-Vance District Health Department,Multi-county,Granville & Vance,"6,180,133.00","102,808.00",60.11
+2015,Granville-Vance District Health Department,Multi-county,Granville & Vance,"6,055,629.00","103,232.00",58.66
+2016,Granville-Vance District Health Department,Multi-county,Granville & Vance,"5,968,541.00","104,035.00",57.37
+2017,Granville-Vance District Health Department,Multi-county,Granville & Vance,"6,072,389.00","103,653.00",58.58
+2018,Granville-Vance District Health Department,Multi-county,Granville & Vance,"6,592,721.00","103,356.00",63.79
+2019,Granville-Vance District Health Department,Multi-county,Granville & Vance,"6,662,220.00","107,375.00",62.05
+2000,Greene Health Department,Single,Greene,"1,015,216.68","18,978.00",53.49
+2001,Greene Health Department,Single,Greene,"941,375.26","18,984.00",49.59
+2002,Greene Health Department,Single,Greene,"954,526.51","19,365.00",49.29
+2003,Greene Health Department,Single,Greene,"1,005,979.27","19,848.00",50.68
+2004,Greene Health Department,Single,Greene,"1,135,021.40","19,730.00",57.53
+2005,Greene Health Department,Single,Greene,"1,272,460.86","20,146.00",63.16
+2006,Greene Health Department,Single,Greene,"1,423,119.81","20,457.00",69.57
+2007,Greene Health Department,Single,Greene,"1,539,580.42","21,178.00",72.70
+2008,Greene Health Department,Single,Greene,"1,595,064.21","20,940.00",76.17
+2009,Greene Health Department,Single,Greene,"1,709,736.25","21,253.00",80.45
+2010,Greene Health Department,Single,Greene,"1,741,202.26","21,362.00",81.51
+2011,Greene Health Department,Single,Greene,"1,474,702.76","21,514.00",68.55
+2012,Greene Health Department,Single,Greene,"1,722,153.53","21,239.00",81.08
+2013,Greene Health Department,Single,Greene,"1,603,802.12","21,011.00",76.33
+2014,Greene Health Department,Single,Greene,"1,459,167.85","21,101.00",69.15
+2015,Greene Health Department,Single,Greene,"1,441,363.02","21,016.00",68.58
+2016,Greene Health Department,Single,Greene,"1,429,305.59","21,274.00",67.19
+2017,Greene Health Department,Single,Greene,"1,523,737.73","20,963.00",72.69
+2018,Greene Health Department,Single,Greene,"1,673,625.01","21,008.00",79.67
+2019,Greene Health Department,Single,Greene,"1,685,232.94","21,050.00",80.06
+2017,Montgomery County Health Department,Single,Montgomery,"1,870,445.00","27,269.00",68.59
+2018,Montgomery County Health Department,Single,Montgomery,"1,887,144.00","27,338.00",69.03
+2019,Montgomery County Health Department,Single,Montgomery,"1,816,312.00","27,666.00",65.65
+2017,Pender County Health Department,Single,Pender,"4,997,120.99","60,719.00",82.30
+2018,Pender County Health Department,Single,Pender,"5,907,017.95","59,020.00",100.09
+2019,Pender County Health Department,Single,Pender,"5,413,373.12","63,406.00",85.38
+2020,Pender County Health Department,Single,Pender,"5,498,142.06","64,578.00",85.14
+1999,Person County Health Department,Single,Person,"2,855,509.00","35,155.00",81.23
+2000,Person County Health Department,Single,Person,"2,846,473.00","35,718.00",79.69
+2001,Person County Health Department,Single,Person,"3,151,512.00","36,130.00",87.23
+2002,Person County Health Department,Single,Person,"2,066,940.00","36,795.00",56.17
+2003,Person County Health Department,Single,Person,"3,256,738.00","37,104.00",87.77
+2004,Person County Health Department,Single,Person,"3,515,646.00","37,102.00",94.76
+2005,Person County Health Department,Single,Person,"3,645,113.00","37,931.00",96.10
+2006,Person County Health Department,Single,Person,"4,095,892.00","37,791.00",108.38
+2007,Person County Health Department,Single,Person,"4,290,096.00","38,656.00",110.98
+2008,Person County Health Department,Single,Person,"4,562,825.00","38,226.00",119.36
+2009,Person County Health Department,Single,Person,"4,481,513.00","39,335.00",113.93
+2010,Person County Health Department,Single,Person,"4,268,046.00","39,464.00",108.15
+2011,Person County Health Department,Single,Person,"4,158,153.00","39,335.00",105.71
+2012,Person County Health Department,Single,Person,"4,148,843.00","39,115.00",106.07
+2013,Person County Health Department,Single,Person,"4,776,353.00","39,239.00",121.72
+2014,Person County Health Department,Single,Person,"4,615,460.00","39,247.00",117.60
+2015,Person County Health Department,Single,Person,"4,182,492.00","39,538.00",105.78
+2016,Person County Health Department,Single,Person,"4,082,394.00","39,753.00",102.69
+2017,Person County Health Department,Single,Person,"3,927,991.00","39,239.00",100.10
+2018,Person County Health Department,Single,Person,"3,564,406.00","39,305.00",90.69
+2019,Person County Health Department,Single,Person,"3,014,546.00","40,370.00",74.67
+1999,Rowan County Health Department,Single,Rowan,"3,259,473.00","129,436.00",25.18
+2000,Rowan County Health Department,Single,Rowan,"3,510,640.00","130,647.00",26.87
+2001,Rowan County Health Department,Single,Rowan,"3,680,918.00","131,573.00",27.98
+2002,Rowan County Health Department,Single,Rowan,"3,717,671.00","132,149.00",28.13
+2003,Rowan County Health Department,Single,Rowan,"3,960,901.00","132,562.00",29.88
+2004,Rowan County Health Department,Single,Rowan,"4,472,536.00","131,247.00",34.08
+2005,Rowan County Health Department,Single,Rowan,"4,478,524.00","132,527.00",33.79
+2006,Rowan County Health Department,Single,Rowan,"4,478,722.00","132,520.00",33.80
+2007,Rowan County Health Department,Single,Rowan,"4,717,116.00","135,626.00",34.78
+2008,Rowan County Health Department,Single,Rowan,"5,245,882.00","136,617.00",38.40
+2009,Rowan County Health Department,Single,Rowan,"5,673,984.00","138,562.00",40.95
+2010,Rowan County Health Department,Single,Rowan,"5,629,894.00","138,428.00",40.67
+2011,Rowan County Health Department,Single,Rowan,"5,831,706.00","137,805.00",42.32
+2012,Rowan County Health Department,Single,Rowan,"5,468,188.00","137,765.00",39.69
+2013,Rowan County Health Department,Single,Rowan,"5,626,549.00","137,690.00",40.86
+2014,Rowan County Health Department,Single,Rowan,"5,278,684.00","138,897.00",38.00
+2015,Rowan County Health Department,Single,Rowan,"5,274,882.00","139,639.00",37.78
+2016,Rowan County Health Department,Single,Rowan,"5,336,371.00","140,557.00",37.97
+2017,Rowan County Health Department,Single,Rowan,"5,508,316.00","140,356.00",39.25
+2018,Rowan County Health Department,Single,Rowan,"5,587,848.00","139,605.00",40.03
+2019,Rowan County Health Department,Single,Rowan,"5,836,872.00","142,643.00",40.92
+2009,Harnett County Health Department,Single,Harnett,"6,320,479.55","111,866.00",56.50
+2010,Harnett County Health Department,Single,Harnett,"6,458,474.04","114,678.00",56.32
+2011,Harnett County Health Department,Single,Harnett,"6,191,713.34","119,178.00",51.95
+2012,Harnett County Health Department,Single,Harnett,"6,030,424.00","121,317.00",49.71
+2013,Harnett County Health Department,Single,Harnett,"5,881,778.82","125,028.00",47.04
+2014,Harnett County Health Department,Single,Harnett,"5,614,483.57","125,600.00",44.70
+2015,Harnett County Health Department,Single,Harnett,"6,014,263.98","127,038.00",47.34
+2016,Harnett County Health Department,Single,Harnett,"5,869,797.94","129,434.00",45.35
+2017,Harnett County Health Department,Single,Harnett,"5,565,133.94","132,395.00",42.03
+2018,Harnett County Health Department,Single,Harnett,"5,558,680.01","130,361.00",42.64
+2019,Harnett County Health Department,Single,Harnett,"5,784,231.16","135,239.00",42.77
+2020,Harnett County Health Department,Single,Harnett,"5,510,900.45","137,358.00",40.12
+2001, Madison County Health Department ,Single,Madison,"889,814.73","19,675.00",45.23
+2002, Madison County Health Department ,Single,Madison,"963,567.04","19,712.00",48.88
+2003, Madison County Health Department ,Single,Madison,"1,175,505.10","19,873.00",59.15
+2004, Madison County Health Department ,Single,Madison,"1,053,106.66","19,991.00",52.68
+2005, Madison County Health Department ,Single,Madison,"1,166,634.40","20,097.00",58.05
+2006, Madison County Health Department ,Single,Madison,"1,332,078.95","20,198.00",65.95
+2007, Madison County Health Department ,Single,Madison,"1,243,229.39","20,420.00",60.88
+2008, Madison County Health Department ,Single,Madison,"1,714,720.40","20,538.00",83.49
+2009, Madison County Health Department ,Single,Madison,"2,211,913.80","20,700.00",106.86
+2010, Madison County Health Department ,Single,Madison,"2,490,454.83","20,764.00",119.94
+2011, Madison County Health Department ,Single,Madison,"2,360,427.22","20,845.00",113.24
+2012, Madison County Health Department ,Single,Madison,"2,188,734.06","21,216.00",103.16
+2013, Madison County Health Department ,Single,Madison,"2,657,316.35","21,147.00",125.66
+2014, Madison County Health Department ,Single,Madison,"2,778,522.55","21,619.00",128.52
+2015, Madison County Health Department ,Single,Madison,"2,765,190.67","21,619.00",127.91
+2016, Madison County Health Department ,Single,Madison,"2,820,975.58","22,039.00",128.00
+2017, Madison County Health Department ,Single,Madison,"2,888,826.90","21,563.00",133.97
+2018, Madison County Health Department ,Single,Madison,"2,754,209.59","21,405.00",128.67
+2019, Madison County Health Department ,Single,Madison,"3,059,660.38","22,602.00",135.37
+2020, Madison County Health Department ,Single,Madison,"2,935,162.16","22,843.00",128.49
+1999,Guilford County Health Department,Single,Guilford,"25,876,074.00","416,459.00",62.13
+2000,Guilford County Health Department,Single,Guilford,"28,403,151.00","422,459.00",67.23
+2001,Guilford County Health Department,Single,Guilford,"28,652,689.00","426,530.00",67.18
+2002,Guilford County Health Department,Single,Guilford,"29,306,129.00","429,668.00",68.21
+2003,Guilford County Health Department,Single,Guilford,"30,318,024.00","432,981.00",70.02
+2004,Guilford County Health Department,Single,Guilford,"31,413,976.00","436,845.00",71.91
+2005,Guilford County Health Department,Single,Guilford,"32,698,025.00","448,192.00",72.96
+2006,Guilford County Health Department,Single,Guilford,"34,095,107.00","454,488.00",75.02
+2007,Guilford County Health Department,Single,Guilford,"34,621,959.00","468,466.00",73.90
+2008,Guilford County Health Department,Single,Guilford,"36,124,028.00","474,323.00",76.16
+2009,Guilford County Health Department,Single,Guilford,"37,030,338.00","484,180.00",76.48
+2010,Guilford County Health Department,Single,Guilford,"36,994,870.00","488,406.00",75.75
+2011,Guilford County Health Department,Single,Guilford,"34,915,224.00","494,953.00",70.54
+2012,Guilford County Health Department,Single,Guilford,"30,741,310.00","501,431.00",61.31
+2013,Guilford County Health Department,Single,Guilford,"31,257,273.00","506,400.00",61.72
+2014,Guilford County Health Department,Single,Guilford,"29,323,811.00","511,636.00",57.31
+2015,Guilford County Health Department,Single,Guilford,"29,812,115.00","516,493.00",57.72
+2016,Guilford County Health Department,Single,Guilford,"30,106,801.00","523,934.00",57.46
+2017,Guilford County Health Department,Single,Guilford,"30,893,221.00","528,243.00",58.48
+2018,Guilford County Health Department,Single,Guilford,"31,664,164.00","534,346.00",59.26
+2019,Guilford County Health Department,Single,Guilford,"33,529,676.00","539,666.00",62.13
+1999,Henderson County Health Department,Single,Henderson,"3,447,901.00","87,985.00",39.19
+2000,Henderson County Health Department,Single,Henderson,"3,724,018.00","87,637.00",42.49
+2001,Henderson County Health Department,Single,Henderson,"3,961,636.00","91,422.00",43.33
+2002,Henderson County Health Department,Single,Henderson,"4,094,184.00","92,800.00",44.12
+2003,Henderson County Health Department,Single,Henderson,"4,561,118.00","94,417.00",48.31
+2004,Henderson County Health Department,Single,Henderson,"4,917,759.00","95,885.00",51.29
+2005,Henderson County Health Department,Single,Henderson,"5,079,229.00","97,357.00",52.17
+2006,Henderson County Health Department,Single,Henderson,"4,524,543.00","100,045.00",45.23
+2007,Henderson County Health Department,Single,Henderson,"5,123,841.00","102,172.00",50.15
+2008,Henderson County Health Department,Single,Henderson,"5,189,325.00","104,086.00",49.86
+2009,Henderson County Health Department,Single,Henderson,"5,756,425.00","105,395.00",54.62
+2010,Henderson County Health Department,Single,Henderson,"5,844,857.00","106,740.00",54.76
+2011,Henderson County Health Department,Single,Henderson,"5,907,205.00","107,244.00",55.08
+2012,Henderson County Health Department,Single,Henderson,"5,415,206.00","107,740.00",50.26
+2013,Henderson County Health Department,Single,Henderson,"5,554,933.00","108,752.00",51.08
+2014,Henderson County Health Department,Single,Henderson,"5,438,219.00","110,485.00",49.22
+2015,Henderson County Health Department,Single,Henderson,"5,705,652.00","111,854.00",51.01
+2016,Henderson County Health Department,Single,Henderson,"6,230,056.00","113,889.00",54.70
+2017,Henderson County Health Department,Single,Henderson,"6,401,837.00","115,384.00",55.48
+2018,Henderson County Health Department,Single,Henderson,"6,787,190.00","116,857.00",58.08
+2019,Henderson County Health Department,Single,Henderson,"6,998,090.00","118,312.00",59.15
+1999,Iredell County Health Department,Single,Iredell,"3,958,273.00","120,270.00",32.91
+2000,Iredell County Health Department,Single,Iredell,"4,101,054.00","123,593.00",33.18
+2001,Iredell County Health Department,Single,Iredell,"4,368,675.00","127,923.00",34.15
+2002,Iredell County Health Department,Single,Iredell,"4,591,632.00","130,463.00",35.19
+2003,Iredell County Health Department,Single,Iredell,"5,010,066.00","133,121.00",37.64
+2004,Iredell County Health Department,Single,Iredell,"5,264,056.00","135,734.00",38.78
+2005,Iredell County Health Department,Single,Iredell,"5,451,654.00","139,347.00",39.12
+2006,Iredell County Health Department,Single,Iredell,"6,020,144.00","145,642.00",41.34
+2007,Iredell County Health Department,Single,Iredell,"6,664,076.00","150,654.00",44.23
+2008,Iredell County Health Department,Single,Iredell,"7,461,442.00","154,753.00",48.22
+2009,Iredell County Health Department,Single,Iredell,"7,743,202.00","157,427.00",49.19
+2010,Iredell County Health Department,Single,Iredell,"7,844,950.00","159,437.00",49.20
+2011,Iredell County Health Department,Single,Iredell,"7,442,226.00","160,988.00",46.23
+2012,Iredell County Health Department,Single,Iredell,"7,599,940.00","162,819.00",46.68
+2013,Iredell County Health Department,Single,Iredell,"7,318,916.00","164,834.00",44.40
+2014,Iredell County Health Department,Single,Iredell,"7,556,585.00","166,862.00",45.29
+2015,Iredell County Health Department,Single,Iredell,"7,416,907.00","169,776.00",43.69
+2016,Iredell County Health Department,Single,Iredell,"7,625,208.00","173,088.00",44.05
+2017,Iredell County Health Department,Single,Iredell,"7,993,880.00","176,089.00",45.40
+2018,Iredell County Health Department,Single,Iredell,"8,250,859.00","178,730.00",46.16
+2019,Iredell County Health Department,Single,Iredell,"8,593,066.00","181,380.00",47.38
+2005,Johnston County Health Department,Single,Johnston,"5,847,556.00","143,982.00",40.61
+2007,Johnston County Health Department,Single,Johnston,"6,718,864.00","154,635.00",43.45
+2008,Johnston County Health Department,Single,Johnston,"7,329,873.00","160,062.00",45.79
+2009,Johnston County Health Department,Single,Johnston,"7,613,409.00","165,111.00",46.11
+2010,Johnston County Health Department,Single,Johnston,"7,462,867.00","168,878.00",44.19
+2011,Johnston County Health Department,Single,Johnston,"7,541,941.00","172,109.00",43.82
+2012,Johnston County Health Department,Single,Johnston,"7,223,443.00","174,207.00",41.46
+2013,Johnston County Health Department,Single,Johnston,"9,141,410.00","176,620.00",51.76
+2014,Johnston County Health Department,Single,Johnston,"11,272,374.00","179,734.00",62.72
+2015,Johnston County Health Department,Single,Johnston,"11,825,260.00","183,619.00",64.40
+2016,Johnston County Health Department,Single,Johnston,"12,683,961.00","188,749.00",67.20
+2017,Johnston County Health Department,Single,Johnston,"13,240,554.00","193,902.00",68.28
+2018,Johnston County Health Department,Single,Johnston,"13,977,295.00","199,790.00",69.96
+2019,Johnston County Health Department,Single,Johnston,"14,206,353.00","205,951.00",68.98
+2020,Johnston County Health Department,Single,Johnston,"13,533,468.00","212,401.00",63.72
+1998,Lincoln County Health Department,Single,Lincoln,"2,832,336.00","61,176.00",46.30
+1999,Lincoln County Health Department,Single,Lincoln,"2,932,898.00","62,497.00",46.93
+2000,Lincoln County Health Department,Single,Lincoln,"3,081,100.00","64,164.00",48.02
+2001,Lincoln County Health Department,Single,Lincoln,"3,135,560.00","65,671.00",47.75
+2002,Lincoln County Health Department,Single,Lincoln,"3,314,015.00","66,526.00",49.82
+2003,Lincoln County Health Department,Single,Lincoln,"3,574,920.00","67,543.00",52.93
+2004,Lincoln County Health Department,Single,Lincoln,"3,897,704.00","68,338.00",57.04
+2005,Lincoln County Health Department,Single,Lincoln,"3,881,751.00","69,714.00",55.68
+2006,Lincoln County Health Department,Single,Lincoln,"4,312,805.00","71,753.00",60.11
+2007,Lincoln County Health Department,Single,Lincoln,"4,840,531.00","73,633.00",65.74
+2008,Lincoln County Health Department,Single,Lincoln,"4,999,244.00","75,759.00",65.99
+2009,Lincoln County Health Department,Single,Lincoln,"5,089,200.00","77,097.00",66.01
+2010,Lincoln County Health Department,Single,Lincoln,"5,301,387.00","78,265.00",67.74
+2011,Lincoln County Health Department,Single,Lincoln,"5,432,456.00","78,321.00",69.36
+2012,Lincoln County Health Department,Single,Lincoln,"5,182,597.00","78,757.00",65.80
+2013,Lincoln County Health Department,Single,Lincoln,"5,255,870.00","79,217.00",66.35
+2014,Lincoln County Health Department,Single,Lincoln,"5,067,177.00","79,892.00",63.43
+2015,Lincoln County Health Department,Single,Lincoln,"4,991,734.00","80,936.00",61.68
+2016,Lincoln County Health Department,Single,Lincoln,"4,327,825.00","81,884.00",52.85
+2017,Lincoln County Health Department,Single,Lincoln,"4,348,133.00","82,052.00",52.99
+2018,Lincoln County Health Department,Single,Lincoln,"4,417,331.00","84,751.00",52.12
+2019,Lincoln County Health Department,Single,Lincoln,"4,847,658.00","86,453.00",56.07
+2020,Lincoln County Health Department,Single,Lincoln,"5,161,890.00","88,151.00",58.56
+2003,Pitt County Health Department,Single,Pitt,"6,184,924.00","141,029.00",43.86
+2004,Pitt County Health Department,Single,Pitt,"6,683,792.00","144,223.00",46.34
+2005,Pitt County Health Department,Single,Pitt,"7,082,746.00","147,010.00",48.18
+2006,Pitt County Health Department,Single,Pitt,"7,415,076.00","151,356.00",48.99
+2007,Pitt County Health Department,Single,Pitt,"7,830,224.00","156,049.00",50.18
+2008,Pitt County Health Department,Single,Pitt,"8,720,549.00","160,674.00",54.27
+2009,Pitt County Health Department,Single,Pitt,"9,421,656.00","164,602.00",57.24
+2010,Pitt County Health Department,Single,Pitt,"10,280,075.00","168,148.00",61.14
+2011,Pitt County Health Department,Single,Pitt,"9,924,185.00","170,298.00",58.28
+2012,Pitt County Health Department,Single,Pitt,"9,505,483.00","172,509.00",55.10
+2013,Pitt County Health Department,Single,Pitt,"8,904,408.00","173,875.00",51.21
+2014,Pitt County Health Department,Single,Pitt,"8,997,360.00","174,211.00",51.65
+2015,Pitt County Health Department,Single,Pitt,"8,968,160.00","175,475.00",51.11
+2016,Pitt County Health Department,Single,Pitt,"9,174,193.00","176,060.00",52.11
+2017,Pitt County Health Department,Single,Pitt,"9,718,345.00","177,705.00",54.69
+2018,Pitt County Health Department,Single,Pitt,"10,544,823.00","178,440.00",59.09
+2019,Pitt County Health Department,Single,Pitt,"10,493,986.00","179,731.00",58.39
+2011,Halifax County Health Department,Single,Halifax,"6,081,777.00","54,257.00",112.09
+2012,Halifax County Health Department,Single,Halifax,"6,401,144.00","53,977.00",118.59
+2013,Halifax County Health Department,Single,Halifax,"6,317,273.00","53,447.00",118.20
+2014,Halifax County Health Department,Single,Halifax,"5,762,022.00","52,905.00",108.91
+2015,Halifax County Health Department,Single,Halifax,"5,964,937.00","52,212.00",114.24
+2016,Halifax County Health Department,Single,Halifax,"5,951,925.00","52,116.00",114.21
+2017,Halifax County Health Department,Single,Halifax,"6,143,916.00","51,973.00",118.21
+2018,Halifax County Health Department,Single,Halifax,"6,098,914.00","51,552.00",118.31
+2019,Halifax County Health Department,Single,Halifax,"6,182,756.00","51,194.00",120.77
+2005,Jones County Health Department,Single,Jones,"1,057,467.00","10,029.00",105.44
+2006,Jones County Health Department,Single,Jones,"948,979.00","10,126.00",93.72
+2007,Jones County Health Department,Single,Jones,"847,751.00","10,154.00",83.49
+2008,Jones County Health Department,Single,Jones,"1,029,169.00","10,072.00",102.18
+2009,Jones County Health Department,Single,Jones,"1,166,437.00","10,129.00",115.16
+2010,Jones County Health Department,Single,Jones,"1,273,596.00","10,153.00",125.44
+2011,Jones County Health Department,Single,Jones,"1,113,625.00","10,330.00",107.80
+2012,Jones County Health Department,Single,Jones,"1,041,434.00","10,410.00",100.04
+2013,Jones County Health Department,Single,Jones,"949,014.00","10,355.00",91.65
+2014,Jones County Health Department,Single,Jones,"949,693.00","10,242.00",92.73
+2015,Jones County Health Department,Single,Jones,"892,946.00","10,205.00",87.50
+2016,Jones County Health Department,Single,Jones,"974,741.00","10,123.00",96.29
+2017,Jones County Health Department,Single,Jones,"924,449.00","10,123.00",91.32
+2018,Jones County Health Department,Single,Jones,"900,836.00","10,196.00",88.35
+2019,Jones County Health Department,Single,Jones,"1,010,820.00","10,196.00",99.14
+2008,Lenoir County Health Department,Single,Lenoir,"3,063,748.00","59,377.00",51.60
+2009,Lenoir County Health Department,Single,Lenoir,"3,103,985.00","59,431.00",52.23
+2010,Lenoir County Health Department,Single,Lenoir,"3,103,421.00","59,495.00",52.16
+2011,Lenoir County Health Department,Single,Lenoir,"3,266,534.00","59,563.00",54.84
+2012,Lenoir County Health Department,Single,Lenoir,"3,442,435.00","59,280.00",58.07
+2013,Lenoir County Health Department,Single,Lenoir,"3,352,090.00","58,853.00",56.96
+2014,Lenoir County Health Department,Single,Lenoir,"3,396,399.00","58,557.00",58.00
+2015,Lenoir County Health Department,Single,Lenoir,"3,689,023.00","58,225.00",63.36
+2016,Lenoir County Health Department,Single,Lenoir,"3,880,719.00","57,653.00",67.31
+2017,Lenoir County Health Department,Single,Lenoir,"3,532,664.00","57,175.00",61.79
+2018,Lenoir County Health Department,Single,Lenoir,"3,463,486.00","56,856.00",60.92
+2019,Lenoir County Health Department,Single,Lenoir,"3,866,269.00","56,372.00",68.58
+1999,Gaston County Health Department,Single,Gaston,"12,449,342.00","189,348.00",65.75
+2000,Gaston County Health Department,Single,Gaston,"12,928,362.00","190,747.00",67.78
+2001,Gaston County Health Department,Single,Gaston,"13,121,589.00","190,941.00",68.72
+2002,Gaston County Health Department,Single,Gaston,"12,469,844.00","190,768.00",65.37
+2003,Gaston County Health Department,Single,Gaston,"13,332,100.00","190,052.00",70.15
+2004,Gaston County Health Department,Single,Gaston,"13,587,489.00","190,038.00",71.50
+2005,Gaston County Health Department,Single,Gaston,"14,924,734.00","191,815.00",77.81
+2006,Gaston County Health Department,Single,Gaston,"15,966,394.00","194,912.00",81.92
+2007,Gaston County Health Department,Single,Gaston,"17,322,768.00","199,005.00",87.05
+2008,Gaston County Health Department,Single,Gaston,"17,132,323.00","203,143.00",84.34
+2009,Gaston County Health Department,Single,Gaston,"17,777,220.00","205,376.00",86.56
+2010,Gaston County Health Department,Single,Gaston,"21,823,121.00","206,086.00",105.89
+2011,Gaston County Health Department,Single,Gaston,"19,405,555.00","207,339.00",93.59
+2012,Gaston County Health Department,Single,Gaston,"16,813,265.00","208,317.00",80.71
+2013,Gaston County Health Department,Single,Gaston,"18,228,656.00","209,364.00",87.07
+2014,Gaston County Health Department,Single,Gaston,"18,679,751.00","210,195.00",88.87
+2015,Gaston County Health Department,Single,Gaston,"16,527,317.00","212,197.00",77.89
+2016,Gaston County Health Department,Single,Gaston,"16,965,807.00","215,269.00",78.81
+2017,Gaston County Health Department,Single,Gaston,"17,046,558.00","218,445.00",78.04
+2018,Gaston County Health Department,Single,Gaston,"17,854,499.00","221,006.00",80.79
+2019,Gaston County Health Department,Single,Gaston,"17,668,100.00","222,744.00",79.32
+2009,Hyde County Health Department,Single,Hyde,"1,192,675.79","5,841.00",204.19
+2010,Hyde County Health Department,Single,Hyde,"1,589,018.18","5,810.00",273.50
+2011,Hyde County Health Department,Single,Hyde,"1,462,649.57","5,799.00",252.22
+2012,Hyde County Health Department,Single,Hyde,"1,516,007.17","5,708.00",265.59
+2013,Hyde County Health Department,Single,Hyde,"1,474,192.33","5,745.00",256.60
+2014,Hyde County Health Department,Single,Hyde,"1,413,173.52","5,670.00",249.24
+2015,Hyde County Health Department,Single,Hyde,"1,458,499.40","5,571.00",261.80
+2016,Hyde County Health Department,Single,Hyde,"1,560,293.57","5,570.00",280.12
+2017,Hyde County Health Department,Single,Hyde,"1,257,665.11","5,442.00",231.10
+2018,Hyde County Health Department,Single,Hyde,"1,042,601.95","5,198.00",200.58
+2019,Hyde County Health Department,Single,Hyde,"1,262,387.66","5,181.00",243.66
+2020,Hyde County Health Department,Single,Hyde,"1,432,867.79","5,156.00",277.90
+2006,Mecklenburg County Health Department,Single,Mecklenburg,"28,231,523.25","837,685.00",33.70
+2007,Mecklenburg County Health Department,Single,Mecklenburg,"28,673,187.43","870,393.00",32.94
+2008,Mecklenburg County Health Department,Single,Mecklenburg,"32,077,463.24","888,730.00",36.09
+2009,Mecklenburg County Health Department,Single,Mecklenburg,"33,222,938.35","906,473.00",36.65
+2010,Mecklenburg County Health Department,Single,Mecklenburg,"37,122,799.41","919,628.00",40.37
+2011,Mecklenburg County Health Department,Single,Mecklenburg,"38,392,329.59","940,887.00",40.80
+2012,Mecklenburg County Health Department,Single,Mecklenburg,"35,538,036.78","961,255.00",36.97
+2013,Mecklenburg County Health Department,Single,Mecklenburg,"38,529,966.98","990,504.00",38.90
+2014,Mecklenburg County Health Department,Single,Mecklenburg,"37,664,036.99","1,010,400.00",37.28
+2015,Mecklenburg County Health Department,Single,Mecklenburg,"49,579,744.97","1,033,682.00",47.96
+2016,Mecklenburg County Health Department,Single,Mecklenburg,"64,778,295.73","1,054,613.00",61.42
+2017,Mecklenburg County Health Department,Single,Mecklenburg,"69,546,706.07","1,073,159.00",64.81
+2018,Mecklenburg County Health Department,Single,Mecklenburg,"73,079,043.96","1,088,350.00",67.15
+2019,Mecklenburg County Health Department,Single,Mecklenburg,"76,803,874.85","1,108,107.00",69.31
+2020,Mecklenburg County Health Department,Single,Mecklenburg,"75,976,723.65","1,131,342.00",67.16
+2008,Rockingham County Health Department,Single,Rockingham,"5,369,741.00","92,783.00",57.87
+2009,Rockingham County Health Department,Single,Rockingham,"5,250,195.00","93,273.00",56.29
+2010,Rockingham County Health Department,Single,Rockingham,"5,206,017.00","93,643.00",55.59
+2011,Rockingham County Health Department,Single,Rockingham,"5,182,041.00","93,276.00",55.56
+2012,Rockingham County Health Department,Single,Rockingham,"5,159,261.00","92,800.00",55.60
+2013,Rockingham County Health Department,Single,Rockingham,"5,405,212.00","92,210.00",58.62
+2014,Rockingham County Health Department,Single,Rockingham,"5,339,450.00","92,441.00",57.76
+2015,Rockingham County Health Department,Single,Rockingham,"5,251,099.00","92,055.00",57.04
+2016,Rockingham County Health Department,Single,Rockingham,"5,223,283.00","91,936.00",56.81
+2017,Rockingham County Health Department,Single,Rockingham,"5,511,305.00","91,447.00",60.27
+2018,Rockingham County Health Department,Single,Rockingham,"5,431,356.00","91,746.00",59.20
+2019,Rockingham County Health Department,Single,Rockingham,"5,362,831.00","91,788.00",58.43
+2010,Chatham County Health Department,Single,Chatham,"5,462,292.00","63,505.00",86.01
+2011,Chatham County Health Department,Single,Chatham,"5,658,604.00","64,396.00",87.87
+2012,Chatham County Health Department,Single,Chatham,"4,925,679.00","65,152.00",75.60
+2013,Chatham County Health Department,Single,Chatham,"5,190,327.00","66,117.00",78.50
+2014,Chatham County Health Department,Single,Chatham,"5,316,609.00","67,373.00",78.91
+2015,Chatham County Health Department,Single,Chatham,"5,318,325.00","69,228.00",76.82
+2016,Chatham County Health Department,Single,Chatham,"5,544,477.00","70,746.00",78.37
+2017,Chatham County Health Department,Single,Chatham,"5,510,396.00","72,570.00",75.93
+2018,Chatham County Health Department,Single,Chatham,"5,905,474.00","74,264.00",79.52
+2019,Chatham County Health Department,Single,Chatham,"5,327,426.00","75,994.00",70.10
+2020,Chatham County Health Department,Single,Chatham,"5,431,334.00","77,713.00",69.89
+2017,Onslow County Health Department,Single,Onslow,"7,299,937.59","196,535.00",37.14
+2018,Onslow County Health Department,Single,Onslow,"7,252,608.85","198,740.00",36.49
+2019,Onslow County Health Department,Single,Onslow,"9,544,997.90","201,548.00",47.36
+2020,Onslow County Health Department,Single,Onslow,"9,789,015.37","204,357.00",47.90
+2004,Franklin County Health Department,Single,Franklin,"15,305,304.00","52,766.00",290.06
+2005,Franklin County Health Department,Single,Franklin,"16,292,325.00","53,979.00",301.83
+2006,Franklin County Health Department,Single,Franklin,"17,415,333.00","55,396.00",314.38
+2007,Franklin County Health Department,Single,Franklin,"17,937,867.00","56,762.00",316.02
+2008,Franklin County Health Department,Single,Franklin,"18,410,690.00","58,463.00",314.91
+2009,Franklin County Health Department,Single,Franklin,"17,436,101.00","59,502.00",293.03
+2010,Franklin County Health Department,Single,Franklin,"15,933,092.00","60,619.00",262.84
+2011,Franklin County Health Department,Single,Franklin,"17,011,497.00","60,861.00",279.51
+2012,Franklin County Health Department,Single,Franklin,"16,549,400.00","61,618.00",268.58
+2013,Franklin County Health Department,Single,Franklin,"17,001,115.00","62,473.00",272.14
+2014,Franklin County Health Department,Single,Franklin,"17,409,472.00","63,104.00",275.89
+2015,Franklin County Health Department,Single,Franklin,"17,668,892.00","64,069.00",275.78
+2016,Franklin County Health Department,Single,Franklin,"18,018,799.00","65,260.00",276.11
+2017,Franklin County Health Department,Single,Franklin,"18,794,832.00","66,577.00",282.30
+2018,Franklin County Health Department,Single,Franklin,"16,698,013.00","68,012.00",245.52
+2019,Franklin County Health Department,Single,Franklin,"17,563,608.00","69,112.00",254.13
+1999,Forsyth County Health Department,Single,Forsyth,"10,871,877.00","303,673.00",35.80
+2000,Forsyth County Health Department,Single,Forsyth,"11,626,578.00","307,008.00",37.87
+2001,Forsyth County Health Department,Single,Forsyth,"12,320,366.00","310,717.00",39.65
+2002,Forsyth County Health Department,Single,Forsyth,"12,775,123.00","313,803.00",40.71
+2003,Forsyth County Health Department,Single,Forsyth,"13,989,324.00","316,323.00",44.22
+2004,Forsyth County Health Department,Single,Forsyth,"15,659,148.00","319,220.00",49.05
+2005,Forsyth County Health Department,Single,Forsyth,"16,922,247.00","324,372.00",52.17
+2006,Forsyth County Health Department,Single,Forsyth,"17,794,101.00","330,935.00",53.77
+2007,Forsyth County Health Department,Single,Forsyth,"17,835,638.00","337,159.00",52.90
+2008,Forsyth County Health Department,Single,Forsyth,"19,194,681.00","342,975.00",55.97
+2009,Forsyth County Health Department,Single,Forsyth,"20,231,084.00","347,333.00",58.25
+2010,Forsyth County Health Department,Single,Forsyth,"21,184,605.00","350,670.00",60.41
+2011,Forsyth County Health Department,Single,Forsyth,"21,011,505.00","354,384.00",59.29
+2012,Forsyth County Health Department,Single,Forsyth,"20,104,876.00","357,490.00",56.24
+2013,Forsyth County Health Department,Single,Forsyth,"19,971,047.00","359,892.00",55.49
+2014,Forsyth County Health Department,Single,Forsyth,"20,423,056.00","363,212.00",56.23
+2015,Forsyth County Health Department,Single,Forsyth,"19,925,586.00","365,378.00",54.53
+2016,Forsyth County Health Department,Single,Forsyth,"20,807,420.00","369,029.00",56.38
+2017,Forsyth County Health Department,Single,Forsyth,"21,634,584.00","372,845.00",58.03
+2018,Forsyth County Health Department,Single,Forsyth,"22,295,963.00","376,309.00",59.25
+2019,Forsyth County Health Department,Single,Forsyth,"21,981,114.00","379,693.00",57.89
+2020,Forsyth County Health Department,Single,Forsyth,"22,934,487.00","383,123.00",59.86
+2003,Orange County Health Department,Single,Orange,"6,053,459.00","120,368.00",50.29
+2004,Orange County Health Department,Single,Orange,"7,420,413.00","121,053.00",61.30
+2005,Orange County Health Department,Single,Orange,"6,759,296.00","122,613.00",55.13
+2006,Orange County Health Department,Single,Orange,"6,323,932.00","124,593.00",50.76
+2007,Orange County Health Department,Single,Orange,"6,666,353.00","127,278.00",52.38
+2008,Orange County Health Department,Single,Orange,"7,085,936.00","129,584.00",54.68
+2009,Orange County Health Department,Single,Orange,"7,122,479.00","132,215.00",53.87
+2010,Orange County Health Department,Single,Orange,"7,293,214.00","133,801.00",54.51
+2011,Orange County Health Department,Single,Orange,"7,101,731.00","135,287.00",52.49
+2012,Orange County Health Department,Single,Orange,"6,932,715.00","138,300.00",50.13
+2013,Orange County Health Department,Single,Orange,"7,435,288.00","139,427.00",53.33
+2014,Orange County Health Department,Single,Orange,"7,718,188.00","140,103.00",55.09
+2015,Orange County Health Department,Single,Orange,"8,069,020.00","140,678.00",57.36
+2016,Orange County Health Department,Single,Orange,"8,692,992.00","142,148.00",61.15
+2017,Orange County Health Department,Single,Orange,"9,166,051.00","142,597.00",64.28
+2018,Orange County Health Department,Single,Orange,"9,797,459.00","145,574.00",67.30
+2019,Orange County Health Department,Single,Orange,"10,290,730.00","147,039.00",69.99
+2004,Brunswick County Health Department,Single,Brunswick,"5,234,618.00","83,910.00",62.38
+2005,Brunswick County Health Department,Single,Brunswick,"5,724,387.00","88,039.00",65.02
+2006,Brunswick County Health Department,Single,Brunswick,"6,684,283.00","93,756.00",71.29
+2007,Brunswick County Health Department,Single,Brunswick,"6,589,978.00","98,557.00",66.86
+2009,Brunswick County Health Department,Single,Brunswick,"7,629,918.00","105,226.00",72.51
+2010,Brunswick County Health Department,Single,Brunswick,"7,734,922.00","107,431.00",72.00
+2011,Brunswick County Health Department,Single,Brunswick,"7,521,945.00","110,148.00",68.29
+2012,Brunswick County Health Department,Single,Brunswick,"7,163,256.00","112,409.00",63.72
+2013,Brunswick County Health Department,Single,Brunswick,"6,383,573.00","115,284.00",55.37
+2014,Brunswick County Health Department,Single,Brunswick,"6,593,003.00","119,050.00",55.38
+2015,Brunswick County Health Department,Single,Brunswick,"6,844,763.00","122,957.00",55.67
+2016,Brunswick County Health Department,Single,Brunswick,"6,399,328.00","127,152.00",50.33
+2017,Brunswick County Health Department,Single,Brunswick,"6,981,970.00","131,644.00",53.04
+2018,Brunswick County Health Department,Single,Brunswick,"7,041,307.00","137,103.00",51.36
+2019,Brunswick County Health Department,Single,Brunswick,"7,492,998.00","142,088.00",52.73
+1999,Richmond County Health Department,Single,Richmond,"2,496,715.00","46,331.00",53.89
+2000,Richmond County Health Department,Single,Richmond,"2,620,223.00","46,557.00",56.28
+2001,Richmond County Health Department,Single,Richmond,"2,721,767.00","46,510.00",58.52
+2002,Richmond County Health Department,Single,Richmond,"2,944,108.00","46,391.00",63.46
+2003,Richmond County Health Department,Single,Richmond,"2,878,198.00","46,053.00",62.50
+2004,Richmond County Health Department,Single,Richmond,"3,181,871.00","45,894.00",69.33
+2005,Richmond County Health Department,Single,Richmond,"3,324,134.00","46,060.00",72.17
+2006,Richmond County Health Department,Single,Richmond,"3,478,422.00","46,177.00",75.33
+2007,Richmond County Health Department,Single,Richmond,"3,512,077.00","46,449.00",75.61
+2008,Richmond County Health Department,Single,Richmond,"3,770,740.00","46,675.00",80.79
+2009,Richmond County Health Department,Single,Richmond,"4,017,405.00","46,685.00",86.05
+2010,Richmond County Health Department,Single,Richmond,"4,073,929.00","46,639.00",87.35
+2011,Richmond County Health Department,Single,Richmond,"4,081,635.00","46,610.00",87.57
+2012,Richmond County Health Department,Single,Richmond,"4,274,141.00","46,146.00",92.62
+2013,Richmond County Health Department,Single,Richmond,"4,315,499.00","45,924.00",93.97
+2014,Richmond County Health Department,Single,Richmond,"4,729,615.00","45,439.00",104.09
+2015,Richmond County Health Department,Single,Richmond,"4,332,125.00","45,353.00",95.52
+2016,Richmond County Health Department,Single,Richmond,"4,897,206.00","44,957.00",108.93
+2017,Richmond County Health Department,Single,Richmond,"5,092,253.00","45,155.00",112.77
+2018,Richmond County Health Department,Single,Richmond,"5,393,344.00","45,199.00",119.32
+2019,Richmond County Health Department,Single,Richmond,"5,604,262.00","45,079.00",124.32
+2002,Craven County Health Department,Single,Craven,"7,020,765.00","93,067.00",75.44
+2003,Craven County Health Department,Single,Craven,"7,254,987.00","92,906.00",78.09
+2004,Craven County Health Department,Single,Craven,"7,762,736.00","94,134.00",82.46
+2005,Craven County Health Department,Single,Craven,"8,142,709.00","94,729.00",85.96
+2006,Craven County Health Department,Single,Craven,"8,170,173.00","97,345.00",83.93
+2007,Craven County Health Department,Single,Craven,"8,547,659.00","97,825.00",87.38
+2008,Craven County Health Department,Single,Craven,"9,351,879.00","99,626.00",93.87
+2009,Craven County Health Department,Single,Craven,"9,538,653.00","101,923.00",93.59
+2010,Craven County Health Department,Single,Craven,"9,517,457.00","103,505.00",91.95
+2011,Craven County Health Department,Single,Craven,"9,743,417.00","104,831.00",92.94
+2012,Craven County Health Department,Single,Craven,"9,699,866.00","105,170.00",92.23
+2013,Craven County Health Department,Single,Craven,"9,841,143.00","104,285.00",94.37
+2014,Craven County Health Department,Single,Craven,"9,349,643.00","104,069.00",89.84
+2015,Craven County Health Department,Single,Craven,"8,888,543.00","104,450.00",85.10
+2016,Craven County Health Department,Single,Craven,"9,510,727.00","103,184.00",92.17
+2017,Craven County Health Department,Single,Craven,"9,470,651.00","102,492.00",92.40
+2018,Craven County Health Department,Single,Craven,"10,279,698.00","103,594.00",99.23
+2019,Craven County Health Department,Single,Craven,"10,914,425.00","103,779.00",105.17
+2020,Craven County Health Department,Single,Craven,"11,656,144.00","103,983.00",112.10
+1999,Jackson County Health Department,Single,Jackson,"2,351,694.00","32,492.00",72.38
+2000,Jackson County Health Department,Single,Jackson,"2,345,196.00","33,121.00",70.81
+2001,Jackson County Health Department,Single,Jackson,"2,612,625.00","33,892.00",77.09
+2002,Jackson County Health Department,Single,Jackson,"2,738,753.00","34,570.00",79.22
+2003,Jackson County Health Department,Single,Jackson,"2,980,996.00","35,594.00",83.75
+2004,Jackson County Health Department,Single,Jackson,"2,953,954.00","36,381.00",81.19
+2005,Jackson County Health Department,Single,Jackson,"3,195,040.00","36,751.00",86.94
+2006,Jackson County Health Department,Single,Jackson,"3,435,472.00","37,849.00",90.77
+2007,Jackson County Health Department,Single,Jackson,"3,672,056.00","38,181.00",96.17
+2008,Jackson County Health Department,Single,Jackson,"3,908,666.00","38,659.00",101.11
+2009,Jackson County Health Department,Single,Jackson,"4,049,887.00","39,483.00",102.57
+2010,Jackson County Health Department,Single,Jackson,"4,098,089.44","40,271.00",101.76
+2011,Jackson County Health Department,Single,Jackson,"4,279,163.30","40,383.00",105.96
+2012,Jackson County Health Department,Single,Jackson,"4,292,195.00","40,706.00",105.44
+2013,Jackson County Health Department,Single,Jackson,"4,464,273.05","40,826.00",109.35
+2014,Jackson County Health Department,Single,Jackson,"4,382,283.00","41,131.00",106.54
+2015,Jackson County Health Department,Single,Jackson,"4,166,957.24","41,590.00",100.19
+2016,Jackson County Health Department,Single,Jackson,"4,331,697.13","43,003.00",100.73
+2017,Jackson County Health Department,Single,Jackson,"4,479,261.92","43,544.00",102.87
+2018,Jackson County Health Department,Single,Jackson,"4,463,653.24","43,819.00",101.87
+2019,Jackson County Health Department,Single,Jackson,"4,947,832.89","44,335.00",111.60
+2020,Jackson County Health Department,Single,Jackson,"4,784,580.84","44,848.00",106.68
+1999,Translyvania County Health Department,Single,Translyvania,"1,198,401.00","29,068.00",41.23
+2000,Translyvania County Health Department,Single,Translyvania,"1,307,527.00","29,334.00",44.57
+2001,Translyvania County Health Department,Single,Translyvania,"1,381,154.00","29,483.00",46.85
+2002,Translyvania County Health Department,Single,Translyvania,"1,350,861.00","29,728.00",45.44
+2003,Translyvania County Health Department,Single,Translyvania,"1,432,830.00","29,879.00",47.95
+2004,Translyvania County Health Department,Single,Translyvania,"1,517,665.00","30,249.00",50.17
+2005,Translyvania County Health Department,Single,Translyvania,"1,491,319.00","30,623.00",48.70
+2006,Translyvania County Health Department,Single,Translyvania,"1,631,018.00","31,375.00",51.98
+2007,Translyvania County Health Department,Single,Translyvania,"1,884,708.00","31,973.00",58.95
+2008,Translyvania County Health Department,Single,Translyvania,"1,951,437.00","32,413.00",60.21
+2009,Translyvania County Health Department,Single,Translyvania,"2,042,609.00","32,788.00",62.30
+2010,Translyvania County Health Department,Single,Translyvania,"1,855,463.00","33,090.00",56.07
+2011,Translyvania County Health Department,Single,Translyvania,"1,841,788.00","33,007.00",55.80
+2012,Translyvania County Health Department,Single,Translyvania,"1,816,020.00","33,020.00",55.00
+2013,Translyvania County Health Department,Single,Translyvania,"1,901,827.00","33,115.00",57.43
+2014,Translyvania County Health Department,Single,Translyvania,"1,983,090.00","33,400.00",59.37
+2015,Translyvania County Health Department,Single,Translyvania,"2,231,676.00","33,725.00",66.17
+2016,Translyvania County Health Department,Single,Translyvania,"2,269,212.00","34,074.00",66.60
+2017,Translyvania County Health Department,Single,Translyvania,"2,409,408.00","34,495.00",69.85
+2018,Translyvania County Health Department,Single,Translyvania,"2,352,879.00","35,115.00",67.00
+1999,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","3,070,987.37","49,828.00",61.63
+2000,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","2,892,910.56","50,638.00",57.13
+2001,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","3,989,362.51","51,381.00",77.64
+2002,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","4,342,292.25","51,324.00",84.61
+2003,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","4,749,687.96","51,203.00",92.76
+2004,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","5,136,176.71","51,161.00",100.39
+2005,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","5,326,221.48","50,998.00",104.44
+2006,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","4,834,996.32","51,232.00",94.37
+2007,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","5,096,082.06","51,407.00",99.13
+2008,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","4,923,941.18","51,400.00",95.80
+2009,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","5,151,725.26","51,320.00",100.38
+2010,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","5,493,127.31","51,194.00",107.30
+2011,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","5,400,497.06","51,085.00",105.72
+2012,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","5,504,317.41","51,033.00",107.86
+2013,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","5,840,264.61","51,071.00",114.36
+2014,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","5,342,117.34","51,017.00",104.71
+2015,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","5,224,538.55","50,883.00",102.68
+2016,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","4,583,246.17","51,095.00",89.70
+2017,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","4,420,352.51","51,426.00",85.96
+2018,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","4,248,446.01","51,903.00",81.85
+2019,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","3,669,448.94","51,884.00",70.72
+2020,Toe River Health District,Multi-County,"Avery, Mitchell and Yancey","4,019,861.74","52,087.00",77.18
+2002,Union County Health Department,Single,Union,"5,074,971.00","138,896.00",36.54
+2003,Union County Health Department,Single,Union,"5,354,146.00","144,139.00",37.15
+2004,Union County Health Department,Single,Union,"5,420,127.00","151,102.00",35.87
+2005,Union County Health Department,Single,Union,"5,689,220.00","160,260.00",35.50
+2006,Union County Health Department,Single,Union,"6,328,108.00","171,307.00",36.94
+2007,Union County Health Department,Single,Union,"7,336,064.00","183,036.00",40.08
+2008,Union County Health Department,Single,Union,"7,886,519.00","192,305.00",41.01
+2009,Union County Health Department,Single,Union,"8,002,664.00","197,373.00",40.55
+2010,Union County Health Department,Single,Union,"8,187,069.00","201,292.00",40.67
+2011,Union County Health Department,Single,Union,"8,351,741.00","204,332.00",40.87
+2012,Union County Health Department,Single,Union,"8,424,560.00","207,438.00",40.61
+2013,Union County Health Department,Single,Union,"8,539,057.00","210,937.00",40.48
+2014,Union County Health Department,Single,Union,"7,686,944.00","215,312.00",35.70
+2015,Union County Health Department,Single,Union,"6,924,822.00","219,243.00",31.59
+2016,Union County Health Department,Single,Union,"7,274,437.00","223,663.00",32.52
+2017,Union County Health Department,Single,Union,"7,250,953.00","228,061.00",31.79
+2018,Union County Health Department,Single,Union,"7,652,358.00","232,465.00",32.92
+2019,Union County Health Department,Single,Union,"8,834,259.00","237,287.00",37.23
+1999,Lee County Health Department,Single,Lee,"1,837,865.00","48,926.00",37.56
+2000,Lee County Health Department,Single,Lee,"2,024,757.00","49,170.00",41.18
+2001,Lee County Health Department,Single,Lee,"2,561,500.00","50,277.00",50.95
+2002,Lee County Health Department,Single,Lee,"2,294,034.00","50,782.00",45.17
+2003,Lee County Health Department,Single,Lee,"2,319,318.00","51,420.00",45.11
+2004,Lee County Health Department,Single,Lee,"2,655,771.27","52,460.00",50.62
+2005,Lee County Health Department,Single,Lee,"2,846,061.53","53,320.00",53.38
+2006,Lee County Health Department,Single,Lee,"2,873,287.00","54,390.00",52.83
+2007,Lee County Health Department,Single,Lee,"3,416,298.00","55,334.00",61.74
+2008,Lee County Health Department,Single,Lee,"3,138,364.00","56,505.00",55.54
+2009,Lee County Health Department,Single,Lee,"3,042,637.00","57,297.00",53.10
+2010,Lee County Health Department,Single,Lee,"2,730,273.00","57,866.00",47.18
+2011,Lee County Health Department,Single,Lee,"2,538,417.00","58,294.00",43.55
+2012,Lee County Health Department,Single,Lee,"2,635,486.00","58,820.00",44.81
+2013,Lee County Health Department,Single,Lee,"2,883,198.00","59,028.00",48.84
+2014,Lee County Health Department,Single,Lee,"2,707,876.00","58,930.00",45.95
+2015,Lee County Health Department,Single,Lee,"2,785,050.00","58,711.00",47.44
+2016,Lee County Health Department,Single,Lee,"3,028,487.00","59,181.00",51.17
+2017,Lee County Health Department,Single,Lee,"3,020,591.00","59,810.00",50.50
+2018,Lee County Health Department,Single,Lee,"3,076,395.00","60,878.00",50.53
+2019,Lee County Health Department,Single,Lee,"3,161,580.88","61,690.00",51.25
+2020,Lee County Health Department,Single,Lee,"2,855,191.40","62,429.00",45.74
+2008,Burke County Health Department,Single,Burke,"4,247,320.00","89,984.00",47.20
+2009,Burke County Health Department,Single,Burke,"4,054,646.00","90,521.00",44.79
+2010,Burke County Health Department,Single,Burke,"3,551,815.00","90,912.00",39.07
+2011,Burke County Health Department,Single,Burke,"3,343,688.00","90,203.00",37.07
+2012,Burke County Health Department,Single,Burke,"3,094,637.00","89,619.00",34.53
+2013,Burke County Health Department,Single,Burke,"2,958,593.00","89,151.00",33.19
+2014,Burke County Health Department,Single,Burke,"2,964,915.00","89,151.00",33.26
+2015,Burke County Health Department,Single,Burke,"3,028,424.00","89,321.00",33.90
+2016,Burke County Health Department,Single,Burke,"2,958,051.00","90,123.00",32.82
+2017,Burke County Health Department,Single,Burke,"2,961,867.00","91,402.00",32.40
+2018,Burke County Health Department,Single,Burke,"3,099,064.00","91,810.00",33.76
+2019,Burke County Health Department,Single,Burke,"3,212,055.00","91,934.00",34.94
+2005,Moore County Health Department,Single,Moore,"4,041,286.00","80,388.00",50.27
+2006,Moore County Health Department,Single,Moore,"4,272,969.00","82,347.00",51.89
+2007,Moore County Health Department,Single,Moore,"4,512,321.00","84,393.00",53.47
+2008,Moore County Health Department,Single,Moore,"4,739,038.00","85,954.00",55.13
+2009,Moore County Health Department,Single,Moore,"5,188,070.00","97,227.00",53.36
+2010,Moore County Health Department,Single,Moore,"5,023,285.00","88,247.00",56.92
+2011,Moore County Health Department,Single,Moore,"4,516,788.00","89,291.00",50.59
+2012,Moore County Health Department,Single,Moore,"4,486,158.00","90,560.00",49.54
+2013,Moore County Health Department,Single,Moore,"4,004,598.00","91,721.00",43.66
+2014,Moore County Health Department,Single,Moore,"3,570,719.00","92,903.00",38.43
+2015,Moore County Health Department,Single,Moore,"3,610,009.00","94,159.00",38.34
+2016,Moore County Health Department,Single,Moore,"3,658,433.00","95,812.00",38.18
+2017,Moore County Health Department,Single,Moore,"3,348,163.00","97,625.00",34.30
+2018,Moore County Health Department,Single,Moore,"3,539,264.00","99,390.00",35.61
+2019,Moore County Health Department,Single,Moore,"3,821,816.00","101,180.00",37.77
+1999,Stanly County Health Department,Single,Stanly,"1,871,126.00","57,153.00",32.74
+2000,Stanly County Health Department,Single,Stanly,"1,275,845.00","58,100.00",21.96
+2001,Stanly County Health Department,Single,Stanly,"1,257,349.00","58,720.00",21.41
+2002,Stanly County Health Department,Single,Stanly,"1,274,819.00","58,838.00",21.67
+2003,Stanly County Health Department,Single,Stanly,"1,390,450.00","58,739.00",23.67
+2004,Stanly County Health Department,Single,Stanly,"1,611,841.00","58,640.00",27.49
+2005,Stanly County Health Department,Single,Stanly,"1,702,046.00","58,588.00",29.05
+2006,Stanly County Health Department,Single,Stanly,"1,806,362.00","58,791.00",30.73
+2007,Stanly County Health Department,Single,Stanly,"1,909,434.00","59,203.00",32.25
+2008,Stanly County Health Department,Single,Stanly,"2,074,068.00","59,906.00",34.62
+2009,Stanly County Health Department,Single,Stanly,"2,171,709.05","60,205.00",36.07
+2010,Stanly County Health Department,Single,Stanly,"2,191,594.15","60,585.00",36.17
+2011,Stanly County Health Department,Single,Stanly,"2,316,979.36","60,605.00",38.23
+2012,Stanly County Health Department,Single,Stanly,"2,396,147.06","60,363.00",39.70
+2013,Stanly County Health Department,Single,Stanly,"2,373,878.93","60,586.00",39.18
+2014,Stanly County Health Department,Single,Stanly,"2,372,101.01","61,026.00",38.87
+2015,Stanly County Health Department,Single,Stanly,"2,475,795.02","61,212.00",40.45
+2016,Stanly County Health Department,Single,Stanly,"2,467,129.67","61,696.00",39.99
+2017,Stanly County Health Department,Single,Stanly,"2,492,321.70","62,736.00",39.73
+2018,Stanly County Health Department,Single,Stanly,"2,593,025.86","63,328.00",40.95
+2019,Stanly County Health Department,Single,Stanly,"2,710,590.81","63,727.00",42.53
+2020,Stanly County Health Department,Single,Stanly,"2,886,105.00","64,236.00",44.93
+2018,Surry County Health Department,Single,Surry ,"13,434,038.00","73,232.00",183.44
+2019,Surry County Health Department,Single,Surry ,"13,887,427.00","73,232.00",189.64
+2020,Surry County Health Department,Single,Surry ,"14,695,867.00","73,231.00",200.68
+2018,Wilkes County Health Department,Single,Wilkes,"5,791,841.07","69,913.00",82.84
+2019,Wilkes County Health Department,Single,Wilkes,"6,231,349.85","70,200.00",88.77
+2020,Wilkes County Health Department,Single,Wilkes,"6,340,371.95","70,490.00",89.95
+1999,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","7,387,676.00","43,421.00",170.14
+2000,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","5,897,575.00","43,418.00",135.83
+2001,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","5,862,105.00","43,090.00",136.04
+2002,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","5,951,460.00","42,891.00",138.76
+2003,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","7,074,978.00","42,733.00",165.56
+2004,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","7,541,548.00","42,480.00",177.53
+2005,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","8,253,957.00","42,312.00",195.07
+2006,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","7,890,618.00","42,300.00",186.54
+2007,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","7,253,528.00","42,084.00",172.36
+2008,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","6,887,891.00","42,234.00",163.09
+2009,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","7,315,583.00","42,161.00",173.52
+2010,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","7,828,145.00","42,140.00",185.77
+2011,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","7,855,919.00","41,478.00",189.40
+2012,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","7,590,651.00","40,708.00",186.47
+2013,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","7,543,462.00","40,520.00",186.17
+2014,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","7,437,421.00","40,323.00",184.45
+2015,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","6,301,365.00","40,290.00",156.40
+2016,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","5,916,762.00","39,970.00",148.03
+2017,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","5,999,164.00","39,926.00",150.26
+2018,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","6,028,625.00","39,677.00",151.94
+2019,Martin-Tyrrell-Washington District Health,Multi-County,"Martin, Tyrrell & Washington","6,560,934.00","39,480.00",166.18
+2009,Wake County Health Department,Single,Wake,"76,972,076.00","882,344.00",87.24
+2010,Wake County Health Department,Single,Wake,"79,391,383.00","900,993.00",88.12
+2011,Wake County Health Department,Single,Wake,"79,490,552.00","924,330.00",86.00
+2012,Wake County Health Department,Single,Wake,"74,369,935.00","944,622.00",78.73
+2013,Wake County Health Department,Single,Wake,"39,852,467.00","963,856.00",41.35
+2014,Wake County Health Department,Single,Wake,"38,099,704.00","983,918.00",38.72
+2015,Wake County Health Department,Single,Wake,"40,516,034.00","1,006,139.00",40.27
+2016,Wake County Health Department,Single,Wake,"42,869,438.00","1,028,509.00",41.68
+2017,Wake County Health Department,Single,Wake,"43,397,601.00","1,049,943.00",41.33
+2018,Wake County Health Department,Single,Wake,"46,664,534.00","1,070,197.00",43.60
+2019,Wake County Health Department,Single,Wake,"50,374,341.00","1,089,579.00",46.23
