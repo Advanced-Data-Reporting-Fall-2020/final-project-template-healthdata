@@ -4,7 +4,7 @@ Created by Christian Avy, Rachel Crumpler, Dominick Ferrara and Jamie Krantz
 
 ## Project goal
 
-In this project, we are tracking expenditures for local health departments in North Carolina and discussing what they can tell us about each county's preparedness for COVID-19 and other epidemic or pandemic level threats.
+In this project, we are tracking expenditures for local health departments in North Carolina and discussing what they can tell us about each county's preparedness for COVID-19 and other epidemic or pandemic level threats. Inspired by a Kaiser Health News story on full-time expenditures.
 
 ## Project notes
 
@@ -20,7 +20,16 @@ Jamie Krantz: jakrantz@live.unc.edu
 
 ### Data sources
 
-To collect data, we sent out public records requests to every local health department in North Carolina, requesting expenditure data. We heard back from more than 50 of them. Population data was retrieved from the U.S. Census Bureau and the North Carolina Office of State Budget and Management. Our collected data is available in a compiled Google Sheet.
+To collect data, we sent out public records requests to every local health department in North Carolina, requesting expenditure data. We heard back from more than 50 of them. Population data was retrieved from the U.S. Census Bureau and the North Carolina Office of State Budget and Management.
+
+health_department_combined_expenditures.csv
+  Combined expenditures from each department we received data from.
+  
+05-local-health-departments.csv
+  Data from the KHN story that inspired this project, including      full-time expenditures.
+
+LocalHealthDepartments.csv
+  More data from KHN story, which served as a jumping-off point.
 
 ## Technical
 
