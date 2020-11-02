@@ -1753,11 +1753,39 @@ summary {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI0luc3RhbGwgcGFja2FnZXNcbmxpYnJhcnkoZHBseXIpXG5saWJyYXJ5KHRpZHl2ZXJzZSlcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI0luc3RhbGwgcGFja2FnZXNcbmxpYnJhcnkoZHBseXIpXG5gYGAifQ== -->
 <pre class="r"><code>#Install packages
-library(dplyr)
-library(tidyverse)</code></pre>
+library(dplyr)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYZHBseXLigJlcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOnN0YXRz4oCZOlxuXG4gICAgZmlsdGVyLCBsYWdcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOmJhc2XigJk6XG5cbiAgICBpbnRlcnNlY3QsIHNldGRpZmYsIHNldGVxdWFsLCB1bmlvblxuIn0= -->
+<pre><code>
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5gYGAifQ== -->
+<pre class="r"><code>library(tidyverse)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUmVnaXN0ZXJlZCBTMyBtZXRob2RzIG92ZXJ3cml0dGVuIGJ5ICdkYnBseXInOlxuICBtZXRob2QgICAgICAgICBmcm9tXG4gIHByaW50LnRibF9sYXp5ICAgICBcbiAgcHJpbnQudGJsX3NxbCAgICAgIFxu4pSA4pSAIEF0dGFjaGluZyBwYWNrYWdlcyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlIDEuMy4wIOKUgOKUgFxu4pyTIGdncGxvdDIgMy4zLjIgICAgIOKckyBwdXJyciAgIDAuMy40XG7inJMgdGliYmxlICAzLjAuMyAgICAg4pyTIHN0cmluZ3IgMS40LjBcbuKckyB0aWR5ciAgIDEuMS4xICAgICDinJMgZm9yY2F0cyAwLjUuMFxu4pyTIHJlYWRyICAgMS4zLjEgICAgIFxu4pSA4pSAIENvbmZsaWN0cyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlX2NvbmZsaWN0cygpIOKUgOKUgFxueCBkcGx5cjo6ZmlsdGVyKCkgbWFza3Mgc3RhdHM6OmZpbHRlcigpXG54IGRwbHlyOjpsYWcoKSAgICBtYXNrcyBzdGF0czo6bGFnKClcbiJ9 -->
+<pre><code>Registered S3 methods overwritten by &#39;dbplyr&#39;:
+  method         from
+  print.tbl_lazy     
+  print.tbl_sql      
+── Attaching packages ──────────────── tidyverse 1.3.0 ──
+✓ ggplot2 3.3.2     ✓ purrr   0.3.4
+✓ tibble  3.0.3     ✓ stringr 1.4.0
+✓ tidyr   1.1.1     ✓ forcats 0.5.0
+✓ readr   1.3.1     
+── Conflicts ─────────────────── tidyverse_conflicts() ──
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>#Importing compiled expenditure data from Google Sheets</p>
@@ -1858,7 +1886,7 @@ CompiledLHDExpenditures &lt;- gsheet2tbl(&quot;https://docs.google.com/spreadshe
   HighestCapita=max(per_capita_spending, na.rm=TRUE)
   )</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6NH0sInJkZiI6Ikg0c0lBQUFBQUFBQUF3dHlpVERtaXVCaVlHQmdabUJoWUdKZ1pnVXlHVmhEUTl4MExSZ1lXSmlBSEVhZ0JDZUlyZ0FxRWdZeVdJQ1lEeVRnWUpyeDlWQi9qQ2FjNzIrdytEcVhiU0djSDd4bGF2L0VWN3ZoL09JRGdhOWI1WGFnR2N5YWw1aWJXZ3hrQ0lBTmh3ankrT1NYcHhhWE9DY1daSllrUXNYWWZGTlRNaFB6b0R3VzMxUTRtOWNqTXowRG9SelZmTTZpL0hJOW1CMjhRTXpVQUNUK0F3RzZRNUp6RW90aERvRUpjcVVrbGlUcXBSVUI5UU41LzlDMHNPY1hsR1RtNXdFMU1ZR0NoaFZOTTJNUm1nQi9hUjdJSlNtNnlSbWxlZG02aGlBTHdOSVF3QXRsTXlLeFdTQldNdjJIR3NVS0M0M1V2UFRNdkZTWTIzTVNrMUp6b0J3K29JL0JIdFlyS01yTUs0SDVCQ2hhckZlU1g1SUlVOGVWbko4REV3SDdqZUVmQUVSYTQ1d1JBZ0FBIn0= -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6NH0sInJkZiI6Ikg0c0lBQUFBQUFBQUF3dHlpVERtaXVCaVlHQmdabUJoWUdKZ1pnVXlHVmhEUTl4MExSZ1lXSmlBSEVhZ0JDZUlyZ0FxRWdZeVdJQ1lEeVRnWUpyeDlWQi9qQ2FjNzIrdytEcVhiU0djSDd4bGF2L0VWN3ZoL09JRGdhOWI1WGFnR2N5YWw1aWJXZ3hrQ0lBTmh3ankrT1NYcHhhWE9DY1daSllrUXNYWWZGTlRNaFB6b0R3VzMxUTRtOWNqTXowRG9SelZmTTZpL0hJOW1CMjhRTXpVQUNUK0F3RzZRNUp6RW90aERvRUpjcVVrbGlUcXBSVUI5UU41LzlDMHNPY1hsR1RtNXdFMU1ZR0NoaFZOTTJNUm1nQi9hUjdJSlNtNnlSbWxlZG02NWlBTHdOSVF3QXRsTXlLeFdTQldNdjJIR3NVS0M0M1V2UFRNdkZTWTIzTVNrMUp6b0J3K29JL0JIdFlyS01yTUs0SDVCQ2hhckZlU1g1SUlVOGVWbko4REV3SDdqZUVmQU1tUVZnd1JBZ0FBIn0= -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["LowestCapita"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Median"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Mean"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["HighestCapita"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"21.41","2":"62.38","3":"78.82163","4":"316.02"}],"options":{"columns":{"min":{},"max":[10],"total":[4]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
@@ -1910,7 +1938,7 @@ CompiledLHDExpenditures &lt;- gsheet2tbl(&quot;https://docs.google.com/spreadshe
 <!-- rnb-output-begin eyJkYXRhIjoiYHN1bW1hcmlzZSgpYCB1bmdyb3VwaW5nIG91dHB1dCAob3ZlcnJpZGUgd2l0aCBgLmdyb3Vwc2AgYXJndW1lbnQpXG4ifQ== -->
 <pre><code>`summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MjMsIm5jb2wiOjV9LCJyZGYiOiJINHNJQUFBQUFBQUFBMldVQzBoVFVSakhyOHV0dkpDSnpheEllMk5oRy9tQUZsVHV5MHF6ck5TN05XUHB2WnQzYWMyN09UZGZDVDNOa01nZWtHVXZRaU5SbWhHbE00cWlzS2lNSk1KRjlFQWo3U0VHaFdsRTJqbDM1NGJOd1ovZjkzMzNmT2Q4NTMrNVMxOWppS01OTkVWUkU2aEFTa1pOa0tPUWt1dVlkU29OUlFYS1VCS0FIZ1JobHFCRlUvRlRwR0NrY08xRkRWNU5hUyt1SU5RU3JpRk1KdHhJdUlXUUlUUVFHZ2xad2h6Q1hFSXJvWjNRU1ZoQ1dFNjRsL0FnNFdIQ0k0VEhLUElUNTRlMVp6L2hCQmpMMGJmM3E0M0FYTTZmem5ZZUF1YkpyQlZEVlVXZysvMUNhOUMwZ3Y1cGpTcmtkQlZrY2dYRnc2RjdJUE9vK2RuUThXZ3dWalc2bytLellYdGp1WW1KRFlHc3lNcVlpQ1lubUZJTWRubnJYREJWY092N25yNEQweXJLVnJjb0NiajZnK0hMVDZRQnUvQ25OalJlRDlrVnlkOHp2NFVCeXlTdnRxVitBUzR4UFBydWgvM0F4Yms2TmQ0bTRMeHBxbU1QaHNEME9yZnpJd3RnOHZZcmVtT0d4ODIvcmk5NnExdFpCdXNYSm9qNXhyQU5JcmVFWjJNSElNMnlERHNER1RVZEtudWRGekplUGQ1c1hQUVQwck4xNHJxTTFuWlc5RUUySUs3VFhSWk5BdDMyRy9pTmdqNUJJZGFabnAxaXJydGY3Zk90dW92dVRuS0RUdkZzamxodlo3T1VaVDBvbitmcnF3d1IrL1Q5Zzc3K1gwa0h2UFRLY2ZPZitzRzJsWFVud3pselVVQkZwQWZPOXh5dXFmUFNjT2xON2Nza2R4alVOK3lqVUI4MG5PTDdOV2xmb1NrcWhjWjU4N0pHTis2NzF2eHhhTE54TVZ6ZlZzc05LSGVENTJSdlY2VmJDVzNGZlBzRlR6cTBYVmw2N28rOUhqelBNKzgxREQ2QWxwdW1sQmxuYXFIbFNvZXdGUG5SV2hyMUhnMEluczZDVFIvUXViZjBIUmE4LzIzYlloYjMzM0VsUHJSWUxIQzFnSDN5eUsxRUkwL0c4K09QQWlrVWFSckpaeUpGSU0xR21vYzBIMmtCVWhSU05OSVNKTlVZcWNjb0Jpa09LUlpwaHQvSEp4ZTRmTDRRQlNFNEljWEFVcDV6U0hFcXp3a2tWcVR5T1huL3Nra1pybnpHNXVTczBsYSs1UC85Z3h5MllyVjBCcjZjREwrdzBkSFJ6LzZEbUsxY29UU0lWS1J6T0NlbnRqaFFQOHBHL0ZvbTJ1ek9QSnVBbW1UUzM4Zlk1Z0NIWDJHS1M4Q1Q1S2pNdVM1aGx3cmJRUk9yS1RKZEFMRmJpdVcrSTJXamZnNHBlR0ZIbnNCTHMxczVFeS9aRUl4dUxGNVliWGZrQ1U3cEpxaGFxSGFPc1lzMjI2eFNSYndiTmZJWFM3SUNNalVGQUFBPSJ9 -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MjMsIm5jb2wiOjV9LCJyZGYiOiJINHNJQUFBQUFBQUFBMldVQzBoVFVSakhyOHV0SEJURFpsYWt2Ykd3RFIrQkN5cjM5ZktSbG8rN05XUHF2WnQzYWMyN09UY3RDM3BwaWtUMkFDMnpJalFTcFJWUk9hTW9Db3Q4a0VTNGlCNW9wRDNFb0NpTFNEdm43dHl3T2ZqeisvN2ZQZDg1My9rdWR4a2JETEZ5ZzV5aXFDbFVJQ1docGtoUlNFbDE5Q2FWaHFJQ0pjZ0VvQWRCbUx2Um9wbjRLZElNcEZEdEJRMWVUV2t2ckNiVUVtNGdUQ1JNSVV3anBBa05oRVpDaGpDUE1KL1FTbWduZEJMdUp0eEhlSUN3bkxDSzhDamhjWXI4aFA1aDQ5a1AyQUJ0T2ZiNlFZMFI2RXVGczVuZUkwQjN6bHM5V2wwQ3V0L1B0QVpORytpNzZsU0swOVdReFJhVi9nemVEMW5IekQyakp5TEJXTjNpamxpWkM5a3QrMHgwakFKeXdpdWp3MXFkWUVvMjJLVnRDOEZVd1NZTmRiMEIwMXJLMXJnc0FkaW04dEJWSjlPQldmcERHN3hTRDdrVmlWK3p2b1FBUXlldXM2VitBblo5YU9TOWQ0ZUFqWFgxYXJ5dHdIclRWY2Nmam9McFpYN3Zld2JBNUIyV0RVYi9uTlQvcHFISWJXNWxHU1F0alJkOFNzaG1nV21odVhnQ2tHNkp3NU9CekxwdWxiM1JDNWt2bm13MUx2c0JHYms2WVYxbVd3Y2p6RUV5SXF6VFhSS0dCTHJzRy9pTmdqNWVKdVRwZ1oyQzF6Mm84YzJ0cGsvZW4rQUduYXhuZ1pEdllIS1VaUVBJTC9MVlZTcUVPdjN3ZDEvOXI0VERYdm1hU2YzWGZtUGF5L29Ub2NGY0VsQVI3b0Z6QTFWMWpWNDVYSHhWL3p6QkhRSk56UWNwVkFmTnRkeXdKdjB6dEVZa3k3Ry9HdGZpeG5YWHJyNGYzV3BjRHRlMzE3TWp5cjNnT1RYWVYrbFdRbnNwMTNIZWt3SHRsNk1hL3RpYndQTTA2Mzd6OTRkdzY2WXBlYzZaZXJoMXVadVBRdk5vMnhQeEZqVUludDZpTGUvUXViZjEzUmE4L3gzYmNnYlgzM1d0ZjJTeFdPQktFZFA1MksxRUxVL0gvZU9QQWlrWWFSYnhjNUhDa09ZakxVSmFqTFFFS1FJcEVta0ZrbXFDMUJNVWpSU0xGSU0weCsvamsvSnNJVmVNQWdVMkpCbTRoMk1kWXB6S3NUeUpaYWxjWHNFL055M1RWVWpibkt4VjNNcG4vdDgveUdFclZZdG40TXRKOEFzYkh4Ly82TitJMmNvV2k0MklTWGtlNjJUVkZnZXFSMjdNcjJTcXplNHNzUEdvU0NMK2ZVd3NEbkQ0SlJRdUhuZVNwekxudS9oZHF1Z29mQUtaTlVYYUN5RHpGbU9wNzB6SnVOK0laQnkvbzREbnhPYXRySWtUNXpBRFhWbTRzZHJ1S09DZDRsVlF0bGp0bkRBdnVkbG1GVFBDNWFpeHYyUEtLekUyQlFBQSJ9 -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Mean"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Median"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["SumTotal"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Total"],"name":[5],"type":["int"],"align":["right"]}],"data":[{"1":"1998","2":"2832336","3":"2832336","4":"2832336","5":"1"},{"1":"1999","2":"5347899","3":"3001943","4":"96262190","5":"18"},{"1":"2000","2":"5412276","3":"3295870","4":"119070080","5":"22"},{"1":"2001","2":"5449841","3":"3680918","4":"125346342","5":"23"},{"1":"2002","2":"5762889","3":"4218238","4":"149835114","5":"26"},{"1":"2003","2":"5975645","3":"4561118","4":"173293696","5":"29"},{"1":"2004","2":"6653382","3":"5136177","4":"206254838","5":"31"},{"1":"2005","2":"6699407","3":"5202725","4":"227779845","5":"34"},{"1":"2006","2":"7482027","3":"4816212","4":"261870935","5":"35"},{"1":"2007","2":"7776754","3":"5168918","4":"279963127","5":"36"},{"1":"2008","2":"7895581","3":"5245882","4":"307927650","5":"39"},{"1":"2009","2":"9589444","3":"5673984","4":"412346071","5":"43"},{"1":"2010","2":"9710346","3":"5600977","4":"427255238","5":"44"},{"1":"2011","2":"9564163","3":"5831706","4":"430387357","5":"45"},{"1":"2012","2":"9249825","3":"5474729","4":"416242113","5":"45"},{"1":"2013","2":"8466354","3":"5704252","4":"380985930","5":"45"},{"1":"2014","2":"8262948","3":"5390168","4":"380095598","5":"46"},{"1":"2015","2":"8561218","3":"5511988","4":"393816032","5":"46"},{"1":"2016","2":"9050297","3":"5707137","4":"416313679","5":"46"},{"1":"2017","2":"9018287","3":"5511305","4":"441896039","5":"49"},{"1":"2018","2":"9353865","3":"5905474","4":"477047137","5":"51"},{"1":"2019","2":"9884487","3":"6009814","4":"494224326","5":"50"},{"1":"2020","2":"9879392","3":"5498142","4":"246984805","5":"25"}],"options":{"columns":{"min":{},"max":[10],"total":[5]},"rows":{"min":[10],"max":[10],"total":[23]},"pages":{}}}
@@ -2303,10 +2331,13 @@ count(trend)</code></pre>
     MeanCapita=mean(per_capita_spending)
   )</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gKGZ1bmN0aW9uIChjbGFzc2VzLCBmZGVmLCBtdGFibGUpICA6IFxuICB1bmFibGUgdG8gZmluZCBhbiBpbmhlcml0ZWQgbWV0aG9kIGZvciBmdW5jdGlvbiDigJhzZWxlY3TigJkgZm9yIHNpZ25hdHVyZSDigJhcInNwZWNfdGJsX2RmXCLigJlcbiJ9 -->
-<pre><code>Error in (function (classes, fdef, mtable)  : 
-  unable to find an inherited method for function ‘select’ for signature ‘&quot;spec_tbl_df&quot;’</code></pre>
-<!-- rnb-output-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MjAsIm5jb2wiOjd9LCJyZGYiOiJINHNJQUFBQUFBQUFBd3R5aVREbWl1QmlZR0JnWm1CaFlHSmdaZ1V5R1ZoRFE5eDBMUmdZV0ppQUhFYWdCQ2VJcmdBcUVnWXkySUdZRDRoRkhPWTdnRlF6T014M2dkSWVVTm9IU2dkQTZSQW9IUUdsWTZCMEFwUk9nZElaVURvSFNoZEE2UklvWFFHbGE2QjBBNVJ1Z2RJZFVMcUhBUXJBN25UMFgvRVlwTkl4SUpycEFKZytxUVhobnpnTnBnTi9ud1NMQnoxNTZRQ20xVnJBL0dEUkZyQjhTTnM1TUQ5a2FoK1lIK3BZemdEbTN3b0Jxdzk1bEFXbVF3LzFnOFhESjN1QytlR1NtOEYwMkpIbEVMNldJSmlPVkRPQjBGbkN5TzUwY092NGVxZy9SdFBCN2NMaTYxeTJoUTV1TjJjQ3dTd0h0NjFBWVkxdkRoNHlHaUFGRHA0bVZRL2QxNGs0dUVQVmVUUURxWUlsRHA0L0FsKzN5dTF3OER3Qk1jZWJQd2Frd2NGck9sQjY4WFVITDZqNTNrL2xkZ0JWT3ZqeGlZQU1jdkFOZ1pqbnN4NmkzdGNMcEp6THdSK3F6cDh0RFFUZzRSbXkvV01DMk4rRGswYTRzL0RiWW1OajQ4Rkt3K1BkeXdFVWp3V0RsVWE0TSsvbmJhVUxUd2NyalZaZ3NlWWw1cVlXQXhrQ0RLQkNDeUxJVXBtYVdBUmw4NlJXRktUbXBXU1dsQllCMVVIRWhBdFNpK0tURXdzeVN4TGppOEd5ZWVsUUtUYmYxSlRNeER5WVFiNnBjRFlQUk1ZWnJBMHF4Z1dTaDRxZ3VvdXpLTDljRCtZMlhpQm1BaFVxLy8vL2Y0UHVnZVNjeEdLWUIyQ0NYQ21KSllsNmFVVkEvVURlUHpRdDdQa0ZKWm41ZVVCTlRLQ2loUlZOTTJNUm1vQkFhUjdJSlNtNnlSbWxlZG02eGtZZ0c4RHlFTUFMWllzZ3Nka2hkakw5aDVyRkNndWYxTHowekx4VW1PTnpFcE5TYzZBY1BxQ1h3VDdXS3lqS3pDdUJlUVVvV3F4WGtsK1NDRlBIbFp5ZkF4TUJlNDdoSHdDdGlCRUhvZ1lBQUE9PSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["expenditures"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["per_capita_spending"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Median"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Mean"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["MedianCapita"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["MeanCapita"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"2000","2":"4149703","3":"45.07","4":"5431238","5":"5359579","6":"52.505","7":"52.867"},{"1":"2001","2":"4287499","3":"45.63","4":"5431238","5":"5359579","6":"52.505","7":"52.867"},{"1":"2002","2":"4400298","3":"45.70","4":"5431238","5":"5359579","6":"52.505","7":"52.867"},{"1":"2003","2":"4399918","3":"45.42","4":"5431238","5":"5359579","6":"52.505","7":"52.867"},{"1":"2004","2":"4714279","3":"48.22","4":"5431238","5":"5359579","6":"52.505","7":"52.867"},{"1":"2005","2":"4952997","3":"50.41","4":"5431238","5":"5359579","6":"52.505","7":"52.867"},{"1":"2006","2":"4758035","3":"47.63","4":"5431238","5":"5359579","6":"52.505","7":"52.867"},{"1":"2007","2":"5002770","3":"49.03","4":"5431238","5":"5359579","6":"52.505","7":"52.867"},{"1":"2008","2":"5380923","3":"51.94","4":"5431238","5":"5359579","6":"52.505","7":"52.867"},{"1":"2009","2":"5396026","3":"51.57","4":"5431238","5":"5359579","6":"52.505","7":"52.867"},{"1":"2010","2":"5572060","3":"54.12","4":"5431238","5":"5359579","6":"52.505","7":"52.867"},{"1":"2011","2":"5466449","3":"53.18","4":"5431238","5":"5359579","6":"52.505","7":"52.867"},{"1":"2012","2":"5474729","3":"53.07","4":"5431238","5":"5359579","6":"52.505","7":"52.867"},{"1":"2013","2":"5704252","3":"55.79","4":"5431238","5":"5359579","6":"52.505","7":"52.867"},{"1":"2014","2":"6180133","3":"60.11","4":"5431238","5":"5359579","6":"52.505","7":"52.867"},{"1":"2015","2":"6055629","3":"58.66","4":"5431238","5":"5359579","6":"52.505","7":"52.867"},{"1":"2016","2":"5968541","3":"57.37","4":"5431238","5":"5359579","6":"52.505","7":"52.867"},{"1":"2017","2":"6072389","3":"58.58","4":"5431238","5":"5359579","6":"52.505","7":"52.867"},{"1":"2018","2":"6592721","3":"63.79","4":"5431238","5":"5359579","6":"52.505","7":"52.867"},{"1":"2019","2":"6662220","3":"62.05","4":"5431238","5":"5359579","6":"52.505","7":"52.867"}],"options":{"columns":{"min":{},"max":[10],"total":[7]},"rows":{"min":[10],"max":[10],"total":[20]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>*4 mutated columns are not done by year, they represent the value for the county over the years</p>
@@ -2325,10 +2356,13 @@ count(trend)</code></pre>
     MeanCapita=mean(per_capita_spending)
   )</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gKGZ1bmN0aW9uIChjbGFzc2VzLCBmZGVmLCBtdGFibGUpICA6IFxuICB1bmFibGUgdG8gZmluZCBhbiBpbmhlcml0ZWQgbWV0aG9kIGZvciBmdW5jdGlvbiDigJhzZWxlY3TigJkgZm9yIHNpZ25hdHVyZSDigJhcInNwZWNfdGJsX2RmXCLigJlcbiJ9 -->
-<pre><code>Error in (function (classes, fdef, mtable)  : 
-  unable to find an inherited method for function ‘select’ for signature ‘&quot;spec_tbl_df&quot;’</code></pre>
-<!-- rnb-output-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MTUsIm5jb2wiOjd9LCJyZGYiOiJINHNJQUFBQUFBQUFBd3R5aVREbWl1QmlZR0JnWm1CaFlHSmdaZ1V5R1ZoRFE5eDBMUmdZV0ppQUhFYWdCQ2VJcmdBcUVnWXkySUdZRDRqNUhlYUhnRlF6T015UGdOSXhVRG9CU3FkQTZRd29uUU9sQzZCMENaU3VnTkkxVUxvQlNyZEE2UTRvM2NNQUJXRDdIUTJVZG9NNGpqcGZuNEZwemZ0OFlGby9Jd2xNRzU1SkJkUEdlWC9BdE1FL1NZajhDUk9Jdm04NkVQcDNGWmpXZGxBQjA3cjd0U0RpWms0UThkb1RZRnJ2SmdleS9RNVJNUnBmRC9YSE9JVG5pVlE5ZEYvbkVISWZMT0FRMmQwcXR5UHdqVVBNS2R1Q3hkZTVIT0toNnFJK0c0T0FReVJUUDFEa3NFUFl5NWxBTU1zaFhHOUg0T3RXZVlmUUJ4Qi9SZ2hCNWErQWpCVnhDQk5MQXdHSGlCTWdZelRoL29lNWs4NDAzSDY5ZGF0Y2dJRGVORHo4WWVGRVp4cGgvK3JkUUxDSDNqUmF4bVROUzh4TkxRWXlCQmhBbVJNaXlGS1ptbGdFWmZPa1ZoU2s1cVZrbHBRV0FkVkJ4SVFMVW92aWt4TUxNa3NTNDR2QnNubnBVQ2syMzlTVXpNUThtRUcrcVhBMkQwVEdHYXdOS3NZRmtvZUtvTHFMc3lpL1hBL21ObDRnWmdKbDYvLy8vMzlFOTBCeVRtSXh6QU13UWE2VXhKSkV2YlFpb0g0Zzd4K2FGdmI4Z3BMTS9EeWdKaVpRa2NTS3BwbXhDRTFBb0RRUDVKSVUzZVNNMHJ4c1hXTmprQTFnZVFqZ2hiTDVrZGpzRUR1Wi9rUE5Zb1dGVDJwZWVtWmVLc3p4T1lsSnFUbFFEaC9ReTJBZjZ4VVVaZWFWd0x3Q0ZDM1dLOGt2U1lTcDQwck96NEdKZ0QzSDhBOEFpS0NYcVlvRkFBQT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["expenditures"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["per_capita_spending"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Median"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Mean"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["MedianCapita"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["MeanCapita"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"2005","2":"1057467","3":"105.44","4":"974741","5":"1005397","6":"96.29","7":"98.68333"},{"1":"2006","2":"948979","3":"93.72","4":"974741","5":"1005397","6":"96.29","7":"98.68333"},{"1":"2007","2":"847751","3":"83.49","4":"974741","5":"1005397","6":"96.29","7":"98.68333"},{"1":"2008","2":"1029169","3":"102.18","4":"974741","5":"1005397","6":"96.29","7":"98.68333"},{"1":"2009","2":"1166437","3":"115.16","4":"974741","5":"1005397","6":"96.29","7":"98.68333"},{"1":"2010","2":"1273596","3":"125.44","4":"974741","5":"1005397","6":"96.29","7":"98.68333"},{"1":"2011","2":"1113625","3":"107.80","4":"974741","5":"1005397","6":"96.29","7":"98.68333"},{"1":"2012","2":"1041434","3":"100.04","4":"974741","5":"1005397","6":"96.29","7":"98.68333"},{"1":"2013","2":"949014","3":"91.65","4":"974741","5":"1005397","6":"96.29","7":"98.68333"},{"1":"2014","2":"949693","3":"92.73","4":"974741","5":"1005397","6":"96.29","7":"98.68333"},{"1":"2015","2":"892946","3":"87.50","4":"974741","5":"1005397","6":"96.29","7":"98.68333"},{"1":"2016","2":"974741","3":"96.29","4":"974741","5":"1005397","6":"96.29","7":"98.68333"},{"1":"2017","2":"924449","3":"91.32","4":"974741","5":"1005397","6":"96.29","7":"98.68333"},{"1":"2018","2":"900836","3":"88.35","4":"974741","5":"1005397","6":"96.29","7":"98.68333"},{"1":"2019","2":"1010820","3":"99.14","4":"974741","5":"1005397","6":"96.29","7":"98.68333"}],"options":{"columns":{"min":{},"max":[10],"total":[7]},"rows":{"min":[10],"max":[10],"total":[15]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->

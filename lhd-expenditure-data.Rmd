@@ -1,7 +1,9 @@
 ---
-title: "Analysis and Charts of LHD expenditure data"
+title: "Analysis of Local Health Department Expenditure and Per Capita Spending Data"
 author: "Rachel Crumpler"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 
 ```{r}
@@ -338,7 +340,18 @@ CompiledLHDExpenditures %>%
   )
 ```
 
-
+#Closer look at Mecklenburg County
+```{r}
+CompiledLHDExpenditures %>%
+  filter(county_name == "Mecklenburg") %>%
+  select(year, expenditures, per_capita_spending) %>%
+  mutate(
+    Median=median(expenditures),
+    Mean=mean(expenditures),
+    MedianCapita=median(per_capita_spending),
+    MeanCapita=mean(per_capita_spending)
+  )
+```
 
 
 
