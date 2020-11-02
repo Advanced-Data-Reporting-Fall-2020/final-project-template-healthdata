@@ -56,7 +56,7 @@ ggplotly(
 
 
 ```{r}
-ggsave("Jones-line-chart.html")
+ggsave("Jones-line-chart.png")
 ```
 
 
@@ -69,13 +69,6 @@ Jones_graph <- plot_ly(Jones, x = ~year, y = ~expenditures, type = 'scatter', mo
 layout(Jones_graph , title= "Trend of Jones County Health Department Spending" , xaxis = list(title= "Year"), yaxis = list(title= "Expenditures ($)"), caption="Data Source: Jones County Annual Expenditure Records")
 
 ```
-
-
-
-```{r}
-ggsave("Jones-graph2.png")
-```
-
 
 #Interactive Jones County area chart
 ```{r}
