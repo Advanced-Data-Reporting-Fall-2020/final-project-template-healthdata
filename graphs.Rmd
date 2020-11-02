@@ -510,3 +510,131 @@ Jones_graph_fte_pc <- Jones_graph_fte_pc %>%
 
 Jones_graph_fte_pc
 ```
+
+---------------------FILLED LINE--------------------------
+
+```{r}
+oh_nine <- CompiledLHDExpenditures %>%
+  filter(year == "2009")
+
+ten <- CompiledLHDExpenditures %>%
+  filter(year == "2010")
+
+eleven <- CompiledLHDExpenditures %>%
+  filter(year == "2011")
+
+twelve <- CompiledLHDExpenditures %>%
+  filter(year == "2012")
+
+thirteen <- CompiledLHDExpenditures %>%
+  filter(year == "2013")
+
+fourteen <- CompiledLHDExpenditures %>%
+  filter(year == "2014")
+
+fifteen <-CompiledLHDExpenditures %>%
+  filter(year == "2015")
+
+sixteen <- CompiledLHDExpenditures %>%
+  filter(year == "2016")
+
+seventeen <- CompiledLHDExpenditures %>%
+  filter(year == "2017")
+
+eighteen <- CompiledLHDExpenditures %>%
+  filter(year == "2018")
+
+nineteen <- CompiledLHDExpenditures %>%
+  filter(year == "2019")
+```
+
+```{r}
+min(oh_nine$expenditures)
+
+min(ten$expenditures)
+
+min(eleven$expenditures)
+
+min(twelve$expenditures)
+
+min(thirteen$expenditures)
+
+min(fourteen$expenditures)
+
+min(fifteen$expenditures)
+
+min(sixteen$expenditures)
+
+min(seventeen$expenditures)
+
+min(eighteen$expenditures)
+
+min(nineteen$expenditures)
+```
+```{r}
+
+max(oh_nine$expenditures)
+
+max(ten$expenditures)
+
+max(eleven$expenditures)
+
+max(twelve$expenditures)
+
+max(thirteen$expenditures)
+
+max(fourteen$expenditures)
+
+max(fifteen$expenditures)
+
+max(sixteen$expenditures)
+
+max(seventeen$expenditures)
+
+max(eighteen$expenditures)
+
+max(nineteen$expenditures)
+```
+
+
+```{r}
+year <- c('2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019')
+
+high <- c(76972076, 79391383, 79490552, 74369935, 39852467, 38099704, 49579745, 64778296, 69546706, 73079044, 76803875)
+low <- c(1166437, 1273596, 1113625, 1041434,  949014, 949693, 892946,  974741, 924449, 900836, 1010820)
+data <- data.frame(year, high, low)
+data$average <- rowMeans(data[,c("high", "low")])
+```
+
+```{r}
+linechart <- plot_ly(data, x = year, y = high, type = 'scatter', mode = 'lines',
+        line = list(color = 'transparent'),
+        showlegend = FALSE, name = 'High')
+linechart <- linechart %>% add_trace(y = low, type = 'scatter', mode = 'lines',
+            fill = 'tonexty', fillcolor='rgba(0,100,80,0.2)', line = list(color = 'transparent'),
+            showlegend = FALSE, name = 'Low') 
+linechart <- linechart %>% add_trace(y = data$average, type = 'scatter', mode = 'lines',
+            line = list(color='rgb(0,100,80)'),
+            name = 'Average')
+linechart <- linechart %>% layout(title = "Average, High and Low Expenditures in NC",
+         paper_bgcolor='rgb(255,255,255)', plot_bgcolor='rgb(229,229,229)',
+         xaxis = list(title = "Years",
+                      gridcolor = 'rgb(255,255,255)',
+                      showgrid = TRUE,
+                      showline = FALSE,
+                      showticklabels = TRUE,
+                      tickcolor = 'rgb(127,127,127)',
+                      ticks = 'outside',
+                      zeroline = FALSE),
+         yaxis = list(title = "Expenditures",
+                      gridcolor = 'rgb(255,255,255)',
+                      showgrid = TRUE,
+                      showline = FALSE,
+                      showticklabels = TRUE,
+                      tickcolor = 'rgb(127,127,127)',
+                      ticks = 'outside',
+                      zeroline = FALSE))
+linechart
+```
+```
+
