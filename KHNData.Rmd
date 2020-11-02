@@ -71,7 +71,7 @@ single_counties_summary_nc %>%
 #Yancey
 ```
 
-Create a new df that just has the year, lhd name, and fte per capita
+Create a new df that just has the year, lhd name, and fte per capita (and population)
 ```{r}
 fte_per_capita <- single_counties_summary_nc %>%
   select(`year`, `lhd_name`, `fte_per_100000`, `fte`, `population`)
@@ -88,30 +88,6 @@ fte_per_capita %>%
   select(lhd_name, Avg_fte_per_100000) %>%
   arrange(desc(Avg_fte_per_100000))
 
-```
-Find the avg fte from 2009-2017
-```{r}
-years <- c("2009", "2011", "2013", "2015", "2017")
-nine_seventeen_single_counties_summary_nc <- single_counties_summary_nc %>% filter(year == years)
-
-nc_avg_fte <- nine_seventeen_single_counties_summary_nc %>%
-  filter(year == c("2009", "2011", "2013", "2015", "2017")) %>%
-  group_by(lhd_name) %>%
-  mutate(Avg_fte = mean(fte)) %>%
-  arrange(desc(Avg_fte))
-```
-
-From 2003-2017, what is the % change in fte per capita for each single lhd? I chose 2003 because I don't think many lhds have data from 1999
-```{r}
-fte_per_capita %>%
-  filter(year %in% c('2003', '2017')) %>%
-  # USE THE id_cols argument and set the value to "evertyhing but the set of columns that contains fte and population". This allows each row to be unique to the lhd_name rather than lhd_name + fte + population.
-  pivot_wider(id_cols = -c(fte,population), names_from = year, values_from = fte_per_100000) %>%
-  # DONT NEED NEXT LINE - RT
- # group_by(lhd_name) %>%
-  mutate(pct_change = 100 * ((`2017` - `2003`)) / `2003`) %>%
-  arrange(desc(pct_change))
- 
 ```
 
 % change in fte from 2003-2017 
@@ -142,8 +118,6 @@ Jones County
 jones <- single_counties_summary_nc %>%
   filter(lhd_name == "Jones County Health Department") %>%
   select(`year`, `population`, `fte`, `fte_per_100000`)
-
-#What happened in 2005?
 ```
 
 Scatterplot of population and fte per capita over time, highlighting where fte per capita > 500 
@@ -158,17 +132,6 @@ ggplot(fte_per_capita, aes(x=population, y=fte_per_100000)) +
 ```{r}
 ggsave("fte_pc_and_population_graph.png")
 ```
-
-
-
-line chart #1: fte change over time (X: year, y: fte)
-```{r}
-ggplot(nc_avg_fte, aes(x=year, y=fte)) + #VECTOR IN PLACE OF FTE
-  geom_line() +
-  theme(axis.text.x = element_text(angle = 45, hjust=1)) +
-  labs(title = "Average FTE Change Over Time", y ="Number of Employees", x = "Population")
-```
-
 line chart #2: X: year, y: fte per capita change over time
 ```{r}
 ggplot(fte_per_capita, aes(x=population, y=fte_per_100000)) + 
@@ -192,15 +155,14 @@ Jones_graph_fte_pc <- Jones_graph_fte_pc %>%
 Jones_graph_fte_pc
 ```
 
-*From 2011 to reflect policy shift after Republican win
-
 Counties in our sample size
 ```{r}
 our_counties <- c("Alexander County Health Department", "Anson County Health Department", "Public Health Authority Cabarrus County", "Carteret County Health Department", "Catawba County Health Department", "Cleveland County Health Department", "Dare County Health Department", "Swain County Health Department", "Yadkin County Health Department", "Wayne County Health Department", "Granville-Vance District Health Department", "Greene County Health Department", "Montgomery County Health Department", "Pender County Health Department", "Person County Health Department", "Rowan County Health Department", "Harnett County Health Department", "Madison County Health Department", "Guilford County Department of Public Health", "Henderson County Health Department", "Iredell County Health Department", "Johnston County Health Department", "Lincoln County Health Department", "Pitt County Public Health Center", "Halifax County Department of Health", "Jones County Health Department", "Lenoir County Health Department", "Gaston County Health Department", "Hyde County Health Department", "Mecklenburg County Health Department",  "Rockingham County Health Department", "Chatham County Public Health Department", "Onslow County Health Department", "Franklin County Health Department", "Forsyth County Department of Public Health", "Orange County Health Department", "Brunswick County Health Department", "Richmond County Health Department", "Craven County Health Department", "Jackson County Department of Public Health", "Transylvania County Health Department", "Toe River District", "Union County Health Department", "Lee County Health Department", "Burke County Health Department", "Moore County Health Department", "Stanly County Health Department", "Surry County Health and Nutrition Center", "Wilkes County Health Department", "Martin Tyrell Washington District", "Wake County Human Services")
 ```
 
 
-*EDIT* 2009-2017 fte per capita change over time for our sample size
+*Ignore for now
+2009-2017 fte per capita change over time for our sample size
 ```{r}
 nine_seventeen_fte_pc_change <- nc %>%
   filter(lhd_name %in% our_counties) %>%
@@ -236,7 +198,7 @@ ggplot(nine_seventeen_fte_change)+
 
 #Need help fixing those labels
 ```
-average change in fte
+average % change in fte
 ```{r}
 
 fte_per_capita2 %>%
