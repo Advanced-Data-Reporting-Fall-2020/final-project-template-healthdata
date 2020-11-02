@@ -56,7 +56,7 @@ ggplotly(
 
 
 ```{r}
-ggsave("Jones-line-chart.png")
+ggsave("Jones-line-chart.html")
 ```
 
 

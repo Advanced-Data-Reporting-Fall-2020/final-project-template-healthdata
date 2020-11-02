@@ -325,7 +325,6 @@ CompiledLHDExpenditures %>%
 -Granville-Vance expenditures and per capita spending has gone up gradually over the years
 
 
-
 #Closer look at Jones County
 ```{r}
 CompiledLHDExpenditures %>%
