@@ -510,4 +510,15 @@ Jones_graph_fte_pc <- Jones_graph_fte_pc %>%
 
 Jones_graph_fte_pc
 ```
-
+Scatterplot of population and fte per capita over time, highlighting where fte per capita > 500 
+```{r}
+ggplot(fte_per_capita, aes(x=population, y=fte_per_100000)) + 
+  geom_point(size= 1) +
+   facet_wrap(~year, ncol=4) +
+  theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  gghighlight(fte_per_100000 > 500) +
+  labs(title = "FTE Per Capita and Population Over Time", x = "Population", y = "Employees Per Capita")
+```
+```{r}
+ggsave("fte_pc_and_population_graph.png")
+```
