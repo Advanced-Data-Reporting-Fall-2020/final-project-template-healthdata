@@ -25,11 +25,8 @@ To collect data, we sent out public records requests to every local health depar
 health_department_combined_expenditures.csv
   Combined expenditures from each department we received data from.
   
-05-local-health-departments.csv
-  Data from the KHN story that inspired this project, including      full-time expenditures.
-
 LocalHealthDepartments.csv
-  More data from KHN story, which served as a jumping-off point.
+    Data from the KHN story that inspired this project, including      full-time expenditures.
 
 ## Technical
 
