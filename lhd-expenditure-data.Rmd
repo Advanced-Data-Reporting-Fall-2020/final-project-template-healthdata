@@ -224,7 +224,7 @@ CapitaPctChange %>%
   )
 ```
 
-Average Change
+#Average Change
 ```{r}
 CapitaPctChange %>%
   summarize(
@@ -232,7 +232,7 @@ CapitaPctChange %>%
 ```
 Should probably adjust the number for inflation: (inflation rate of 19.2% from 2009-2019) 
 
-Per capita spending on average decreased by $1.64
+Per capita spending on average decreased by $1.65
 
 #Adding trend column
 ```{r}
@@ -288,7 +288,7 @@ CapitaPctChange %>%
 ```
 
 
--------------------- SPECIFIC YEAR ANALYIS ------------------
+-------------------- SPECIFIC YEAR ANALYSIS ----------------
 #Looking only at 2019 data
 ```{r}
 Data2019 <- CompiledLHDExpenditures %>%
@@ -324,21 +324,6 @@ CompiledLHDExpenditures %>%
 
 -Granville-Vance expenditures and per capita spending has gone up gradually over the years
 
-
-#Closer look at Catawba
-```{r}
-CompiledLHDExpenditures %>%
-  filter(county_name == "Catawba") %>%
-  select(year, expenditures, per_capita_spending) %>%
-  mutate(
-    Median=median(expenditures),
-    Mean=mean(expenditures),
-    MedianCapita=median(per_capita_spending),
-    MeanCapita=mean(per_capita_spending)
-  )
-```
-Catawba County has seen their per capita spending decline since 2011. It has decreased about $20 over that period.
-2019 value of $53.84 lower than Median for 2019 of $69.
 
 #Closer look at Jones County
 ```{r}
