@@ -1,5 +1,5 @@
 ---
-title: "Maps show Health Department Trends"
+title: "Maps showing Health Department Trends"
 author: "Rachel Crumpler"
 date: "10/27/2020"
 output: html_document
@@ -21,11 +21,6 @@ nc_counties <- counties("NC")
 Loading our health department data
 ```{r}
 library(gsheet)
-AllHealthDepartments <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Tp6E7I3lguVumOMuFyoJJQ5naTroHmkeXqnXXqvq1cI/edit#gid=0")
-```
-
-```{r}
-library(gsheet)
 CompiledLHDExpenditures <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Zc10pam92Y1218F90eXn9ri7-a4GQI1vhzING33nNSI/edit#gid=0")
 ```
 
@@ -40,18 +35,18 @@ Joining NC counties shapefile with our health department data
 library(raster)
 
 # merge on common variable, here called 'key'
-county_map <- merge(nc_counties, AllHealthDepartments, by="county_name")
+county_map <- merge(nc_counties, CompiledLHDExpenditures, by="county_name")
 
 ```
 
 #Making a 2009 expenditure map
 ```{r}
-AllHealthDepartments2009 <- AllHealthDepartments %>%
+HealthDepartments2009 <- CompiledLHDExpenditures %>%
   filter(year== "2009")
 ```
 
 ```{r}
-county_map2009 <- merge(nc_counties, AllHealthDepartments2009, by="county_name")
+county_map2009 <- left_join(nc_counties, HealthDepartments2009, by="county_name")
 ```
 
 #2009 Expenditure Map
@@ -70,12 +65,12 @@ tm_shape(county_map2009) +
 
 #Making a 2019 expenditure map
 ```{r}
-AllHealthDepartments2019 <- AllHealthDepartments %>%
+HealthDepartments2019 <- CompiledLHDExpenditures %>%
   filter(year== "2019")
 ```
 
 ```{r}
-county_map2019 <- merge(nc_counties, AllHealthDepartments2019, by="county_name")
+county_map2019 <- left_join(nc_counties, HealthDepartments2019, by="county_name")
 ```
 
 ```{r}
@@ -117,7 +112,7 @@ ExpenditurePctChange <- CompiledLHDExpenditures %>%
 Merging shapefile and data
 ```{r}
 # merge on common variable, here called 'key'
-pct_map <- merge(nc_counties, ExpenditurePctChange, by="county_name")
+pct_map <- left_join(nc_counties, ExpenditurePctChange, by="county_name")
 ```
 
 Creating map showing percent change
@@ -144,7 +139,7 @@ CapitaPctChange <- CompiledLHDExpenditures %>%
 Merging shapefile and data
 ```{r}
 # merge on common variable, here called 'key'
-pct_capita_map <- merge(nc_counties, CapitaPctChange, by="county_name")
+pct_capita_map <- left_join(nc_counties, CapitaPctChange, by="county_name")
 ```
 
 Creating map showing per capita percent change
