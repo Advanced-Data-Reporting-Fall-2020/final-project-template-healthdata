@@ -1,0 +1,29 @@
+---
+title: "rt-for-khn"
+author: "Ryan Thornburg"
+date: "11/10/2020"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+
+```{r message= FALSE}
+state_public_health_agencies <- read_csv("https://raw.githubusercontent.com/khnews/2020-underfunded-under-threat-data/master/data/01-state-public-health-agencies.csv")
+```
+
+
+```{r}
+state_public_health_agencies %>% 
+  filter(year>=2010, year<=2018, !(state_code %in% c("MI","TX","MO","WY"))) %>%
+  group_by(year) %>%
+  summarize(total = sum(expenditures_infl_per_capita)) %>%
+  pivot_wider(names_from = year, values_from = total, names_prefix="year") %>%
+  mutate(pct_change = (year2018-year2010)/year2010)
+```
+  
