@@ -1,0 +1,70 @@
+---
+title: "Rosling-Balls"
+author: "Ryan Thornburg"
+date: "11/10/2020"
+output: html_document
+---
+
+```{r}
+CompiledLHDExpenditures$year <- as.integer(CompiledLHDExpenditures$year)
+```
+
+
+```{r}
+# Load libraries
+library(ggplot2)
+#install.packages("gifski")
+library(gganimate)
+library(gifski)
+library(png)
+
+# Add a global theme
+theme_set(theme_grey()+ theme(legend.box.background = element_rect(),legend.box.margin = margin(6, 6, 6, 6)) )
+
+
+
+# NEW VERSION# Create the plot with years as frame, limiting y axis from 30 years to 100
+p <- ggplot(filter(CompiledLHDExpenditures,year >=2010, year <=2018) , 
+            aes(expenditures, per_capita_spending, size = population, frame = year)) +
+  labs(x="Expenditures", y = "Per Capita Spending", caption = "Caption Goez Here", size = "Population") + 
+  ylim(0,350) +
+  geom_point() +
+  scale_color_brewer(type = 'div', palette = 'Spectral') + 
+  # gganimate code
+  ggtitle("Year: {frame_time}") +
+  transition_time(year) +
+  ease_aes("linear") +
+  enter_fade() +
+  exit_fade()
+
+# animate
+animate(p, width = 450, height = 450)
+
+# save as a GIF
+anim_save("output.gif")
+```
+
+
+
+```{r}
+# Load libraries
+library(plotly)
+library(ggplot2)
+
+# Create the plot
+p <- ggplot(filter(CompiledLHDExpenditures,year >=2010, year <=2018, county_name %in% c("Wake", "Mecklenburg", "Stanly", "Burke", "Hyde", "Brunswick")) , 
+            aes(population, per_capita_spending, size = population, frame = year, Label = county_name, color = county_name)) +
+  geom_point()+ 
+  ylim(0,350)  +
+  scale_color_brewer(type = 'div', palette = 'Spectral') + 
+  labs(x="Population", y = "Per Capita Spending", caption = "Caption Goez Here", size = "Population", color= "County")
+
+# Generate the Visual and a HTML output
+ggp <- ggplotly(p, height = 900, width = 900) %>%
+  animation_opts(frame = 100,
+                 easing = "linear",
+                 redraw = FALSE)
+ggp
+htmlwidgets::saveWidget(ggp, "index.html")
+```
+
