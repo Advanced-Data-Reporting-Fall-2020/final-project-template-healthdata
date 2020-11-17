@@ -6,8 +6,22 @@ output: html_document
 ---
 
 ```{r}
+<<<<<<< HEAD
 library(tidyverse)
 
+=======
+library("dplyr")
+library("tidyverse")
+library("ggplot2")
+library("hrbrthemes")
+library("plotly")
+library("viridis")
+```
+
+#Importing compiled expenditure data from Google Sheets
+```{r}
+#install.packages("gsheet")
+>>>>>>> cdfbb2c21fa0cf8dca92bda7968b5edd99f380bf
 library(gsheet)
 CompiledLHDExpenditures <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Zc10pam92Y1218F90eXn9ri7-a4GQI1vhzING33nNSI/edit#gid=0")
 ```
@@ -142,12 +156,12 @@ CompiledLHDExpenditures %>%
 
 ```
 
-On top of the 27% drop at the state level, county-level spending also dropped 6%. 
+On top of the 27% drop in spending per capita at the state level, county-level spending also dropped 4.4%. 
 
 (BUT WHAT DO WE GET WHEN WE ADJUST FOR INFLATION AS WELL.)
 
 
-It's been left to local agencies to pick up the slack. Some have. Some haven't. But nobody really knows. The report for the first time ever tries to shine light on the local publich health spending in North Carolina.
+It's been left to local agencies to pick up the slack. Some have. Some haven't. But nobody really knows. The report for the first time ever tries to shine light on the local public health spending in North Carolina.
 
 ## 8 year percent chagne in per capita
 ```{r}
@@ -179,7 +193,7 @@ In fact, over 2010-2018 Johnston increased per-capita spending by 58%.... more t
 MECK dipped, too, but the rocketed back to see a 66% increase in per capita spending.
 
 
-
+#Ranking of lowest to greatest county per capita spending in 2010
 ```{r}
 nc_county_by_year %>% 
   filter(!is.na(year2010)) %>% 
@@ -190,17 +204,15 @@ nc_county_by_year %>%
 
 In 2010, Mecklenburg had one of the lowest per capita rates in the state -- similar to tiny Stanly and Burke counties. (Show an animated map change from 2010 to 2018 per capita.)
 
-In 2010, Meck and Union were both near the bottom, spending similar amounts per person. But by 2018 as Meck continued to spend, Union' expenditures dropped nearly 20%.  
+In 2010, Meck and Union were both near the bottom, spending similar amounts per person. But by 2018 as Meck continued to spend, Union's expenditures dropped nearly 20%.  
 
-
+#Ranking of lowest to greatest county per capita spending in 2018
 ```{r}
 nc_county_by_year %>% 
   filter(!is.na(year2010)) %>% 
   mutate(pct_change = (year2018 - year2010) / year2010) %>%
   arrange(year2018) 
 ```
-
-
 
 
 ```{r}
@@ -212,10 +224,11 @@ nc_county_by_year %>%
   mutate(pop_diff = year2018-year2010, pct_diff = (year2018-year2010) / year2010)  %>%
   mutate(change = case_when(pop_diff > 0 ~ "increase", 
                             pop_diff <=0 ~ "decrease")) %>%
-  filter(change == "decrease") %>% arrange(county_name)
+  filter(change == "decrease") %>% 
+  arrange(county_name)
 ```
 
-Some counties saw their per capita spending increase because their population plummented even while state population grew about 10%. 
+Some counties saw their per capita spending increase because their population plummeted even while state population grew about 10%. 
 
 For example, Richmond County's per capita spending increased nearly 37% even while it's population decreased 3%. 
 
@@ -254,10 +267,11 @@ Did any counties see decrease in spending but increase in per-capita?
   mutate(pct_change = (year2018 - year2010) / year2010) %>%
   mutate(change = case_when(pct_change > 0 ~ "increase", 
                             pct_change < 0 ~ "decrease")) %>%
-  filter(change == "increase") %>% arrange(county_name) %>%
+  filter(change == "increase") %>% 
   dplyr::select(county_name, pct_change, change) %>%
   arrange(county_name)
 ```
+
 ```{r}
 intersect(increase_per_cap$county_name, raw_expenditure_change$county_name)
 ```
@@ -306,12 +320,15 @@ Wake's cuts were biggest in terms of raw numbers, but 17 health departments acro
   mutate(pop_diff = year2017-year2007, pct_diff = (year2017-year2007) / year2007)  %>%
   mutate(change = case_when(pop_diff > 0 ~ "increase", 
                             pop_diff <=0 ~ "decrease")) %>%
-  filter(change == "increase") %>% arrange(county_name)
+  filter(change == "increase") %>% 
+  arrange(county_name)
 ```
 
 
 ```{r}
-nc_fte_change %>% filter(change <0 ) %>% arrange(lhd_name)
+nc_fte_change %>% 
+  filter(change <0 ) %>% 
+  arrange(lhd_name)
 ```
 Brunswick County's population exploded by more than a third over those 10 years. At the same time, it's public health staff was cut by 41%. 
 
@@ -370,11 +387,6 @@ CompiledLHDExpenditures %>%
   dplyr::select(county_name, year, per_capita_spending) %>%
   arrange(per_capita_spending)
 ```
-
-
-
-
-
 
 
 
