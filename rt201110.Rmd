@@ -211,7 +211,7 @@ nc_county_by_year %>%
 
 
 ```{r}
-#pop_change <- 
+pop_change <- 
   
   CompiledLHDExpenditures %>%
   filter(year %in% c(2010, 2018)) %>%
@@ -242,7 +242,7 @@ Which counties saw decrease spending?
 
 ```{r}
 
-#raw_expenditure_change <- 
+raw_expenditure_change <- 
   
   CompiledLHDExpenditures %>%
   filter(year %in% c(2010, 2018)) %>%
@@ -255,7 +255,7 @@ Which counties saw decrease spending?
 Did any counties see decrease in spending but increase in per-capita?
 
 ```{r}
-#increase_per_cap<- 
+increase_per_cap<- 
   
   nc_county_by_year %>% 
   filter(!is.na(year2010)) %>% 
@@ -281,7 +281,7 @@ OMG! NC doesn't report FTEs in even years, so we can't look at 2010 to 2018. 201
 
 
 ```{r}
-#nc_fte_change <- 
+nc_fte_change <- 
   local_health_departments_detail %>%
   filter(state_code == "NC", year %in% c(2007, 2017))%>%
   pivot_wider(id_cols = lhd_name, names_prefix = "year", names_from = year, values_from = fte) %>%

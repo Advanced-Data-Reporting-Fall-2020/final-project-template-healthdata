@@ -1,0 +1,98 @@
+---
+title: "Final Graphs"
+author: "Rachel Crumpler"
+date: "11/18/2020"
+output: html_document
+---
+
+Loading packages
+```{r}
+library("dplyr")
+library("tidyverse")
+library("ggplot2")
+library("hrbrthemes")
+library("plotly")
+library("viridis")
+```
+
+
+LOLLIPOP CHART SHOWING COUNTIES THAT HAVE INCREASED IN PER CAPITA SPENDING VS. DECREASED
+
+```{r}
+nc_county_by_year <- CompiledLHDExpenditures %>%
+  filter(year >=2010, year<=2018) %>%
+  pivot_wider(id_cols = county_name, names_from = year, values_from = per_capita_spending, names_prefix = "year") %>%
+  arrange(county_name)
+```
+
+```{r}
+PerCapitaSpendingChange <- nc_county_by_year %>% 
+  filter(!is.na(year2010)) %>% 
+  mutate(pct_change = (year2018 - year2010) / year2010) 
+```
+
+
+```{r}
+ggplot(PerCapitaSpendingChange,
+       aes(x=pct_change, y=fct_reorder(county_name, pct_change))) +
+  geom_segment(
+    aes(x=0,
+        y=fct_reorder(county_name,pct_change),
+        xend= pct_change,
+        yend=fct_reorder(county_name, pct_change)),
+    color="gray50")+
+  geom_point(color="#1d91c0")+
+  labs(x="Percent Change in Per Capita Spending", y="County Health Department", 
+       title = "Percent Change in Per Capita Spending from 2010-2018",
+       caption = "Data Source: County Finance Records") +
+  theme_minimal()+
+   theme(panel.border = element_blank(),
+        panel.grid.minor = element_blank()
+   )
+```
+
+LOLLIPOP CHART OF FTE CHANGE PER HEALTH DEPARTMENT FROM 2007 to 2017
+
+```{r}
+nc_fte_change <- 
+  local_health_departments_detail %>%
+  filter(state_code == "NC", year %in% c(2007, 2017))%>%
+  pivot_wider(id_cols = lhd_name, names_prefix = "year", names_from = year, values_from = fte) %>%
+  mutate(change = year2017 - year2007, pct_change = (year2017 - year2007)/ year2007 ) %>%
+  arrange(desc(pct_change))
+
+```
+
+```{r}
+ggplot(nc_fte_change,
+       aes(x=pct_change, y=fct_reorder(lhd_name, pct_change))) +
+  geom_segment(
+    aes(x=0,
+        y=fct_reorder(lhd_name,pct_change),
+        xend= pct_change,
+        yend=fct_reorder(lhd_name, pct_change)),
+    color="gray50")+
+  geom_point(color="#1d91c0")+
+  labs(x="Percent Change in FTEs", y="County Health Department", 
+       title = "Percent Change in Number of FTEs from 2007-2017",
+       caption = "Data Source: KHN FTE Dataset") +
+  theme_minimal()+
+   theme(panel.border = element_blank(),
+        panel.grid.minor = element_blank()
+   )
+```
+
+
+MAP THAT SHOWS COUNTIES
+* name
+* Pop change
+* expenditure change
+* FTE change
+red = counties that increased pop, but decreased FTEs
+yellow = increased pop, increased FTEs
+green = increased FTEs and expenditures at faster rate than pop.
+
+```{r}
+
+```
+

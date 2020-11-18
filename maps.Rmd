@@ -162,5 +162,3 @@ tm_shape(pct_capita_map) +
   tm_borders()
 ```
 
-
-
