@@ -92,7 +92,4 @@ red = counties that increased pop, but decreased FTEs
 yellow = increased pop, increased FTEs
 green = increased FTEs and expenditures at faster rate than pop.
 
-```{r}
-
-```
 
