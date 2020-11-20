@@ -114,6 +114,8 @@ MeckWakeUnionJohnston <- CompiledLHDExpenditures %>%
 
 ```{r}
 ggplot(MeckWakeUnionJohnston) +
-  geom_line(mapping = aes(x = year, y = per_capita_spending, color = county_name))
+  geom_line(mapping = aes(x = year, y = per_capita_spending, color = county_name)) +
+  labs(x = "Year", y = "Per Capita Spending", title = "Changes in Health Department Spending per Capita from 2010-2018", color = "County", caption = "Data Source: County Finance Records") +
+  theme_minimal()
 ```
 
