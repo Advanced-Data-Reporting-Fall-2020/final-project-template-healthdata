@@ -1,9 +1,15 @@
----
+ ---
 title: "Final Graphs"
 author: "Rachel Crumpler"
 date: "11/18/2020"
 output: html_document
 ---
+
+Loading data
+```{r}
+library(gsheet)
+CompiledLHDExpenditures <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Zc10pam92Y1218F90eXn9ri7-a4GQI1vhzING33nNSI/edit#gid=0")
+```
 
 Loading packages
 ```{r}
@@ -95,4 +101,14 @@ green = increased FTEs and expenditures at faster rate than pop.
 ```{r}
 
 ```
+
+
+CHANGE IN PER CAPITA FOR MECK, WAKE, UNION, JOHNSTON
+- Width of lines = population
+
+```{r}
+
+```
+
+
 
