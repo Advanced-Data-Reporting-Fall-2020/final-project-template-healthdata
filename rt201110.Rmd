@@ -420,7 +420,7 @@ local_health_departments_detail %>% filter(state_code == "NC", lhd_name =="Jones
 
 # Getting the inflation ratios
 ```{r}
-#infl_rates <- 
+infl_rates <- 
   
   state_public_health_agencies %>%
   group_by(year) %>%
@@ -435,7 +435,7 @@ arrange(year)
 ```
 
 ```{r}
-#infl_CompiledLHDExpenditures <- 
+infl_CompiledLHDExpenditures <- 
 
 left_join(CompiledLHDExpenditures, infl_rates, by=c("year"="year")) %>%
   mutate(expenditures_infl = expenditures * multiplier2019, 
