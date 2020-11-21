@@ -21,7 +21,8 @@ library("hrbrthemes")
 library("plotly")
 library("viridis")
 library("scales")
-library(tigris)
+library("tigris")
+library("tmaps")
 ```
 
 
