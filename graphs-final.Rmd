@@ -195,11 +195,6 @@ Renaming column so name is consistent with health data column name so data frame
 nc_counties<- dplyr::rename(nc_counties, county_name = NAME) 
 ```
 
-Merging shapefile and data
-```{r}
-# merge on common variable, here called 'key'
-new_pct_capita_map <- left_join(nc_counties, MappingData, by="county_name")
-```
 
 Loading in the code of data frame with percent change column
 ```{r}
@@ -209,6 +204,12 @@ MappingData <- MappingData %>%
   mutate(capita_spending_change= (`2018` - `2010`),
     pct_change = 100 * ((`2018` - `2010`)) / `2010`) %>%
   arrange(desc(pct_change))
+```
+
+Merging shapefile and data
+```{r}
+# merge on common variable, here called 'key'
+new_pct_capita_map <- left_join(nc_counties, MappingData, by="county_name")
 ```
 
 
