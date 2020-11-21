@@ -181,6 +181,7 @@ Creating map that colored in all counties we have data for — got it to work fo
 ```{r}
 
 #DO WE WANT TO USE infl_CompiledLHDExpenditures INSTEAD?
+# If we want to add other data in the popup boxes, just need to first pivot infl_CompiledLHDExpenditures to get population change and expenditure change. Then join that dataframe with nc_fte_changes.
 
 library(gsheet)
 MappingData <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1mT0-4-S5YwefLuejmb3GhSN4m5zniLuwzOdAXymOAfk/edit#gid=0")
