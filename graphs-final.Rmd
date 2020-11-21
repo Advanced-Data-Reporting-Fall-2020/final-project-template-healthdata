@@ -21,6 +21,7 @@ library("hrbrthemes")
 library("plotly")
 library("viridis")
 library("scales")
+library(tigris)
 ```
 
 
@@ -109,7 +110,7 @@ ggsave("FTE-change-lollipop-chart.png", width= 7, height = 10)
 ggplot(nc_fte_change,
        aes(x=pct_change, y=fct_reorder(lhd_name, pct_change)
            )
-       ) +
+       )+
   geom_segment(
     aes(x=0,
         y=fct_reorder(lhd_name,pct_change),
@@ -183,6 +184,7 @@ MappingData <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1mT0-4-S5YwefL
 
 Downloading shapefile of NC counties
 ```{r}
+
 options(tigris_use_cache = TRUE)
 nc_counties <- counties("NC")
 ```
