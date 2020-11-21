@@ -7,6 +7,7 @@ output: html_document
 
 Loading data
 ```{r}
+
 library(gsheet)
 CompiledLHDExpenditures <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Zc10pam92Y1218F90eXn9ri7-a4GQI1vhzING33nNSI/edit#gid=0")
 ```
@@ -22,21 +23,20 @@ library("viridis")
 ```
 
 
-LOLLIPOP CHART SHOWING COUNTIES THAT HAVE INCREASED IN PER CAPITA SPENDING VS. DECREASED
+LOLLIPOP CHART SHOWING COUNTIES THAT HAVE INCREASED IN PER CAPITA SPENDING VS. DECREASED (using inflation adjusted numbers)
 
 ```{r}
-nc_county_by_year <- CompiledLHDExpenditures %>%
+infl_nc_county_by_year <- infl_CompiledLHDExpenditures %>%
   filter(year >=2010, year<=2018) %>%
-  pivot_wider(id_cols = county_name, names_from = year, values_from = per_capita_spending, names_prefix = "year") %>%
+  pivot_wider(id_cols = county_name, names_from = year, values_from = expenditures_infl_per_capita, names_prefix = "year") %>%
   arrange(county_name)
 ```
 
 ```{r}
-PerCapitaSpendingChange <- nc_county_by_year %>% 
+PerCapitaSpendingChange <- infl_nc_county_by_year %>% 
   filter(!is.na(year2010)) %>% 
   mutate(pct_change = (year2018 - year2010) / year2010) 
 ```
-
 
 ```{r}
 ggplot(PerCapitaSpendingChange,
@@ -50,17 +50,52 @@ ggplot(PerCapitaSpendingChange,
   geom_point(color="#1d91c0")+
   labs(x="Percent Change in Per Capita Spending", y="County Health Department", 
        title = "Percent Change in Per Capita Spending from 2010-2018",
-       caption = "Data Source: County Finance Records") +
+       caption = "Data Source: County Finance Records (Did not receive data from 34 Health Departments)") +
   theme_minimal()+
    theme(panel.border = element_blank(),
         panel.grid.minor = element_blank()
    )
 ```
 
+```{r}
+ggsave("per-capita-spending-lollipop-chart.png")
+```
+
+
 LOLLIPOP CHART OF FTE CHANGE PER HEALTH DEPARTMENT FROM 2007 to 2017
 
+
 ```{r}
-nc_fte_change <- 
+library(gsheet)
+FTE_change_revised_names <- gsheet2tbl(
+"https://docs.google.com/spreadsheets/d/1sQJlt7b6pTlsrSvPf4kN9E6mBDANDmPt4TozzTR_U0U/edit#gid=0")
+```
+
+```{r}
+ggplot(FTE_change_revised_names,
+       aes(x=pct_change, y=fct_reorder(lhd_name, pct_change))) +
+  geom_segment(
+    aes(x=0,
+        y=fct_reorder(lhd_name,pct_change),
+        xend= pct_change,
+        yend=fct_reorder(lhd_name, pct_change)),
+    color="gray50")+
+  geom_point(color="#1d91c0")+
+  labs(x="Percent Change in FTEs", y="County Health Department", 
+       title = "Percent Change in Number of FTEs from 2007-2017",
+       caption = "Data Source: KHN FTE Dataset") +
+  theme_minimal()+
+   theme(panel.border = element_blank(),
+        panel.grid.minor = element_blank()
+   )
+```
+```{r}
+ggsave("FTE-change-lollipop-chart.png", width= 7, height = 10)
+```
+
+# Ignore these chunks. They just show before and after name change
+```{r}
+#nc_fte_change <- 
   local_health_departments_detail %>%
   filter(state_code == "NC", year %in% c(2007, 2017))%>%
   pivot_wider(id_cols = lhd_name, names_prefix = "year", names_from = year, values_from = fte) %>%
@@ -70,7 +105,7 @@ nc_fte_change <-
 ```
 
 ```{r}
-ggplot(nc_fte_change,
+#ggplot(nc_fte_change,
        aes(x=pct_change, y=fct_reorder(lhd_name, pct_change))) +
   geom_segment(
     aes(x=0,
@@ -121,4 +156,5 @@ ggplot(MeckWakeUnionJohnston) +
   theme_minimal() 
 )
 ```
+
 

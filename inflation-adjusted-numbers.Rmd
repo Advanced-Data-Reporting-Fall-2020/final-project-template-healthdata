@@ -11,15 +11,18 @@ library(ggplot2)
 library(plotly)
 library(viridis)
 library(hrbrthemes)
+library(dplyr)
 library(gsheet)
 CompiledLHDExpenditures <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Zc10pam92Y1218F90eXn9ri7-a4GQI1vhzING33nNSI/edit#gid=0")
 state_public_health_agencies <- read_csv("https://raw.githubusercontent.com/khnews/2020-underfunded-under-threat-data/master/data/01-state-public-health-agencies.csv")
+
 infl_rates <- 
   
   state_public_health_agencies %>%
   group_by(year) %>%
   summarize(total_raw = max(expenditures, na.rm=TRUE), total_infl = max(expenditures_infl, na.rm=TRUE)) %>%
   mutate(multiplier2019 = total_infl/ total_raw)
+
 infl_CompiledLHDExpenditures <- 
   
   left_join(CompiledLHDExpenditures, infl_rates, by=c("year"="year")) %>%
