@@ -179,6 +179,9 @@ green = increased FTEs and expenditures at faster rate than pop.
 Creating map that colored in all counties we have data for — got it to work for the health districts
 
 ```{r}
+
+#DO WE WANT TO USE infl_CompiledLHDExpenditures INSTEAD?
+
 library(gsheet)
 MappingData <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1mT0-4-S5YwefLuejmb3GhSN4m5zniLuwzOdAXymOAfk/edit#gid=0")
 ```
