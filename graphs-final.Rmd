@@ -126,7 +126,6 @@ ggsave("FTE-change-lollipop-chart.png", width= 7, height = 10)
 
 CHANGE IN PER CAPITA FOR MECK, WAKE, UNION, JOHNSTON
 - Width of lines = population
-
 ```{r}
 MeckWakeUnionJohnston <- CompiledLHDExpenditures %>%
   filter(county_name %in% c("Mecklenburg", "Wake", "Union", "Johnston"), year >=2010, year<=2018)
@@ -142,6 +141,25 @@ ggplot(MeckWakeUnionJohnston) +
   theme_minimal() 
 )
 ```
+
+```{r}
+infl_MeckWakeUnionJohnston <- infl_CompiledLHDExpenditures %>%
+  filter(county_name %in% c("Mecklenburg", "Wake", "Union", "Johnston"), year >=2014, year<=2018)
+```
+
+
+```{r}
+ggplotly(
+ggplot(infl_MeckWakeUnionJohnston) +
+  geom_line(mapping = aes(x = year, y = expenditures_infl_per_capita, color = county_name)) +
+  labs(x = "Year", y = "Per Capita Spending", title = "Changes in Health Department Spending per Capita from 2014-2018", color = "County", caption = "Data Source: County Finance Records, adjusted for inflation") +
+ scale_y_continuous(labels= scales::dollar_format())+
+  theme_minimal() 
+)
+```
+
+
+
 
 MAP THAT SHOWS COUNTIES
 * name
