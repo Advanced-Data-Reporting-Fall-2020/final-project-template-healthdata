@@ -162,5 +162,38 @@ tm_shape(pct_capita_map) +
   tm_borders()
 ```
 
+---------------------
+Creating map that colored in all counties we have data for — got it to work for the health districts
+
+```{r}
+library(gsheet)
+MappingData <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1mT0-4-S5YwefLuejmb3GhSN4m5zniLuwzOdAXymOAfk/edit#gid=0")
+```
+
+Loading in the code of data frame with percent change column
+```{r}
+MappingData <- MappingData %>%
+  filter(year %in% c('2010', '2018')) %>%
+  pivot_wider(id_cols = -c(expenditures,population), names_from = year, values_from = per_capita_spending) %>%
+  mutate(capita_spending_change= (`2018` - `2010`),
+    pct_change = 100 * ((`2018` - `2010`)) / `2010`) %>%
+  arrange(desc(pct_change))
+```
+
+Merging shapefile and data
+```{r}
+# merge on common variable, here called 'key'
+new_pct_capita_map <- left_join(nc_counties, MappingData, by="county_name")
+```
+
+Creating map showing per capita percent change
+**Need help refining legend position and legend labeling--want them to be percents
+**Need help refining pop ups ---on hover I want that county's percent change to be displayed
+```{r}
+tm_shape(new_pct_capita_map) +
+  tm_fill("pct_change",title="Percent Change in Health Department Per Capita Spending from 2010-2018",palette="YlGnBu")  +
+  tm_borders()
+```
+
 
 
