@@ -212,10 +212,69 @@ Merging shapefile and data
 new_pct_capita_map <- left_join(nc_counties, MappingData, by="county_name")
 ```
 
-
+#LEAFLET MAP
 Creating map showing per capita percent change
 **Need help refining legend position and legend labeling--want them to be percents
 **Need help refining pop ups
+```{r}
+library(leaflet)
+# Creating a color palette based on the number range in the pct_change column
+pal <- colorNumeric("YlGnBu", domain=new_pct_capita_map$pct_change)
+
+# Setting up the pop up text
+popup_pctchange <- paste0(
+  "<strong>", new_pct_capita_map$NAMELSAD,
+  "</strong><br /> Per capita spending: ", as.character(
+    percent(
+      round(new_pct_capita_map$pct_change, digits=0),
+      scale=1,
+      big.mark = ",") )
+)
+
+
+leaflet() %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  setView(lng=-79.177556, lat=35.481333, zoom = 6) %>%
+    addPolygons(data = new_pct_capita_map, 
+              fillColor = ~pal(new_pct_capita_map$pct_change), 
+              fillOpacity = 0.9, 
+              weight = 0.2, 
+              smoothFactor = 0.2, 
+              highlight = highlightOptions(
+                weight = 5,
+                color = "#666",
+                fillOpacity = 0.7,
+                bringToFront = TRUE), 
+              popup = ~ popup_pctchange) %>%
+  addLegend(pal = pal,
+            opacity = 0.9,
+            values =new_pct_capita_map$pct_change,
+            position = "bottomleft",
+            title = "$ per capita", 
+            labFormat = labelFormat(suffix = "%"),
+            na.label = "No Data") 
+
+# you specify a custom style like this
+#library(htmltools)
+#browsable(
+#  tagList(list(
+#    tags$head(
+#      tags$style(
+#        ".leaflet .legend {
+#            width:400px;
+#            height: 40px;
+#            margin-top: 4px;
+#         }
+#        "
+#      )
+#    ),
+#    m
+#  ))
+#)
+```
+
+
+
 ```{r}
 tm_shape(new_pct_capita_map) +
   tm_fill("pct_change",title="Percent Change in Health Department Per Capita Spending from 2010-2018",palette="YlGnBu")  +
