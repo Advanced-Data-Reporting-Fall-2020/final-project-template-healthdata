@@ -22,7 +22,7 @@ library("plotly")
 library("viridis")
 library("scales")
 library("tigris")
-library("tmaps")
+library("tmap")
 ```
 
 
