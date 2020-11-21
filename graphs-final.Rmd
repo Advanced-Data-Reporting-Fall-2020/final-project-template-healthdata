@@ -123,21 +123,6 @@ ggsave("FTE-change-lollipop-chart.png", width= 7, height = 10)
    )
 ```
 
-
-MAP THAT SHOWS COUNTIES
-* name
-* Pop change
-* expenditure change
-* FTE change
-red = counties that increased pop, but decreased FTEs
-yellow = increased pop, increased FTEs
-green = increased FTEs and expenditures at faster rate than pop.
-
-```{r}
-
-```
-
-
 CHANGE IN PER CAPITA FOR MECK, WAKE, UNION, JOHNSTON
 - Width of lines = population
 
@@ -157,4 +142,56 @@ ggplot(MeckWakeUnionJohnston) +
 )
 ```
 
+MAP THAT SHOWS COUNTIES
+* name
+* Pop change
+* expenditure change
+* FTE change
+red = counties that increased pop, but decreased FTEs
+yellow = increased pop, increased FTEs
+green = increased FTEs and expenditures at faster rate than pop.
 
+
+Creating map that colored in all counties we have data for — got it to work for the health districts
+
+```{r}
+library(gsheet)
+MappingData <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1mT0-4-S5YwefLuejmb3GhSN4m5zniLuwzOdAXymOAfk/edit#gid=0")
+```
+
+Downloading shapefile of NC counties
+```{r}
+options(tigris_use_cache = TRUE)
+nc_counties <- counties("NC")
+```
+
+Renaming column so name is consistent with health data column name so data frames can be joined
+```{r}
+nc_counties<- dplyr::rename(nc_counties, county_name = NAME) 
+```
+
+Merging shapefile and data
+```{r}
+# merge on common variable, here called 'key'
+new_pct_capita_map <- left_join(nc_counties, MappingData, by="county_name")
+```
+
+Loading in the code of data frame with percent change column
+```{r}
+MappingData <- MappingData %>%
+  filter(year %in% c('2010', '2018')) %>%
+  pivot_wider(id_cols = -c(expenditures,population), names_from = year, values_from = per_capita_spending) %>%
+  mutate(capita_spending_change= (`2018` - `2010`),
+    pct_change = 100 * ((`2018` - `2010`)) / `2010`) %>%
+  arrange(desc(pct_change))
+```
+
+
+Creating map showing per capita percent change
+**Need help refining legend position and legend labeling--want them to be percents
+**Need help refining pop ups
+```{r}
+tm_shape(new_pct_capita_map) +
+  tm_fill("pct_change",title="Percent Change in Health Department Per Capita Spending from 2010-2018",palette="YlGnBu")  +
+  tm_borders()
+```
