@@ -492,10 +492,6 @@ linegraph %>%
 
 Jones County fte per capita change over time
 ```{r}
-#ggplot(jones, aes(x=year, y=fte_per_100000)) + 
- # geom_line() +
-  # labs(title = "Jones County: FTE Per Capita Change Over Time", y ="Employees Per Capita", x = "Population")
-
 Jones_graph_fte_pc <- plot_ly(jones, x = ~year, y = ~fte_per_100000, type = 'scatter', mode = 'lines')
 
 Jones_graph_fte_pc <- Jones_graph_fte_pc %>%
