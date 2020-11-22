@@ -304,4 +304,20 @@ ggplot(state_per_capita, aes(x=year, y=expenditures_infl_per_capita, group = sta
  coord_cartesian(xlim = c(2014, 2018), ylim = c(0, 200))
 ```
 
+Create a new dataframe for Jones County data
+```{r}
+jones <- nc %>%
+  filter(lhd_name == "Jones County Health Department") %>%
+  select(`year`, `population`, `fte`, `fte_per_100000`)
+```
 
+Create a line chart showing Jones County FTE per capita change over time
+#HOW DO I SAVE THIS
+```{r}
+Jones_graph_fte_pc <- plot_ly(jones, x = ~year, y = ~fte_per_100000, type = 'scatter', mode = 'lines')
+
+Jones_graph_fte_pc <- Jones_graph_fte_pc %>%
+  layout(title = "Jones County FTE Per Capita Change Over Time", xaxis = list(title = "Year"), yaxis = list(title = "FTE Per Capita"))
+
+Jones_graph_fte_pc
+```
