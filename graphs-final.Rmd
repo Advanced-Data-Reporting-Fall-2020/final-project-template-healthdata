@@ -181,7 +181,7 @@ change_infl_CompiledLHDExpenditures <- infl_CompiledLHDExpenditures %>%
   #get just the years we want ... 
   filter(year %in% c(2010, 2018)) %>%
   #... and just the columns we want to deal with. (I'm actually taking more than I need in case I want to calculate percent change for these other columns later.)
-  select(year,
+  dplyr::select(year,
          county_name,
          population,
          expenditures,
@@ -222,16 +222,13 @@ a_MappingData<- a_MappingData %>%
   rename (fte_pct_change = pct_change
           ) %>%
   #and just reorder some columns rather than delete them.
-  select(lhd_name,
+  dplyr::select(lhd_name,
          county_name,
          only_county_name,
          fte_pct_change,
          pct_change_expenditures_infl,
          pct_population_change,
          everything())
-
-
-
 
 
 ```
