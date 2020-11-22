@@ -330,7 +330,7 @@ leaflet() %>%
               popup = ~ popup_pctchange) %>%
   addLegend(pal = pal,
             opacity = 0.9,
-            values = percent(new_pct_capita_map$pct_change_expenditures_capita_infl,scale =100),
+            values = new_pct_capita_map$pct_change_expenditures_capita_infl * 100,
             position = "bottomleft",
             title = "$ per capita", 
             labFormat = labelFormat(suffix = "%"),
