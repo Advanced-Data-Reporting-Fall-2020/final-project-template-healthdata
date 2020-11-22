@@ -512,29 +512,31 @@ ggplot(fte_per_capita, aes(x=population, y=fte_per_100000)) +
   theme(axis.text.x = element_text(angle = 45, hjust=1)) +
   gghighlight(fte_per_100000 > 500) +
   labs(title = "FTE Per Capita and Population Over Time", x = "Population", y = "Employees Per Capita")
+
+#NOT USING THIS
 ```
 ```{r}
 ggsave("fte_pc_and_population_graph.png")
 ```
 
-% change in fte from 2009-2017 
+The percent change in full-time equivalent employees (FTE) from 2009-2017 
 ```{r}
 nine_seventeen_fte_change <- fte_per_capita2 %>%
   filter(lhd_name %in% our_counties) %>%
   filter(year %in% c('2009', '2017')) %>%
-  # USE THE id_cols argument and set the value to "evertyhing but the set of columns that contains fte and population". This allows each row to be unique to the lhd_name rather than lhd_name + fte + population.
   pivot_wider(id_cols = -c(fte_per_100000), names_from = year, values_from = fte) %>%
-  # DONT NEED NEXT LINE - RT
- # group_by(lhd_name) %>%
   mutate(pct_change = 100 * ((`2017` - `2009`)) / `2009`) %>%
   arrange(desc(pct_change))
 
-ggplot(nine_seventeen_fte_change)+
-  geom_col(aes(x=lhd_name, y=pct_change), stat = "identity") +
-    coord_flip() +
-  labs(title = "FTE Percent Change From 2009-2017", y ="Percent Change", x = "Health Department")
-
-#Need help fixing those labels
+library(forcats)
+ggplot(nine_seventeen_fte_change, aes(x=pct_change, y=fct_reorder(lhd_name, pct_change))) +
+geom_segment(aes(x = 0, xend = pct_change, yend = fct_reorder(lhd_name, pct_change)), color = "gray50") +
+geom_point(color="#1d91c0")+
+labs(title = "FTE Percent Change From 2009-2017", x ="Percent Change in FTE", y = "County Health Department", caption = "Data Source: Association of State and Territorial Health Officials")+
+theme_minimal()+
+theme(panel.border = element_blank(),
+panel.grid.minor = element_blank()
+)
 ```
 ```{r}
 ggsave("fte_perc_change.png")

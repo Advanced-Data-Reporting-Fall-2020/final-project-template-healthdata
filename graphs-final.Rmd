@@ -163,33 +163,32 @@ ggplot(infl_MeckWakeUnionJohnston) +
 )
 ```
 
-
-
-
-MAP THAT SHOWS COUNTIES
-* name
-* Pop change
-* expenditure change
-* FTE change
-red = counties that increased pop, but decreased FTEs
-yellow = increased pop, increased FTEs
-green = increased FTEs and expenditures at faster rate than pop.
-
-
-Creating map that colored in all counties we have data for — got it to work for the health districts
-
-```{r}
+CREATING MAP
 
 #DO WE WANT TO USE infl_CompiledLHDExpenditures INSTEAD?
 # If we want to add other data in the popup boxes, just need to first pivot infl_CompiledLHDExpenditures to get population change and expenditure change. Then join that dataframe with nc_fte_changes.
 
+HOW DO I PIVOT BY MORE VARIABLES??? I tried adding more column names to the values_from line of code but got an error
+```{r}
+filter_infl_CompiledLHDExpenditures <- infl_CompiledLHDExpenditures %>%
+  filter(year %in% c('2010', '2018')) %>%
+pivot_wider(id_cols = lhd_name, names_from = year, values_from = population, names_prefix = "year") %>%
+  mutate(pop_diff = year2018-year2010, pct_diff = (year2018-year2010) / year2010)
+```
+
+Joined population data with FTE data
+```{r}
+combined_variables_data <- left_join(filter_infl_CompiledLHDExpenditures, nc_fte_change, by="lhd_name")
+```
+
+```{r}
+#Ignore this chunk. Old data we were using
 library(gsheet)
 MappingData <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1mT0-4-S5YwefLuejmb3GhSN4m5zniLuwzOdAXymOAfk/edit#gid=0")
 ```
 
 Downloading shapefile of NC counties
 ```{r}
-
 options(tigris_use_cache = TRUE)
 nc_counties <- counties("NC")
 ```
@@ -198,7 +197,6 @@ Renaming column so name is consistent with health data column name so data frame
 ```{r}
 nc_counties<- dplyr::rename(nc_counties, county_name = NAME) 
 ```
-
 
 Loading in the code of data frame with percent change column
 ```{r}
