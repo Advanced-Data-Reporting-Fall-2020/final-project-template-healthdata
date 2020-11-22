@@ -172,7 +172,7 @@ HOW DO I PIVOT BY MORE VARIABLES??? I tried adding more column names to the valu
 ```{r}
 filter_infl_CompiledLHDExpenditures <- infl_CompiledLHDExpenditures %>%
   filter(year %in% c('2010', '2018')) %>%
-pivot_wider(id_cols = lhd_name, names_from = year, values_from = population, names_prefix = "year") %>%
+pivot_wider(id_cols = lhd_name,  names_from = year, values_from = population, names_prefix = "year") %>%
   mutate(pop_diff = year2018-year2010, pct_diff = (year2018-year2010) / year2010)
 ```
 
