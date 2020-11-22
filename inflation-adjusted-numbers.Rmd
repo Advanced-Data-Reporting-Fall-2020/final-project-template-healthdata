@@ -6,6 +6,7 @@ output: html_document
 ---
 
 ```{r}
+#Loading in necessary packages and datasets
 library(tidyverse)
 library(ggplot2)
 library(plotly)
@@ -15,7 +16,11 @@ library(dplyr)
 library(gsheet)
 CompiledLHDExpenditures <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Zc10pam92Y1218F90eXn9ri7-a4GQI1vhzING33nNSI/edit#gid=0")
 state_public_health_agencies <- read_csv("https://raw.githubusercontent.com/khnews/2020-underfunded-under-threat-data/master/data/01-state-public-health-agencies.csv")
+```
 
+
+```{r}
+#Creating a dataset of inflation rates, no data for 2013.
 infl_rates <- 
   
   state_public_health_agencies %>%
@@ -23,6 +28,7 @@ infl_rates <-
   summarize(total_raw = max(expenditures, na.rm=TRUE), total_infl = max(expenditures_infl, na.rm=TRUE)) %>%
   mutate(multiplier2019 = total_infl/ total_raw)
 
+#using the infl_rates data to create a new dataframe of all LHD expenditures, adjusted for inflation.
 infl_CompiledLHDExpenditures <- 
   
   left_join(CompiledLHDExpenditures, infl_rates, by=c("year"="year")) %>%
@@ -31,20 +37,23 @@ infl_CompiledLHDExpenditures <-
   select(year, lhd_name, lhd_area_type, county_name, population, expenditures, expenditures_infl, expenditures_per_capita = per_capita_spending, expenditures_infl_per_capita)
 ```
 
+
 ```{r}
+#turning the years from a character string to an integer
 infl_CompiledLHDExpenditures$year <- as.integer(infl_CompiledLHDExpenditures$year)
 ```
 
 
 ```{r}
+#pivoting the dataset so that the counties are in one row, and are separated by year columns
 infl_nc_county_by_year <- infl_CompiledLHDExpenditures %>%
   filter(year >=2010, year<=2018) %>%
   pivot_wider(id_cols = county_name, names_from = year, values_from = expenditures_infl_per_capita, names_prefix = "year") %>%
   arrange(county_name)
-  
 ```
 
 ```{r}
+#creating a line graph of every counties' per capita expenditures, adjusted for inflation. 
 ggplotly(
   ggplot(filter(infl_CompiledLHDExpenditures,year>=2010, year<=2019),
          aes(x=year, 
@@ -64,16 +73,18 @@ ggplotly(
       plot.title = element_text(size=14)
     )
 )
+#overall trend is a slight decline, or at least the majority are staying the same.
 ```
 
 
-Franklin, Hyde, Dare, and Martin-Tyrell-Washington spend far more per person than any others.
+#From that chart we can tell that Franklin, Hyde, Dare, and the Martin-Tyrell-Washington District spend far more per person than any others.
 
 ```{r}
+#comparing county expenditures to those of the North Carolina Department of Health and Human Services
 ggplotly(
   ggplot(filter(infl_CompiledLHDExpenditures,year>=2010, year<=2019),
          aes(x=year, 
-             y=population, 
+             y= expenditures, 
              group=lhd_name, 
              color=lhd_name)) +
     geom_line() +
@@ -93,6 +104,7 @@ ggplotly(
 
 
 ```{r}
+#loading in more necessary datasets
 state_public_health_agencies <- read_csv("https://raw.githubusercontent.com/khnews/2020-underfunded-under-threat-data/master/data/01-state-public-health-agencies.csv")
 state_local_government_spending <- read_csv("https://raw.githubusercontent.com/khnews/2020-underfunded-under-threat-data/master/data/02-state-local-government-spending.csv")
 county_local_government_spending <- read_csv("https://raw.githubusercontent.com/khnews/2020-underfunded-under-threat-data/master/data/03-county-local-government-spending.csv")
@@ -103,11 +115,8 @@ local_health_departments_detail <- read_csv("https://raw.githubusercontent.com/k
         lhd_note = col_character()))
 ```
 
-Trying to replicate this claim: "Since 2010, spending for state public health departments has dropped by 16% per capita."
-
-
-Here's what Hannah Recht said to do to get the 16%...
 ```{r}
+#Proving the claim that spending has dropped by 16% since 2010 across the U.S.
 #expenditures_overall <- 
   state_public_health_agencies %>% filter(!(state_code %in% c("MO", "MI", "TX", "WY"))) %>%
    filter(year %in% c(2010, 2018)) %>%
@@ -121,6 +130,7 @@ Here's what Hannah Recht said to do to get the 16%...
 
 ## NC CHANGE IN EXPENDITURES
 ```{r}
+#Checking to see how much spending dropped in NC in the same 8 year span.
 state_public_health_agencies %>% 
   filter(state_code =="NC", year %in% c(2010, 2018)) %>%
                 dplyr::select(year, expenditures_infl_per_capita)
@@ -132,18 +142,17 @@ For every dollar spent on state agency public health nationally in 2010, NC spen
 By 2018, that was only 77 cents per dollar.
 
 ```{r}
+#Rearranging the national dataframe from least to greatest, to see where NC ranks in expenditures per capita in 2018
   state_public_health_agencies %>% filter(!(state_code %in% c("MO", "MI", "TX", "WY"))) %>%
    filter(year == 2018) %>%
                 dplyr::select(state_code, expenditures_infl_per_capita) %>% arrange(expenditures_infl_per_capita)
 ```
-At the state level, North Carolina spends less per person than all but 12 states. It spends about $72 per person. 
+At the state level in 2018, North Carolina spends less per person than all but 12 states. It spends about $72 per person. 
 
-
-
-
-While the spending at the state level has decrease, that has left counties to pick up the tab. 
+While the spending at the state level has decreased, that has left counties to pick up the tab. 
 
 ```{r}
+#Checking to see how much spending has dropped on average for NC counties.
 infl_CompiledLHDExpenditures %>% 
   filter(year %in% c(2010, 2018)) %>%
                 group_by(year) %>%
@@ -153,15 +162,12 @@ infl_CompiledLHDExpenditures %>%
                 mutate(cum_expenditures_per_capita = cum_expenditures/cum_population)
 ```
 
-On top of the 27% drop at the state level, county-level spending also dropped 21%. **** 
-
-(BUT WHAT DO WE GET WHEN WE ADJUST FOR INFLATION AS WELL.)
-
+On top of the 27% drop at the state level, county-level spending also dropped 15%.
 
 It's been left to local agencies to pick up the slack. Some have. Some haven't. But nobody really knows. The report for the first time ever tries to shine light on the local public health spending in North Carolina.
 
-## 8 year percent chagne in per capita
 ```{r}
+#Showing where each individual LHD ranks by pct_change in per capita
 infl_nc_county_by_year %>% 
   filter(!is.na(year2010)) %>% 
   mutate(pct_change = (year2018 - year2010) / year2010) %>%
@@ -171,50 +177,41 @@ The county with the biggest decline was Wake. From 2011 to 2014, it's per capita
 
 On the other hand, Mecklenburg saw the biggest per capita increase -- 40% over those 8 years, and a jump of 28% from 2015 to 2016 alone.
 
-
-
-Did that happen everywhere in 2012-2013?
+Did that happen everywhere in 2015-2016?
 
 ```{r}
+#looking at percent change numbers for all counties from 2015-2016. Mecklenburg had almost 14% more of an increase than the next highest, which was Richmond county at 14%.
 infl_nc_county_by_year %>% 
-  dplyr::select(county_name, year2012, year2013) %>% 
-  mutate(pct_change = (year2013 - year2012) / year2012) %>%
+  dplyr::select(county_name, year2015, year2016) %>% 
+  mutate(pct_change = (year2016 - year2015) / year2015) %>%
   arrange(pct_change) 
 ```
-Right next door to Wake, in more rural Johnston County in the same year, you had a 25% increase.
+Right next door to Wake, in more rural Johnston County in the same year, you had a 4% increase.
 
-<!-- In fact, over 2010-2018 Johnston increased per-capita spending by 58%.... more than any county but Meck. -->
-
-(25 down, 19 up.)
-
-MECK dipped, too, but the rocketed back to see a 40% increase in per capita spending.
-
-
+Mecklenburg dipped, too, but the rocketed back to see a 40% increase in per capita spending.
 
 ```{r}
+#ordering the counties by how they ranked for their per capita expenditures in 2010
 infl_nc_county_by_year %>% 
   filter(!is.na(year2010)) %>% 
   mutate(pct_change = (year2018 - year2010) / year2010) %>%
   arrange(year2010) 
 ```
 
-
 In 2010, Mecklenburg had one of the lowest per capita rates in the state -- similar to tiny Stanly and Burke counties. (Show an animated map change from 2010 to 2018 per capita.)
 
 In 2010, Meck and Union were both near the bottom, spending similar amounts per person. But by 2018 as Meck continued to spend, Union' expenditures dropped nearly 32%.  
 
-
 ```{r}
+#Sorting counties by their per capita expenditures in 2018
 infl_nc_county_by_year %>% 
   filter(!is.na(year2010)) %>% 
   mutate(pct_change = (year2018 - year2010) / year2010) %>%
   arrange(year2018) 
 ```
 
-
-
-
 ```{r}
+#creating a new dataframe that shows the change in population for each county
 pop_change <- 
   
   infl_CompiledLHDExpenditures %>%
@@ -234,6 +231,7 @@ Some counties saw their per capita spending increase because their population pl
 For example, Richmond County's per capita spending increased nearly 15% even while it's population decreased 3%. 
 
 ```{r}
+#Creating a new dataframe that shows counties that increased in per capita spending, and then finding where they intersect with counties that decreased in population. The only two counties where both conditions are true are Cleveland and Richmond counties.
 increase_per_cap<- 
   
   infl_nc_county_by_year %>% 
@@ -248,17 +246,16 @@ intersect(increase_per_cap$county_name, pop_decrease$county_name)
 ```
 
 ```{r}
+#putting what was found above in a more readable chart, along with the corresponding numbers.
 inner_join(increase_per_cap, pop_decrease, by=c("county_name"="county_name")) %>%
   dplyr::select(county_name, per_cap_spending_increase = pct_change, pop_pct_decrease = pct_diff)
 ```
 
-
-
 Which counties saw decreased spending?
 
 ```{r}
+#Creating a dataframe showing exclusively counties that had an overall decrease in expenditures from 2010-2018
 raw_expenditure_change <- 
-  
   infl_CompiledLHDExpenditures %>%
   filter(year %in% c(2010, 2018)) %>%
   pivot_wider(id_cols = county_name, names_from = year, values_from = expenditures, names_prefix = "year") %>%
@@ -266,27 +263,23 @@ raw_expenditure_change <-
   mutate(change = case_when(expend_diff > 0 ~ "increase", 
                             expend_diff <=0 ~ "decrease")) %>%
   filter(change == "decrease") %>% arrange(county_name)
+
+raw_expenditure_change
 ```
+
 Did any counties see decrease in spending but increase in per-capita?
 
-
-
-
-
 ```{r}
+#No counties had a decrease in spending while also having an increase in per-capita spending.
 intersect(increase_per_cap$county_name, raw_expenditure_change$county_name)
 ```
 
+When looking at Full-Time-Employees (FTEs), the year range has to change from 2007-2017, because the state does not report FTE data in even-numbered years, and the most recent report was in 2017.
 
-
-How many counties are down FTEs from 2010 to 2018?
-
-OMG! NC doesn't report FTEs in even years, so we can't look at 2010 to 2018. 2017 is the latest year so we will have to do 2007-2017.
-
-
-
+Because the FTE is reported, we do have data for all 85 North Carolina local health departments.
 
 ```{r}
+#Creating a dataframe to better examine the changes in FTEs from 2007-2017.
 nc_fte_change <- 
   local_health_departments_detail %>%
   filter(state_code == "NC", year %in% c(2007, 2017))%>%
@@ -294,13 +287,13 @@ nc_fte_change <-
   mutate(change = year2017 - year2007, pct_change = (year2017 - year2007)/ year2007 ) %>%
   arrange(desc(pct_change))
 ```
+
 Of the 85 LHDs, 67 had fewer people working at them in 2017 than in 2007. 
-
-
 
 Wake County has cut 268 FTEs over that decade -- 30% of its workforce. Meanwhile, Mecklenburg County more than doubled its workforce from 379 in 2007 to 825 in 2017. That's the biggest increase in terms of both raw numbers of new employees as well as percent increase.
 
 ```{r}
+#Ranking each LHD by their pct_change in FTE
 local_health_departments_detail %>%
   filter(state_code == "NC", year %in% c(2007, 2017))%>%
   pivot_wider(id_cols = lhd_name, names_prefix = "year", names_from = year, values_from = fte) %>%
@@ -308,11 +301,10 @@ local_health_departments_detail %>%
   arrange(desc(pct_change)) %>%
   filter(pct_change < -0.33)
 ```
-Wake's cuts were biggest in terms of raw numbers, but 17 health departments across the state saw their staffing drop by at least a third. Hyde County lost two thirds of its FTE. The Toe River Health District ??? went from 200 to 60 people. 
-
-
+Wake's cuts were biggest in terms of raw numbers, but 17 health departments across the state saw their staffing drop by at least a third. Hyde County lost two thirds of its FTE. The Toe River Health District went from 200 to 60 people. 
 
 ```{r}
+#Filtering each county so only increases in FTEs are shown
   infl_CompiledLHDExpenditures %>%
   filter(year %in% c(2007, 2017)) %>%
   pivot_wider(id_cols = county_name, names_from = year, values_from = population, names_prefix = "year") %>%
@@ -324,12 +316,13 @@ Wake's cuts were biggest in terms of raw numbers, but 17 health departments acro
 
 
 ```{r}
+#filtering to find all the health departments that had their number of FTEs decrease
 nc_fte_change %>% filter(change <0 ) %>% arrange(lhd_name)
 ```
 Brunswick County's population exploded by more than a third over those 10 years. At the same time, it's public health staff was cut by 41%. 
 
 23 other counties that gained population but lost public health FTEs:
-* Avery, Mitchel, Yancey (Toe River) - 3
+* Avery, Mitchel, Yancey (Toe River) 
 * Catawba
 * Cabarrus (Public Health Dept of... )
 * Craven
@@ -372,8 +365,6 @@ green = increased FTEs and expenditures at faster rate than pop.
   arrange(fte)
 ```
 
-
-
 This isn't just about poverty. Union County has the  highest median household income in the state -- about $86,000 -- but in 2018 spent less per person on public health than any other county -- just $32.92.
 
 
@@ -383,13 +374,6 @@ infl_CompiledLHDExpenditures %>%
   dplyr::select(county_name, year, expenditures_infl_per_capita) %>%
   arrange(expenditures_infl_per_capita)
 ```
-
-
-
-
-
-
-
 
 ```{r}
 oneyear <- infl_CompiledLHDExpenditures %>% 
