@@ -7,7 +7,6 @@ output: html_document
 
 Loading data
 ```{r}
-
 library(gsheet)
 CompiledLHDExpenditures <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Zc10pam92Y1218F90eXn9ri7-a4GQI1vhzING33nNSI/edit#gid=0")
 ```
@@ -26,7 +25,7 @@ library("tmap")
 ```
 
 
-LOLLIPOP CHART SHOWING COUNTIES THAT HAVE INCREASED IN PER CAPITA SPENDING VS. DECREASED (using inflation adjusted numbers)
+LOLLIPOP CHART SHOWING COUNTIES THAT HAVE INCREASED IN PER CAPITA SPENDING VS. DECREASED (Using inflation adjusted numbers)
 
 ```{r}
 infl_nc_county_by_year <- infl_CompiledLHDExpenditures %>%
@@ -65,8 +64,7 @@ ggsave("per-capita-spending-lollipop-chart.png")
 ```
 
 
-LOLLIPOP CHART OF FTE CHANGE PER HEALTH DEPARTMENT FROM 2007 to 2017
-
+LOLLIPOP CHART OF FTE CHANGE PER HEALTH DEPARTMENT FROM 2007 TO 2017
 
 ```{r}
 library(gsheet)
