@@ -128,7 +128,6 @@ ggplot(nc_fte_change,
 ```
 
 CHANGE IN PER CAPITA FOR MECK, WAKE, UNION, JOHNSTON
-- Width of lines = population
 ```{r}
 MeckWakeUnionJohnston <- CompiledLHDExpenditures %>%
   filter(county_name %in% c("Mecklenburg", "Wake", "Union", "Johnston"), year >=2010, year<=2018)
