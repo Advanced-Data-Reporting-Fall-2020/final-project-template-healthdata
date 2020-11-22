@@ -181,7 +181,6 @@ Joined population data with FTE data
 combined_variables_data <- left_join(filter_infl_CompiledLHDExpenditures, nc_fte_change, by="lhd_name")
 ```
 
-
 ```{r}
 #Ignore this chunk. Old data we were using
 library(gsheet)
