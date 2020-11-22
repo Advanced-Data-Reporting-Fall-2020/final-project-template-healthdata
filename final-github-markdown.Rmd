@@ -2,7 +2,9 @@
 title: "Final Github Markdown"
 output: html_document
 ---
-#Add inflation adjusted numbers RMD first
+#All cleaned up FTE data is in
+#Need to add inflation RMD
+#Need to continue cleaning up final graphs RMD (but it's added here)
 
 Loading packages
 ```{r setup, include=FALSE}
@@ -16,8 +18,67 @@ library("viridis")
 library("scales")
 library("tigris")
 library("tmap")
+library("gghighlight")
 ```
 
+FTE DATA
+
+Upload data and create a dataframe called khn
+```{r}
+download.file("https://raw.githubusercontent.com/khnews/2020-underfunded-under-threat-data/master/data/05-local-health-departments-detail.csv", "05-local-health-departments-detail.csv")
+khn <- rio::import("05-local-health-departments-detail.csv")
+```
+
+Create a new dataframe that filters just for NC
+```{r}
+nc <- khn %>%
+  filter(state_code == "NC")
+```
+
+Select certain categories and filter out rows without fte data
+```{r}
+fte_data <- nc %>%
+  select(`year`, `lhd_name`, `population`, `fte`, `fte_per_100000`, `population`) %>%
+  filter(fte != "NA")
+```
+
+Find the average FTE per capita for the years we have available for each health department
+```{r}
+fte_data %>%
+  group_by(lhd_name) %>%
+  summarise(Avg_fte_per_100000 = mean(fte_per_100000)) %>%
+  select(lhd_name, Avg_fte_per_100000) %>%
+  arrange(desc(Avg_fte_per_100000))
+```
+Find the highest FTE per capita and FTE in 2017
+```{r}
+#FTE per capita
+fte_data %>%
+  filter(year == "2017") %>%
+  arrange(desc(fte_per_100000))
+
+#FTE
+fte_data %>%
+  filter(year == "2017") %>%
+  arrange(fte)
+```
+Create a vector that lists counties in our sample size
+```{r}
+our_counties <- c("Alexander County Health Department", "Anson County Health Department", "Public Health Authority Cabarrus County", "Carteret County Health Department", "Catawba County Health Department", "Cleveland County Health Department", "Dare County Health Department", "Swain County Health Department", "Yadkin County Health Department", "Wayne County Health Department", "Granville-Vance District Health Department", "Greene County Health Department", "Montgomery County Health Department", "Pender County Health Department", "Person County Health Department", "Rowan County Health Department", "Harnett County Health Department", "Madison County Health Department", "Guilford County Department of Public Health", "Henderson County Health Department", "Iredell County Health Department", "Johnston County Health Department", "Lincoln County Health Department", "Pitt County Public Health Center", "Halifax County Department of Health", "Jones County Health Department", "Lenoir County Health Department", "Gaston County Health Department", "Hyde County Health Department", "Mecklenburg County Health Department",  "Rockingham County Health Department", "Chatham County Public Health Department", "Onslow County Health Department", "Franklin County Health Department", "Forsyth County Department of Public Health", "Orange County Health Department", "Brunswick County Health Department", "Richmond County Health Department", "Craven County Health Department", "Jackson County Department of Public Health", "Transylvania County Health Department", "Toe River District", "Union County Health Department", "Lee County Health Department", "Burke County Health Department", "Moore County Health Department", "Stanly County Health Department", "Surry County Health and Nutrition Center", "Wilkes County Health Department", "Martin Tyrell Washington District", "Wake County Human Services")
+```
+
+Find the average percent change in fte from 2007-2017
+```{r}
+fte_data %>%
+  filter(lhd_name %in% our_counties) %>%
+  filter(year %in% c('2007', '2017')) %>%
+  pivot_wider(id_cols = -c(fte_per_100000, population), names_from = year, values_from = fte) %>%
+  mutate(pct_change = 100 * ((`2017` - `2007`)) / `2007`) %>%
+  mutate(avg = mean(`pct_change`)) %>%
+  arrange(desc(pct_change))
+```
+
+GRAPHING
 Loading data
 ```{r}
 library(gsheet)
@@ -148,12 +209,12 @@ pivot_wider(id_cols = lhd_name, names_from = year, values_from = population, nam
   mutate(pop_diff = year2018-year2010, pct_diff = (year2018-year2010) / year2010)
 ```
 
-Joined population data with FTE data
+Join population and FTE data
 ```{r}
 combined_variables_data <- left_join(filter_infl_CompiledLHDExpenditures, nc_fte_change, by="lhd_name")
 ```
 
-Downloading shapefile of NC counties
+Download a shapefile of NC counties
 ```{r}
 options(tigris_use_cache = TRUE)
 nc_counties <- counties("NC")
@@ -272,5 +333,22 @@ ggplot(state_per_capita, aes(x=year, y=expenditures_infl_per_capita, group = sta
  coord_cartesian(xlim = c(2014, 2018), ylim = c(0, 200))
 ```
 
+Create a new dataframe for Jones County data
+```{r}
+jones <- nc %>%
+  filter(lhd_name == "Jones County Health Department") %>%
+  select(`year`, `population`, `fte`, `fte_per_100000`)
+```
+
+Create a line chart showing Jones County FTE per capita change over time
+#HOW DO I SAVE THIS
+```{r}
+Jones_graph_fte_pc <- plot_ly(jones, x = ~year, y = ~fte_per_100000, type = 'scatter', mode = 'lines')
+
+Jones_graph_fte_pc <- Jones_graph_fte_pc %>%
+  layout(title = "Jones County FTE Per Capita Change Over Time", xaxis = list(title = "Year"), yaxis = list(title = "FTE Per Capita"))
+
+Jones_graph_fte_pc
+```
 
 
