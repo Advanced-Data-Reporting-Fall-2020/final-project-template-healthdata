@@ -1,0 +1,10 @@
+---
+title: "fina-github-markdown"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+This is where I will include the final graphs and inflation rmd
