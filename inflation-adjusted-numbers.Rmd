@@ -34,7 +34,7 @@ infl_CompiledLHDExpenditures <-
   left_join(CompiledLHDExpenditures, infl_rates, by=c("year"="year")) %>%
   mutate(expenditures_infl = expenditures * multiplier2019, 
          expenditures_infl_per_capita = expenditures_infl / population) %>%
-  select(year, lhd_name, lhd_area_type, county_name, population, expenditures, expenditures_infl, expenditures_per_capita = per_capita_spending, expenditures_infl_per_capita)
+  dplyr::select(year, lhd_name, lhd_area_type, county_name, population, expenditures, expenditures_infl, expenditures_per_capita = per_capita_spending, expenditures_infl_per_capita)
 ```
 
 Turning the years from a character string to an integer.

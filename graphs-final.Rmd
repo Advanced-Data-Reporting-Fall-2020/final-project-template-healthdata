@@ -161,18 +161,10 @@ ggplot(infl_MeckWakeUnionJohnston) +
 )
 ```
 
-CREATING MAP
+CREATING INTERACTIVE MAP
+Colored in by per capita spending
+On hover also shows population, expenditure and fte percent change
 
-#DO WE WANT TO USE infl_CompiledLHDExpenditures INSTEAD?
-# If we want to add other data in the popup boxes, just need to first pivot infl_CompiledLHDExpenditures to get population change and expenditure change. Then join that dataframe with nc_fte_changes.
-
-HOW DO I PIVOT BY MORE VARIABLES??? I tried adding more column names to the values_from line of code but got an error
-```{r}
-filter_infl_CompiledLHDExpenditures <- infl_CompiledLHDExpenditures %>%
-  filter(year %in% c('2010', '2018')) %>%
-pivot_wider(id_cols = lhd_name,  names_from = year, values_from = population, names_prefix = "year") %>%
-  mutate(pop_diff = year2018-year2010, pct_diff = (year2018-year2010) / year2010)
-```
 
 ```{r}
 
@@ -234,19 +226,73 @@ a_MappingData<- a_MappingData %>%
 ```
 
 
-
-
-
-Joined population data with FTE data
+Added rows for multi-county data in Google Sheets so those counties get filled in on map. Loading in that data.
 ```{r}
-#combined_variables_data <- left_join(filter_infl_CompiledLHDExpenditures, nc_fte_change, by="lhd_name")
+library(gsheet)
+MultiCountyData <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Az71mA2PJJ7oJskn_A3eAdfyY5loHcT7CT7g2523odE/edit#gid=0")
 ```
 
+Joining data with fte data
 ```{r}
-#Ignore this chunk. Old data we were using
-#library(gsheet)
-#MappingData <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1mT0-4-S5YwefLuejmb3GhSN4m5zniLuwzOdAXymOAfk/edit#gid=0")
+test_pct_capita_map <- left_join(nc_counties, MultiCountyData, by=c("NAME"="only_county_name"))
 ```
+
+Leaflet map where health districts get filled in
+```{r}
+library(leaflet)
+library(scales)
+# Creating a color palette based on the number range in the pct_change column
+pal <- colorNumeric("YlGnBu", domain=test_pct_capita_map$pct_change)
+
+# Setting up the pop up text
+popup_pctchange <- paste0(
+  "<strong>", test_pct_capita_map$NAMELSAD,
+  "</strong><br /> Population Change: ", as.character(
+    percent(
+      round(test_pct_capita_map$pct_population_change, digits=1),
+      scale=100,
+      big.mark = ",") ),
+  "<br /> Expenditure Change: ",
+  as.character(
+    percent(
+      round(test_pct_capita_map$pct_change_expenditures_infl, digits=1),
+      scale=100,
+      big.mark = ",") ),
+    "<br /> FTE Change: ",
+  as.character(
+    percent(
+      round(test_pct_capita_map$fte_pct_change, digits=1),
+      scale=100,
+      big.mark = ",") )
+)
+
+
+leaflet() %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  setView(lng=-79.177556, lat=35.481333, zoom = 6) %>%
+    addPolygons(data = test_pct_capita_map, 
+              fillColor = ~pal(test_pct_capita_map$pct_change_expenditures_capita_infl), 
+              fillOpacity = 0.9, 
+              weight = 0.2, 
+              smoothFactor = 0.2, 
+              highlight = highlightOptions(
+                weight = 5,
+                color = "#666",
+                fillOpacity = 0.7,
+                bringToFront = TRUE), 
+              popup = ~ popup_pctchange) %>%
+  addLegend(pal = pal,
+            opacity = 0.9,
+            values = test_pct_capita_map$pct_change_expenditures_capita_infl * 100,
+            position = "bottomleft",
+            title = "$ per capita", 
+            labFormat = labelFormat(suffix = "%"),
+            na.label = "No Data") 
+
+```
+
+
+
 
 Downloading shapefile of NC counties
 ```{r}
@@ -255,20 +301,8 @@ options(tigris_use_cache = TRUE)
 nc_counties <- counties("NC")
 ```
 
-Renaming column so name is consistent with health data column name so data frames can be joined
-```{r}
-#nc_counties<- dplyr::rename(nc_counties, county_name = NAME) 
-```
 
-Loading in the code of data frame with percent change column
-```{r}
-#MappingData <- MappingData %>%
-#  filter(year %in% c('2010', '2018')) %>%
-#  pivot_wider(id_cols = -c(expenditures,population), names_from = year, values_from = per_capita_spending) %>%
-#  mutate(capita_spending_change= (`2018` - `2010`),
-#    pct_change = 100 * ((`2018` - `2010`)) / `2010`) %>%
-#  arrange(desc(pct_change))
-```
+MAP WITHOUT MULTI-COUNTY HEALTH DEPARTMENTS FILLED IN
 
 Merging shapefile and data
 ```{r}
