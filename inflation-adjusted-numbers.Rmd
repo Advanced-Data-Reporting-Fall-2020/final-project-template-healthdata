@@ -281,7 +281,7 @@ intersect(increase_per_cap$county_name, raw_expenditure_change$county_name)
 
 How many counties are down FTEs from 2010 to 2018?
 
-OMG! NC doesn't report FTEs in even years, so we can't look at 2010 to 2018. 2017 is the latest year so we will have to do 2007-2017.
+OMG! NC doesn't report FTEs in even years, so we can't look at 2010 to 2018. 2017 is the latest year so we will have to do 2009-2017.
 
 
 
@@ -289,22 +289,22 @@ OMG! NC doesn't report FTEs in even years, so we can't look at 2010 to 2018. 201
 ```{r}
 nc_fte_change <- 
   local_health_departments_detail %>%
-  filter(state_code == "NC", year %in% c(2007, 2017))%>%
-  pivot_wider(id_cols = lhd_name, names_prefix = "year", names_from = year, values_from = fte) %>%
-  mutate(change = year2017 - year2007, pct_change = (year2017 - year2007)/ year2007 ) %>%
+  filter(state_code == "NC", year %in% c(2009, 2017))%>%
+  pivot_wider(id_cols = c(lhd_name, county_name), names_prefix = "year", names_from = year, values_from = fte) %>%
+  mutate(change = year2017 - year2009, pct_change = (year2017 - year2009)/ year2009 ) %>%
   arrange(desc(pct_change))
 ```
-Of the 85 LHDs, 67 had fewer people working at them in 2017 than in 2007. 
+<!-- Of the 85 LHDs, 67 had fewer people working at them in 2017 than in 2009. -->
 
 
 
-Wake County has cut 268 FTEs over that decade -- 30% of its workforce. Meanwhile, Mecklenburg County more than doubled its workforce from 379 in 2007 to 825 in 2017. That's the biggest increase in terms of both raw numbers of new employees as well as percent increase.
+<!-- Wake County has cut 268 FTEs over that decade -- 30% of its workforce. Meanwhile, Mecklenburg County more than doubled its workforce from 379 in 2007 to 825 in 2017. That's the biggest increase in terms of both raw numbers of new employees as well as percent increase. --> 
 
 ```{r}
 local_health_departments_detail %>%
-  filter(state_code == "NC", year %in% c(2007, 2017))%>%
+  filter(state_code == "NC", year %in% c(2009, 2017))%>%
   pivot_wider(id_cols = lhd_name, names_prefix = "year", names_from = year, values_from = fte) %>%
-  mutate(change = year2017 - year2007, pct_change = (year2017 - year2007)/ year2007 ) %>%
+  mutate(change = year2017 - year2009, pct_change = (year2017 - year2009)/ year2009 ) %>%
   arrange(desc(pct_change)) %>%
   filter(pct_change < -0.33)
 ```
@@ -314,9 +314,9 @@ Wake's cuts were biggest in terms of raw numbers, but 17 health departments acro
 
 ```{r}
   infl_CompiledLHDExpenditures %>%
-  filter(year %in% c(2007, 2017)) %>%
+  filter(year %in% c(2009, 2017)) %>%
   pivot_wider(id_cols = county_name, names_from = year, values_from = population, names_prefix = "year") %>%
-  mutate(pop_diff = year2017-year2007, pct_diff = (year2017-year2007) / year2007)  %>%
+  mutate(pop_diff = year2017-year2009, pct_diff = (year2017-year2009) / year2009)  %>%
   mutate(change = case_when(pop_diff > 0 ~ "increase", 
                             pop_diff <=0 ~ "decrease")) %>%
   filter(change == "increase") %>% arrange(county_name)
