@@ -388,12 +388,6 @@ leaflet() %>%
 
 
 
-```{r}
-tm_shape(new_pct_capita_map) +
-  tm_fill("pct_change",title="Percent Change in Health Department Per Capita Spending from 2010-2018",palette="YlGnBu")  +
-  tm_borders()
-```
-
 Line chart showing change in national per capita spending at state level and NC per capita spending at state level
 
 ```{r}
