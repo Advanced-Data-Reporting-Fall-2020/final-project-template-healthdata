@@ -6,7 +6,6 @@ output:
 ---
 Loading packages
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
 library("dplyr")
 library("tidyverse")
 library("ggplot2")
@@ -22,7 +21,7 @@ library("gsheet")
 library("gghighlight")
 ```
 
-## FTE DATA
+## FTE Data
 
 Upload data and create a dataframe called khn
 ```{r A, warning=F, message=F}
@@ -79,7 +78,7 @@ fte_data %>%
   mutate(avg = mean(`pct_change`)) %>%
   arrange(desc(pct_change))
 ```
-## EXPENDITURE DATA ACCOUNTING FOR INFLATION
+## Expenditure Data Accounting for Inflation
 
 Loading in necessary datasets.
 ```{r}
@@ -479,7 +478,7 @@ left_join(infl_CompiledLHDExpenditures, infl_rates, by=c("year"="year")) %>%
   select(year, lhd_name, lhd_area_type, county_name, population, expenditures, expenditures_infl, expenditures_per_capita = expenditures_infl_per_capita, expenditures_infl_per_capita)
 ```
 
-## GRAPHING
+## Graphing
 
 Loading data
 ```{r}
@@ -487,7 +486,7 @@ library(gsheet)
 CompiledLHDExpenditures <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Zc10pam92Y1218F90eXn9ri7-a4GQI1vhzING33nNSI/edit#gid=0")
 ```
 
-### LOLLIPOP CHART SHOWING COUNTIES THAT HAVE INCREASED IN PER CAPITA SPENDING VS. DECREASED FROM 2010-2018
+### Lollipop chart showing counties that have increased in per capita spending vs. decreased from 2010-2018
 
 Loading the data
 ```{r}
@@ -529,18 +528,17 @@ Save the image as a png file
 ggsave("per-capita-spending-lollipop-chart.png")
 ```
 
-### LOLLIPOP CHART OF FTE CHANGE PER HEALTH DEPARTMENT FROM 2007 TO 2017
+### Lollipop chart of FTE change per health department from 2009-2017
 
 Loading the data
 ```{r}
 library(gsheet)
-FTE_change_revised_names <- gsheet2tbl(
-"https://docs.google.com/spreadsheets/d/1sQJlt7b6pTlsrSvPf4kN9E6mBDANDmPt4TozzTR_U0U/edit#gid=0")
+FTE_change_revised_names_start2009 <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1-uDrdN2JbvSeepLtUnSRROnJ7ci9rJkxq9HC8iTvDaA/edit#gid=0")
 ```
 
-Create the lollipop chart
+Creating the chart
 ```{r}
-ggplot(FTE_change_revised_names,
+ggplot(FTE_change_revised_names_start2009,
        aes(x=pct_change, y=fct_reorder(lhd_name, pct_change))) +
   geom_segment(
     aes(x=0,
@@ -550,7 +548,7 @@ ggplot(FTE_change_revised_names,
     color="gray50")+
   geom_point(color="#1d91c0")+
   labs(x="Percent Change in FTEs", y="County Health Department", 
-       title = "Percent Change in Number of FTEs from 2007-2017",
+       title = "Percent Change in Number of FTEs from 2009-2017",
        caption = "Data Source: KHN FTE Dataset") +
   theme_minimal()+
    theme(panel.border = element_blank(),
@@ -560,10 +558,10 @@ ggplot(FTE_change_revised_names,
 
 Save the image as a png file
 ```{r}
-ggsave("FTE-change-lollipop-chart.png", width= 7, height = 10)
+ggsave("FTE-change-lollipop-chart-2009.png", width= 7, height = 10)
 ```
 
-### CHANGE IN PER CAPITA SPENDING FOR MECKLENBURG, WAKE, UNION, JOHNSTON 
+### Change in per capita spending for Mecklenburg, Wake, Union and Johnston 
 
 Creating a new dataframe
 ```{r}
@@ -581,7 +579,7 @@ ggplot(MeckWakeUnionJohnston) +
   theme_minimal() 
 )
 ```
-### LINE CHART SHOWING CHANGE IN HEALTH DEPARTMENT SPENDING PER CAPITA FROM 2014-2018
+### Line chart showing change in health department spending per capita from 2014-2018
 
 Creating a new dataframe
 ```{r}
@@ -600,7 +598,7 @@ ggplot(infl_MeckWakeUnionJohnston) +
 )
 ```
 
-### CREATING INTERACTIVE MAP
+### Creating an interactive map
 
 Colored in by per capita spending
 On hover also shows population, expenditure and fte percent change
@@ -726,7 +724,7 @@ leaflet() %>%
 
 ```
 
-Line chart showing change in national per capita spending at state level and NC per capita spending at state level
+### Line chart showing change in national per capita spending at state level and NC per capita spending at state level
 
 ```{r}
 library(tidyverse)
