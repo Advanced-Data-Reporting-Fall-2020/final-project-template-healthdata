@@ -1,7 +1,8 @@
 ---
 title: "Final Github Markdown"
-output: html_document
-  code_folding: hide
+output: 
+  html_document:
+    code_folding: hide
 ---
 Loading packages
 ```{r setup, include=FALSE}
