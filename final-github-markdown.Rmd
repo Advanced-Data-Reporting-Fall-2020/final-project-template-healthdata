@@ -1,5 +1,5 @@
 ---
-title: "Final Github Markdown"
+title: "Final Project Markdown"
 output: 
   html_document:
     code_folding: hide
@@ -22,9 +22,9 @@ library("gsheet")
 library("gghighlight")
 ```
 
-# FTE DATA
+## FTE DATA
 
-## Upload data and create a dataframe called khn
+Upload data and create a dataframe called khn
 ```{r A, warning=F, message=F}
 download.file("https://raw.githubusercontent.com/khnews/2020-underfunded-under-threat-data/master/data/05-local-health-departments-detail.csv", "05-local-health-departments-detail.csv")
 khn <- rio::import("05-local-health-departments-detail.csv")
@@ -79,9 +79,7 @@ fte_data %>%
   mutate(avg = mean(`pct_change`)) %>%
   arrange(desc(pct_change))
 ```
-
-
-EXPENDITURE DATA ACCOUNTING FOR INFLATION
+## EXPENDITURE DATA ACCOUNTING FOR INFLATION
 
 Loading in necessary datasets.
 ```{r}
@@ -481,7 +479,7 @@ left_join(infl_CompiledLHDExpenditures, infl_rates, by=c("year"="year")) %>%
   select(year, lhd_name, lhd_area_type, county_name, population, expenditures, expenditures_infl, expenditures_per_capita = expenditures_infl_per_capita, expenditures_infl_per_capita)
 ```
 
-GRAPHING
+## GRAPHING
 
 Loading data
 ```{r}
@@ -489,7 +487,7 @@ library(gsheet)
 CompiledLHDExpenditures <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Zc10pam92Y1218F90eXn9ri7-a4GQI1vhzING33nNSI/edit#gid=0")
 ```
 
-LOLLIPOP CHART SHOWING COUNTIES THAT HAVE INCREASED IN PER CAPITA SPENDING VS. DECREASED FROM 2010-2018 (Using inflation adjusted numbers)
+### LOLLIPOP CHART SHOWING COUNTIES THAT HAVE INCREASED IN PER CAPITA SPENDING VS. DECREASED FROM 2010-2018
 
 Loading the data
 ```{r}
@@ -531,7 +529,7 @@ Save the image as a png file
 ggsave("per-capita-spending-lollipop-chart.png")
 ```
 
-LOLLIPOP CHART OF FTE CHANGE PER HEALTH DEPARTMENT FROM 2007 TO 2017
+### LOLLIPOP CHART OF FTE CHANGE PER HEALTH DEPARTMENT FROM 2007 TO 2017
 
 Loading the data
 ```{r}
@@ -565,7 +563,7 @@ Save the image as a png file
 ggsave("FTE-change-lollipop-chart.png", width= 7, height = 10)
 ```
 
-CHANGE IN PER CAPITA SPENDING FOR MECKLENBURG, WAKE, UNION, JOHNSTON 
+### CHANGE IN PER CAPITA SPENDING FOR MECKLENBURG, WAKE, UNION, JOHNSTON 
 
 Creating a new dataframe
 ```{r}
@@ -583,7 +581,7 @@ ggplot(MeckWakeUnionJohnston) +
   theme_minimal() 
 )
 ```
-LINE CHART SHOWING CHANGE IN HEALTH DEPARTMENT SPENDING PER CAPITA FROM 2014-2018
+### LINE CHART SHOWING CHANGE IN HEALTH DEPARTMENT SPENDING PER CAPITA FROM 2014-2018
 
 Creating a new dataframe
 ```{r}
@@ -602,7 +600,8 @@ ggplot(infl_MeckWakeUnionJohnston) +
 )
 ```
 
-CREATING INTERACTIVE MAP
+### CREATING INTERACTIVE MAP
+
 Colored in by per capita spending
 On hover also shows population, expenditure and fte percent change
 
