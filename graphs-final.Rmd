@@ -407,7 +407,7 @@ ggplot(state_per_capita, aes(x=year, y=expenditures_infl_per_capita, group = sta
   scale_fill_viridis(discrete = TRUE) +
   scale_x_continuous(breaks=c(2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018)) +
   scale_y_continuous(labels = dollar) +
-  labs(title = "Per Capita Spending by State Public Health Agencies (Adjusted for Inflation), 2010-2018", y = "Per Capita Spending", x = "Year", caption="Note: No data for 2011-2014, Source: https://github.com/khnews/2020-underfunded-under-threat-data/blob/master/data/01-state-public-health-agencies.csv") +
+  labs(title = "Per Capita Spending by State Public Health Agencies (Adjusted for Inflation), 2010-2018", y = "Per Capita Spending", x = "Year", caption="Note: No data for 2011-2014 / Source: https://github.com/khnews/2020-underfunded-under-threat-data/blob/master/data/01-state-public-health-agencies.csv / Graphic: Dominick Ferrara") +
   theme_ipsum() +
   gghighlight(state_code == "NC") +
  coord_cartesian(ylim = c(0, 200))
@@ -422,7 +422,7 @@ ggplot(state_per_capita, aes(x=year, y=expenditures_infl_per_capita, group = sta
   scale_fill_viridis(discrete = TRUE) +
   scale_x_continuous(breaks=c(2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018)) +
   scale_y_continuous(labels = dollar) +
-  labs(title = "Per Capita Spending by State Public Health Agencies (Adjusted for Inflation), 2014-2018", y = "Per Capita Spending", x = "Year", caption="Note: No data for 2011-2014, Source: https://github.com/khnews/2020-underfunded-under-threat-data/blob/master/data/01-state-public-health-agencies.csv") +
+  labs(title = "Per Capita Spending by State Public Health Agencies (Adjusted for Inflation), 2014-2018", y = "Per Capita Spending", x = "Year", caption="Note: No data for 2011-2014, Source: https://github.com/khnews/2020-underfunded-under-threat-data/blob/master/data/01-state-public-health-agencies.csv  / Graphic: Dominick Ferrara") +
   theme_ipsum() +
   gghighlight(state_code == "NC") +
  coord_cartesian(xlim = c(2014, 2018), ylim = c(0, 200))
