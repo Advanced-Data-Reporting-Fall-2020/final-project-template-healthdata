@@ -52,7 +52,7 @@ ggplot(PerCapitaSpendingChange,
   geom_point(color="#1d91c0")+
   labs(x="Percent Change in Per Capita Spending", y="County Health Department", 
        title = "Percent Change in Per Capita Spending from 2010-2018",
-       caption = "Data Source: County Finance Records (Did not receive data from 34 Health Departments)") +
+       caption = "Data Source: County Finance Records (Did not receive data from 43 Health Departments)") +
   theme_minimal()+
    theme(panel.border = element_blank(),
         panel.grid.minor = element_blank()
