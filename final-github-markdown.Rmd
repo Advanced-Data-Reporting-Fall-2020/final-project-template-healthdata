@@ -730,6 +730,11 @@ leaflet() %>%
 
 ```
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 976239ada8748947cb0116c7263b0a1677047314
 MAP WITHOUT MULTI-COUNTY HEALTH DEPARTMENTS FILLED IN
 
 Merging shapefile and data
