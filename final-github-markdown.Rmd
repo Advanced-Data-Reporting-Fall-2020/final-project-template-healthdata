@@ -22,10 +22,10 @@ library("gsheet")
 library("gghighlight")
 ```
 
-FTE DATA
+# FTE DATA
 
-Upload data and create a dataframe called khn
-```{r, include=TRUE, message=FALSE}
+## Upload data and create a dataframe called khn
+```{r A, warning=F, message=F}
 download.file("https://raw.githubusercontent.com/khnews/2020-underfunded-under-threat-data/master/data/05-local-health-departments-detail.csv", "05-local-health-departments-detail.csv")
 khn <- rio::import("05-local-health-departments-detail.csv")
 ```
