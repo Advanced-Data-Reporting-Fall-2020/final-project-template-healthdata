@@ -2,10 +2,6 @@
 title: "Final Github Markdown"
 output: html_document
 ---
-#All cleaned up FTE data and inflation data is in
-#Need to continue cleaning up final graphs RMD (but it's added here)
-
-
 Loading packages
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -65,6 +61,7 @@ fte_data %>%
   filter(year == "2017") %>%
   arrange(fte)
 ```
+
 Create a vector that lists counties in our sample size
 ```{r}
 our_counties <- c("Alexander County Health Department", "Anson County Health Department", "Public Health Authority Cabarrus County", "Carteret County Health Department", "Catawba County Health Department", "Cleveland County Health Department", "Dare County Health Department", "Swain County Health Department", "Yadkin County Health Department", "Wayne County Health Department", "Granville-Vance District Health Department", "Greene County Health Department", "Montgomery County Health Department", "Pender County Health Department", "Person County Health Department", "Rowan County Health Department", "Harnett County Health Department", "Madison County Health Department", "Guilford County Department of Public Health", "Henderson County Health Department", "Iredell County Health Department", "Johnston County Health Department", "Lincoln County Health Department", "Pitt County Public Health Center", "Halifax County Department of Health", "Jones County Health Department", "Lenoir County Health Department", "Gaston County Health Department", "Hyde County Health Department", "Mecklenburg County Health Department",  "Rockingham County Health Department", "Chatham County Public Health Department", "Onslow County Health Department", "Franklin County Health Department", "Forsyth County Department of Public Health", "Orange County Health Department", "Brunswick County Health Department", "Richmond County Health Department", "Craven County Health Department", "Jackson County Department of Public Health", "Transylvania County Health Department", "Toe River District", "Union County Health Department", "Lee County Health Department", "Burke County Health Department", "Moore County Health Department", "Stanly County Health Department", "Surry County Health and Nutrition Center", "Wilkes County Health Department", "Martin Tyrell Washington District", "Wake County Human Services")
@@ -84,7 +81,7 @@ fte_data %>%
 
 EXPENDITURE DATA ACCOUNTING FOR INFLATION
 
-Load in the dataset
+Loading in necessary datasets.
 ```{r}
 CompiledLHDExpenditures <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Zc10pam92Y1218F90eXn9ri7-a4GQI1vhzING33nNSI/edit#gid=0")
 state_public_health_agencies <- read_csv("https://raw.githubusercontent.com/khnews/2020-underfunded-under-threat-data/master/data/01-state-public-health-agencies.csv")
@@ -106,7 +103,7 @@ infl_CompiledLHDExpenditures <-
   left_join(CompiledLHDExpenditures, infl_rates, by=c("year"="year")) %>%
   mutate(expenditures_infl = expenditures * multiplier2019, 
          expenditures_infl_per_capita = expenditures_infl / population) %>%
-  select(year, lhd_name, lhd_area_type, county_name, population, expenditures, expenditures_infl, expenditures_per_capita = per_capita_spending, expenditures_infl_per_capita)
+  dplyr::select(year, lhd_name, lhd_area_type, county_name, population, expenditures, expenditures_infl, expenditures_per_capita = per_capita_spending, expenditures_infl_per_capita)
 ```
 
 Turning the years from a character string to an integer.
@@ -216,7 +213,7 @@ Rearranging the national dataframe from least to greatest, to see where NC ranks
                 dplyr::select(state_code, expenditures_infl_per_capita) %>% arrange(expenditures_infl_per_capita)
 ```
 
-At the state level in 2018, North Carolina spends less per person than all but 12 states. It spends about $72 per person. 
+At the state level in 2018, North Carolina spends less per person than all but 13 states. It spends about $72 per person. 
 
 While the spending at the state level has decreased, that has left counties to pick up the tab. 
 
@@ -231,7 +228,7 @@ infl_CompiledLHDExpenditures %>%
                 mutate(cum_expenditures_per_capita = cum_expenditures/cum_population)
 ```
 
-On top of the 27% drop at the state level, county-level spending also dropped 15%.
+On top of the 27% drop at the state level, county-level spending also dropped 21%.
 
 It's been left to local agencies to pick up the slack. Some have. Some haven't. But nobody really knows. The report for the first time ever tries to shine light on the local public health spending in North Carolina.
 
@@ -350,7 +347,6 @@ When looking at Full-Time-Employees (FTEs), the year range has to change from 20
 Because the FTE is reported, we do have data for all 85 North Carolina local health departments.
 
 Creating a dataframe to better examine the changes in FTEs from 2009-2017.
-
 ```{r}
 nc_fte_change <- 
   local_health_departments_detail %>%
@@ -360,9 +356,9 @@ nc_fte_change <-
   arrange(desc(pct_change))
 ```
 
-Of the 85 LHDs, 67 had fewer people working at them in 2017 than in 2009.
+Of the 85 LHDs, 62 had fewer people working at them in 2017 than in 2009.
 
-Wake County has cut 268 FTEs over that decade -- 30% of its workforce. Meanwhile, Mecklenburg County more than doubled its workforce from 379 in 2007 to 825 in 2017. That's the biggest increase in terms of both raw numbers of new employees as well as percent increase. 
+Wake County has cut 268 FTEs over that decade -- 30% of its workforce. Meanwhile, Mecklenburg County more than doubled its workforce from 379 in 2007 to 825 in 2017. That's the biggest increase in terms of both raw numbers of new employees as well as percent increase.
 
 Ranking each LHD by their pct_change in FTE.
 ```{r}
@@ -374,7 +370,7 @@ local_health_departments_detail %>%
   filter(pct_change < -0.33)
 ```
 
-Wake's cuts were biggest in terms of raw numbers, but 17 health departments across the state saw their staffing drop by at least a third. Hyde County lost two thirds of its FTE. The Toe River Health District went from 200 to 60 people. 
+Wake's cuts were biggest in terms of raw numbers, but 13 health departments across the state saw their staffing drop by at least a third. Hyde County lost two thirds of its FTE. The Toe River Health District went from 200 to 60 people. 
 
 Filtering each county so only increases in FTEs are shown.
 ```{r}
@@ -482,7 +478,6 @@ left_join(infl_CompiledLHDExpenditures, infl_rates, by=c("year"="year")) %>%
          expenditures_infl_per_capita = expenditures_infl / population) %>%
   select(year, lhd_name, lhd_area_type, county_name, population, expenditures, expenditures_infl, expenditures_per_capita = expenditures_infl_per_capita, expenditures_infl_per_capita)
 ```
-
 
 GRAPHING
 
