@@ -7,7 +7,6 @@ output: html_document
 
 Loading data
 ```{r}
-
 library(gsheet)
 CompiledLHDExpenditures <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Zc10pam92Y1218F90eXn9ri7-a4GQI1vhzING33nNSI/edit#gid=0")
 ```
@@ -26,7 +25,7 @@ library("tmap")
 ```
 
 
-LOLLIPOP CHART SHOWING COUNTIES THAT HAVE INCREASED IN PER CAPITA SPENDING VS. DECREASED (using inflation adjusted numbers)
+LOLLIPOP CHART SHOWING COUNTIES THAT HAVE INCREASED IN PER CAPITA SPENDING VS. DECREASED (Using inflation adjusted numbers)
 
 ```{r}
 infl_nc_county_by_year <- infl_CompiledLHDExpenditures %>%
@@ -65,8 +64,7 @@ ggsave("per-capita-spending-lollipop-chart.png")
 ```
 
 
-LOLLIPOP CHART OF FTE CHANGE PER HEALTH DEPARTMENT FROM 2007 to 2017
-
+LOLLIPOP CHART OF FTE CHANGE PER HEALTH DEPARTMENT FROM 2007 TO 2017
 
 ```{r}
 library(gsheet)
@@ -130,7 +128,6 @@ ggplot(nc_fte_change,
 ```
 
 CHANGE IN PER CAPITA FOR MECK, WAKE, UNION, JOHNSTON
-- Width of lines = population
 ```{r}
 MeckWakeUnionJohnston <- CompiledLHDExpenditures %>%
   filter(county_name %in% c("Mecklenburg", "Wake", "Union", "Johnston"), year >=2010, year<=2018)
@@ -163,74 +160,108 @@ ggplot(infl_MeckWakeUnionJohnston) +
 )
 ```
 
+CREATING INTERACTIVE MAP
+Colored in by per capita spending
+On hover also shows population, expenditure and fte percent change
 
-
-
-MAP THAT SHOWS COUNTIES
-* name
-* Pop change
-* expenditure change
-* FTE change
-red = counties that increased pop, but decreased FTEs
-yellow = increased pop, increased FTEs
-green = increased FTEs and expenditures at faster rate than pop.
-
-
-Creating map that colored in all counties we have data for — got it to work for the health districts
 
 ```{r}
 
-#DO WE WANT TO USE infl_CompiledLHDExpenditures INSTEAD?
+#First, pivot the infl_CompiledLHDExpenditures on multiple columns ... 
+change_infl_CompiledLHDExpenditures <- infl_CompiledLHDExpenditures %>%
+  #get just the years we want ... 
+  filter(year %in% c(2010, 2018)) %>%
+  #... and just the columns we want to deal with. (I'm actually taking more than I need in case I want to calculate percent change for these other columns later.)
+  dplyr::select(year,
+         county_name,
+         population,
+         expenditures,
+         expenditures_infl,
+         expenditures_per_capita,
+         expenditures_infl_per_capita) %>%
+    pivot_wider(
+      #This next line says make every row a unique county.
+      id_cols = county_name, 
+      #this next line looks normal, but it just becomes *part* of the column names when we combine it with... 
+                names_from = year, 
+      #multiple column names in the values_from variable. Each of the new columns will be a combination of the "year" and then each of these variable names...
+                values_from =c(population, expenditures,
+         expenditures_infl,
+         expenditures_per_capita,
+         expenditures_infl_per_capita)
+    )
 
+#Now we calculate the percentage changes... 
+change_infl_CompiledLHDExpenditures<- change_infl_CompiledLHDExpenditures %>%
+  mutate(
+    pct_change_expenditures_infl = (expenditures_infl_2018 - expenditures_infl_2010)/ expenditures_infl_2010,
+    pct_population_change = (population_2018 - population_2010) / population_2010,
+    pct_change_expenditures_capita_infl = (expenditures_infl_per_capita_2018 - expenditures_infl_per_capita_2010) / expenditures_infl_per_capita_2010
+  )
+
+
+#Before we can join, need to create a field in nc_fte_change dataframe that can be used to join with infl_CompiledLHDExpenditures. (When I first ran it, I forgot to get the space, too. This caused me big headaches when trying to join. I also had to fix something upstream in the way we created nc_fte_change. This was done in the inflation-adjusted-numbers.Rmd)
+nc_fte_change<- nc_fte_change%>% mutate(only_county_name = str_sub(county_name,end = -8))
+  
+#Next, join the two dataframes. Each row is unique by year and county, so we need to use both fields to join. The "nc" dataframe needs to be on the left because it is the only one of the two that has all counties.
+
+a_MappingData<-  left_join(nc_fte_change, change_infl_CompiledLHDExpenditures, by=c("only_county_name"="county_name"))
+
+
+#Let's clean up some column names
+a_MappingData<- a_MappingData %>%
+  rename (fte_pct_change = pct_change
+          ) %>%
+  #and just reorder some columns rather than delete them.
+  dplyr::select(lhd_name,
+         county_name,
+         only_county_name,
+         fte_pct_change,
+         pct_change_expenditures_infl,
+         pct_population_change,
+         everything())
+
+
+```
+
+
+Added rows for multi-county data in Google Sheets so those counties get filled in on map. Loading in that data.
+```{r}
 library(gsheet)
-MappingData <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1mT0-4-S5YwefLuejmb3GhSN4m5zniLuwzOdAXymOAfk/edit#gid=0")
+MultiCountyData <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Az71mA2PJJ7oJskn_A3eAdfyY5loHcT7CT7g2523odE/edit#gid=0")
 ```
 
-Downloading shapefile of NC counties
+Joining data with fte data
 ```{r}
-
-options(tigris_use_cache = TRUE)
-nc_counties <- counties("NC")
+test_pct_capita_map <- left_join(nc_counties, MultiCountyData, by=c("NAME"="only_county_name"))
 ```
 
-Renaming column so name is consistent with health data column name so data frames can be joined
-```{r}
-nc_counties<- dplyr::rename(nc_counties, county_name = NAME) 
-```
-
-
-Loading in the code of data frame with percent change column
-```{r}
-MappingData <- MappingData %>%
-  filter(year %in% c('2010', '2018')) %>%
-  pivot_wider(id_cols = -c(expenditures,population), names_from = year, values_from = per_capita_spending) %>%
-  mutate(capita_spending_change= (`2018` - `2010`),
-    pct_change = 100 * ((`2018` - `2010`)) / `2010`) %>%
-  arrange(desc(pct_change))
-```
-
-Merging shapefile and data
-```{r}
-# merge on common variable, here called 'key'
-new_pct_capita_map <- left_join(nc_counties, MappingData, by="county_name")
-```
-
-#LEAFLET MAP
-Creating map showing per capita percent change
-**Need help refining legend position and legend labeling--want them to be percents
-**Need help refining pop ups
+Leaflet map where health districts get filled in
 ```{r}
 library(leaflet)
+library(scales)
 # Creating a color palette based on the number range in the pct_change column
-pal <- colorNumeric("YlGnBu", domain=new_pct_capita_map$pct_change)
+pal <- colorNumeric("YlGnBu", domain=test_pct_capita_map$pct_change)
 
 # Setting up the pop up text
 popup_pctchange <- paste0(
-  "<strong>", new_pct_capita_map$NAMELSAD,
-  "</strong><br /> Per capita spending: ", as.character(
+  "<strong>", test_pct_capita_map$NAMELSAD,
+  "</strong><br /> Population Change: ", as.character(
     percent(
-      round(new_pct_capita_map$pct_change, digits=0),
-      scale=1,
+      round(test_pct_capita_map$pct_population_change, digits=1),
+      scale=100,
+      big.mark = ",") ),
+  "<br /> Expenditure Change: ",
+  as.character(
+    percent(
+      round(test_pct_capita_map$pct_change_expenditures_infl, digits=1),
+      scale=100,
+      big.mark = ",") ),
+    "<br /> FTE Change: ",
+  as.character(
+    percent(
+      round(test_pct_capita_map$fte_pct_change, digits=1),
+      scale=100,
       big.mark = ",") )
 )
 
@@ -238,8 +269,8 @@ popup_pctchange <- paste0(
 leaflet() %>%
   addProviderTiles("CartoDB.Positron") %>%
   setView(lng=-79.177556, lat=35.481333, zoom = 6) %>%
-    addPolygons(data = new_pct_capita_map, 
-              fillColor = ~pal(new_pct_capita_map$pct_change), 
+    addPolygons(data = test_pct_capita_map, 
+              fillColor = ~pal(test_pct_capita_map$pct_change_expenditures_capita_infl), 
               fillOpacity = 0.9, 
               weight = 0.2, 
               smoothFactor = 0.2, 
@@ -251,7 +282,83 @@ leaflet() %>%
               popup = ~ popup_pctchange) %>%
   addLegend(pal = pal,
             opacity = 0.9,
-            values =new_pct_capita_map$pct_change,
+            values = test_pct_capita_map$pct_change_expenditures_capita_infl * 100,
+            position = "bottomleft",
+            title = "$ per capita", 
+            labFormat = labelFormat(suffix = "%"),
+            na.label = "No Data") 
+
+```
+
+
+
+
+Downloading shapefile of NC counties
+```{r}
+library(tigris)
+options(tigris_use_cache = TRUE)
+nc_counties <- counties("NC")
+```
+
+
+MAP WITHOUT MULTI-COUNTY HEALTH DEPARTMENTS FILLED IN
+
+Merging shapefile and data
+```{r}
+# merge on common variable, here called 'key'
+new_pct_capita_map <- left_join(nc_counties, a_MappingData, by=c("NAME"="only_county_name"))
+```
+
+#LEAFLET MAP
+Creating map showing per capita percent change
+**Need help refining legend position and legend labeling--want them to be percents
+**Need help refining pop ups
+```{r}
+library(leaflet)
+library(scales)
+# Creating a color palette based on the number range in the pct_change column
+pal <- colorNumeric("YlGnBu", domain=new_pct_capita_map$pct_change)
+
+# Setting up the pop up text
+popup_pctchange <- paste0(
+  "<strong>", new_pct_capita_map$NAMELSAD,
+  "</strong><br /> Population Change: ", as.character(
+    percent(
+      round(new_pct_capita_map$pct_population_change, digits=1),
+      scale=100,
+      big.mark = ",") ),
+  "<br /> Expenditure Change: ",
+  as.character(
+    percent(
+      round(new_pct_capita_map$pct_change_expenditures_infl, digits=1),
+      scale=100,
+      big.mark = ",") ),
+    "<br /> FTE Change: ",
+  as.character(
+    percent(
+      round(new_pct_capita_map$fte_pct_change, digits=1),
+      scale=100,
+      big.mark = ",") )
+)
+
+
+leaflet() %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  setView(lng=-79.177556, lat=35.481333, zoom = 6) %>%
+    addPolygons(data = new_pct_capita_map, 
+              fillColor = ~pal(new_pct_capita_map$pct_change_expenditures_capita_infl), 
+              fillOpacity = 0.9, 
+              weight = 0.2, 
+              smoothFactor = 0.2, 
+              highlight = highlightOptions(
+                weight = 5,
+                color = "#666",
+                fillOpacity = 0.7,
+                bringToFront = TRUE), 
+              popup = ~ popup_pctchange) %>%
+  addLegend(pal = pal,
+            opacity = 0.9,
+            values = new_pct_capita_map$pct_change_expenditures_capita_infl * 100,
             position = "bottomleft",
             title = "$ per capita", 
             labFormat = labelFormat(suffix = "%"),
@@ -317,4 +424,20 @@ ggplot(state_per_capita, aes(x=year, y=expenditures_infl_per_capita, group = sta
  coord_cartesian(xlim = c(2014, 2018), ylim = c(0, 200))
 ```
 
+Create a new dataframe for Jones County data
+```{r}
+jones <- nc %>%
+  filter(lhd_name == "Jones County Health Department") %>%
+  select(`year`, `population`, `fte`, `fte_per_100000`)
+```
 
+Create a line chart showing Jones County FTE per capita change over time
+#HOW DO I SAVE THIS
+```{r}
+Jones_graph_fte_pc <- plot_ly(jones, x = ~year, y = ~fte_per_100000, type = 'scatter', mode = 'lines')
+
+Jones_graph_fte_pc <- Jones_graph_fte_pc %>%
+  layout(title = "Jones County FTE Per Capita Change Over Time", xaxis = list(title = "Year"), yaxis = list(title = "FTE Per Capita"))
+
+Jones_graph_fte_pc
+```
