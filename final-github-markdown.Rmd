@@ -730,8 +730,11 @@ leaflet() %>%
 
 ```
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 976239ada8748947cb0116c7263b0a1677047314
 MAP WITHOUT MULTI-COUNTY HEALTH DEPARTMENTS FILLED IN
 
 Merging shapefile and data
@@ -797,7 +800,7 @@ leaflet() %>%
 
 ```{r}
 tm_shape(new_pct_capita_map) +
-  tm_fill("pct_change",title="Percent Change in Health Department Per Capita Spending from 2010-2018",palette="YlGnBu")  +
+  tm_fill("pct_change",title="Percent Change in Health Department Per Capita Spending from 2010-2018", palette="YlGnBu")  +
   tm_borders()
 ```
 
