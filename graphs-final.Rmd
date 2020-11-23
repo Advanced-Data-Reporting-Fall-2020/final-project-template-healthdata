@@ -265,7 +265,6 @@ popup_pctchange <- paste0(
       big.mark = ",") )
 )
 
-
 leaflet() %>%
   addProviderTiles("CartoDB.Positron") %>%
   setView(lng=-79.177556, lat=35.481333, zoom = 6) %>%
