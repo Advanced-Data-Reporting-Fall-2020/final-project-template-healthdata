@@ -264,8 +264,7 @@ popup_pctchange <- paste0(
       scale=100,
       big.mark = ",") )
 )
-
-leaflet() %>%
+ leaflet() %>%
   addProviderTiles("CartoDB.Positron") %>%
   setView(lng=-79.177556, lat=35.481333, zoom = 6) %>%
     addPolygons(data = test_pct_capita_map, 
@@ -287,6 +286,11 @@ leaflet() %>%
             labFormat = labelFormat(suffix = "%"),
             na.label = "No Data") 
 
+```
+Saving map as html file
+```{r}
+library("htmlwidgets")
+saveWidget(final_map, file="final_map.html")
 ```
 
 
