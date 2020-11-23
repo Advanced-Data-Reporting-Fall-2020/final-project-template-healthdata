@@ -158,7 +158,7 @@ infl_CompiledLHDExpenditures %>%
                 mutate(cum_expenditures_per_capita = cum_expenditures/cum_population)
 ```
 
-On top of the 27% drop at the state level, county-level spending also dropped 15%.
+On top of the 27% drop at the state level, county-level spending also dropped 21%.
 
 It's been left to local agencies to pick up the slack. Some have. Some haven't. But nobody really knows. The report for the first time ever tries to shine light on the local public health spending in North Carolina.
 
