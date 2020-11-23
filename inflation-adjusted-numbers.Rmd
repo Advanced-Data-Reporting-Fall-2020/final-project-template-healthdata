@@ -296,6 +296,7 @@ nc_fte_change <-
 
 <!-- Wake County has cut 268 FTEs over that decade -- 30% of its workforce. Meanwhile, Mecklenburg County more than doubled its workforce from 379 in 2007 to 825 in 2017. That's the biggest increase in terms of both raw numbers of new employees as well as percent increase. --> 
 
+
 Ranking each LHD by their pct_change in FTE.
 ```{r}
 local_health_departments_detail %>%
