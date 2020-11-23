@@ -52,7 +52,7 @@ ggplot(PerCapitaSpendingChange,
   geom_point(color="#1d91c0")+
   labs(x="Percent Change in Per Capita Spending", y="County Health Department", 
        title = "Percent Change in Per Capita Spending from 2010-2018",
-       caption = "Data Source: County Finance Records (Did not receive data from 34 Health Departments)") +
+       caption = "Data Source: County Finance Records (Did not receive data from 43 Health Departments)") +
   theme_minimal()+
    theme(panel.border = element_blank(),
         panel.grid.minor = element_blank()
@@ -394,7 +394,6 @@ tm_shape(new_pct_capita_map) +
 Line chart showing change in national per capita spending at state level and NC per capita spending at state level
 
 ```{r}
-library(tidyverse)
 state_per_capita <- read_csv("01-state-public-health-agencies.csv")
 ```
 
@@ -406,12 +405,30 @@ library(gghighlight)
 ggplot(state_per_capita, aes(x=year, y=expenditures_infl_per_capita, group = state_code, color = state_code)) +
   geom_line() + 
   scale_fill_viridis(discrete = TRUE) +
-  scale_x_continuous(breaks=c(2014, 2015, 2016, 2017, 2018, 2019)) +
+  scale_x_continuous(breaks=c(2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018)) +
   scale_y_continuous(labels = dollar) +
-  labs(title = "Per Capita Spending by State Public Health Agencies, 2014-2018", y = "Per Capita Spending", x = "Year", caption="Note: No data for 2011-2014, Source: https://github.com/khnews/2020-underfunded-under-threat-data/blob/master/data/01-state-public-health-agencies.csv") +
+  labs(title = "Per Capita Spending by State Public Health Agencies (Adjusted for Inflation), 2010-2018", y = "Per Capita Spending", x = "Year", caption="Note: No data for 2011-2014 / Source: https://github.com/khnews/2020-underfunded-under-threat-data/blob/master/data/01-state-public-health-agencies.csv / Graphic: Dominick Ferrara") +
+  theme_ipsum() +
+  gghighlight(state_code == "NC") +
+ coord_cartesian(ylim = c(0, 200))
+```
+```{r}
+ggsave("NC-State-Per-Capita-long.png")
+```
+
+```{r}
+ggplot(state_per_capita, aes(x=year, y=expenditures_infl_per_capita, group = state_code, color = state_code)) +
+  geom_line() + 
+  scale_fill_viridis(discrete = TRUE) +
+  scale_x_continuous(breaks=c(2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018)) +
+  scale_y_continuous(labels = dollar) +
+  labs(title = "Per Capita Spending by State Public Health Agencies (Adjusted for Inflation), 2014-2018", y = "Per Capita Spending", x = "Year", caption="Note: No data for 2011-2014, Source: https://github.com/khnews/2020-underfunded-under-threat-data/blob/master/data/01-state-public-health-agencies.csv  / Graphic: Dominick Ferrara") +
   theme_ipsum() +
   gghighlight(state_code == "NC") +
  coord_cartesian(xlim = c(2014, 2018), ylim = c(0, 200))
+```
+```{r}
+ggsave("NC-State-Per-Capita-short.png")
 ```
 
 Create a new dataframe for Jones County data

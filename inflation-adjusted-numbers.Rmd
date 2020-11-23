@@ -143,7 +143,7 @@ Rearranging the national dataframe from least to greatest, to see where NC ranks
    filter(year == 2018) %>%
                 dplyr::select(state_code, expenditures_infl_per_capita) %>% arrange(expenditures_infl_per_capita)
 ```
-At the state level in 2018, North Carolina spends less per person than all but 12 states. It spends about $72 per person. 
+At the state level in 2018, North Carolina spends less per person than all but 13 states. It spends about $72 per person. 
 
 While the spending at the state level has decreased, that has left counties to pick up the tab. 
 
@@ -290,7 +290,7 @@ nc_fte_change <-
   arrange(desc(pct_change))
 ```
 
-<!-- Of the 85 LHDs, 67 had fewer people working at them in 2017 than in 2009. -->
+<!-- Of the 85 LHDs, 62 had fewer people working at them in 2017 than in 2009. -->
 
 
 
@@ -305,7 +305,7 @@ local_health_departments_detail %>%
   arrange(desc(pct_change)) %>%
   filter(pct_change < -0.33)
 ```
-Wake's cuts were biggest in terms of raw numbers, but 17 health departments across the state saw their staffing drop by at least a third. Hyde County lost two thirds of its FTE. The Toe River Health District went from 200 to 60 people. 
+Wake's cuts were biggest in terms of raw numbers, but 13 health departments across the state saw their staffing drop by at least a third. Hyde County lost two thirds of its FTE. The Toe River Health District went from 200 to 60 people. 
 
 Filtering each county so only increases in FTEs are shown.
 ```{r}
