@@ -1,6 +1,7 @@
 ---
 title: "Final Github Markdown"
 output: html_document
+  code_folding: hide
 ---
 Loading packages
 ```{r setup, include=FALSE}
@@ -23,7 +24,7 @@ library("gghighlight")
 FTE DATA
 
 Upload data and create a dataframe called khn
-```{r}
+```{r, include=TRUE, message=FALSE}
 download.file("https://raw.githubusercontent.com/khnews/2020-underfunded-under-threat-data/master/data/05-local-health-departments-detail.csv", "05-local-health-departments-detail.csv")
 khn <- rio::import("05-local-health-departments-detail.csv")
 ```
