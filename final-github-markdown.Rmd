@@ -665,6 +665,13 @@ library(gsheet)
 MultiCountyData <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1Az71mA2PJJ7oJskn_A3eAdfyY5loHcT7CT7g2523odE/edit#gid=0")
 ```
 
+Downloading shapefile of NC counties
+```{r}
+library(tigris)
+options(tigris_use_cache = TRUE)
+nc_counties <- counties("NC")
+```
+
 Joining data with fte data
 ```{r}
 test_pct_capita_map <- left_join(nc_counties, MultiCountyData, by=c("NAME"="only_county_name"))
@@ -721,13 +728,6 @@ leaflet() %>%
             labFormat = labelFormat(suffix = "%"),
             na.label = "No Data") 
 
-```
-
-Downloading shapefile of NC counties
-```{r}
-library(tigris)
-options(tigris_use_cache = TRUE)
-nc_counties <- counties("NC")
 ```
 
 MAP WITHOUT MULTI-COUNTY HEALTH DEPARTMENTS FILLED IN
@@ -795,7 +795,7 @@ leaflet() %>%
 
 ```{r}
 tm_shape(new_pct_capita_map) +
-  tm_fill("pct_change",title="Percent Change in Health Department Per Capita Spending from 2010-2018",palette="YlGnBu")  +
+  tm_fill("pct_change",title="Percent Change in Health Department Per Capita Spending from 2010-2018", palette="YlGnBu")  +
   tm_borders()
 ```
 
