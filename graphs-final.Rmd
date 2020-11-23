@@ -413,6 +413,10 @@ ggplot(state_per_capita, aes(x=year, y=expenditures_infl_per_capita, group = sta
  coord_cartesian(ylim = c(0, 200))
 ```
 ```{r}
+ggsave("NC-State-Per-Capita-long.png")
+```
+
+```{r}
 ggplot(state_per_capita, aes(x=year, y=expenditures_infl_per_capita, group = state_code, color = state_code)) +
   geom_line() + 
   scale_fill_viridis(discrete = TRUE) +
@@ -422,6 +426,9 @@ ggplot(state_per_capita, aes(x=year, y=expenditures_infl_per_capita, group = sta
   theme_ipsum() +
   gghighlight(state_code == "NC") +
  coord_cartesian(xlim = c(2014, 2018), ylim = c(0, 200))
+```
+```{r}
+ggsave("NC-State-Per-Capita-short.png")
 ```
 
 Create a new dataframe for Jones County data
